@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Baseball and Integration Expedition: Diamonds Discovered</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&amp;family=Inter:wght@400;500;600&amp;family=Courier+Prime:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F7F5F0;
+    --ink: #1A1A1A;
+    --red: #C0392B;
+    --sepia: #8B7355;
+    --sepia-light: #D4C4A8;
+    --rule: #E0DBD0;
+    --white: #FFFFFF;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 0 4rem;
+    position: relative;
+    overflow: hidden;
+    background: var(--ink);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      rgba(255,255,255,0.03) 39px,
+      rgba(255,255,255,0.03) 40px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 79px,
+      rgba(255,255,255,0.02) 79px,
+      rgba(255,255,255,0.02) 80px
+    );
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 3rem;
+    height: 100%;
+  }
+
+  .hero-left {
+    flex: 0 0 48%;
+    max-width: 48%;
+    min-width: 0;
+  }
+
+  .hero-right {
+    flex: 0 0 48%;
+    max-width: 48%;
+  }
+
+  .hero-map-img {
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    display: block;
+  }
+
+  @media (max-width: 900px) {
+    .hero { overflow: visible; align-items: flex-start; padding-top: 0; }
+    .hero-inner { flex-direction: column; padding-top: 2.5rem; padding-bottom: 4rem; }
+    .hero-left { flex: none; max-width: 100%; width: 100%; }
+    .hero-right { flex: none; max-width: 100%; width: 100%; }
+  }
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    opacity: 0.06;
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sepia-light);
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-brand-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+    font-weight: 700;
+    font-style: italic;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 0.75rem;
+    position: relative;
+    z-index: 1;
+    line-height: 1.1;
+  }
+
+  .hero-brand-mark em {
+    color: var(--red);
+    opacity: 0.8;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5.5vw, 7rem);
+    font-weight: 900;
+    line-height: 0.92;
+    color: var(--white);
+    position: relative;
+    z-index: 1;
+    margin-bottom: 2rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--red);
+  }
+
+  .hero-sub {
+    max-width: 520px;
+    color: rgba(255,255,255,0.6);
+    font-size: 1rem;
+    line-height: 1.65;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 3rem;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 2rem;
+  }
+
+  .stat-item {}
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--white);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .stat-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sepia-light);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    right: 6vw;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .scroll-hint::after {
+    content: '';
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.2);
+    animation: scrollline 1.5s ease-in-out infinite;
+  }
+
+  @keyframes scrollline {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 0.8; transform: scaleY(0.5); }
+  }
+
+  /* ── NAV ── */
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--cream);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 6vw;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .site-nav::-webkit-scrollbar { display: none; }
+
+  .nav-link {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sepia);
+    text-decoration: none;
+    padding: 1rem 1.2rem;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    flex-shrink: 0;
+  }
+
+  .nav-link:hover { color: var(--ink); }
+  .nav-link.active {
+    background: var(--red);
+    color: white;
+    font-weight: 700;
+    border-bottom-color: transparent;
+  }
+
+  /* ── INTRO SECTION ── */
+  .intro-section {
+    padding: 8rem 6vw 6rem;
+    max-width: 900px;
+  }
+
+  .section-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sepia);
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .intro-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+  }
+
+  .intro-section p {
+    font-size: 1.05rem;
+    color: #3A3A3A;
+    max-width: 680px;
+    margin-bottom: 1.25rem;
+  }
+
+  /* ── ROUTE MAP ── */
+  .route-section {
+    padding: 0 0 6rem;
+  }
+
+  .route-header {
+    padding: 0 6vw 1.5rem;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .route-header-note {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sepia);
+    width: 100%;
+  }
+
+  .route-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.15;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .route-planning-copy {
+    max-width: 720px;
+    margin: 2rem 0 2.5rem;
+    padding: 0 6vw;
+  }
+
+  .route-planning-copy p {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+    line-height: 1.75;
+    color: var(--ink);
+    margin-bottom: 1.1rem;
+  }
+
+  .route-planning-copy p:last-child {
+    margin-bottom: 0;
+  }
+
+  .map-embed-wrap {
+    width: 100%;
+    height: 520px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .map-embed-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  /* ── STOPS ── */
+  .stops-container {
+    padding: 0 6vw;
+  }
+
+  .day-header {
+    padding: 5rem 0 0;
+    border-top: 2px solid var(--ink);
+    margin-top: 5rem;
+  }
+
+  .day-header:first-child {
+    margin-top: 2rem;
+  }
+
+  .day-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sepia);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .day-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 900;
+    line-height: 1.1;
+  }
+
+  /* ── STOP CARD ── */
+  .stop {
+    display: grid;
+    grid-template-columns: 140px 1fr 380px;
+    grid-template-areas:
+      "dateline header media"
+      "dateline body   media";
+    gap: 0 3rem;
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--rule);
+    max-width: 1200px;
+  }
+
+  .stop:last-child { border-bottom: none; }
+
+  .stop-dateline {
+    grid-area: dateline;
+    text-align: right;
+    padding-top: 0.25rem;
+    position: sticky;
+    top: 60px;
+    align-self: start;
+  }
+
+  .stop-city {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--sepia);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .stop-year {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--sepia-light);
+    display: block;
+    border-right: 3px solid var(--red);
+    padding-right: 1.5rem;
+  }
+
+  .stop-header {
+    grid-area: header;
+  }
+
+  .stop-body {
+    grid-area: body;
+  }
+
+  .stop-media {
+    grid-area: media;
+    align-self: start;
+    position: sticky;
+    top: 80px;
+  }
+
+  .stop-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 1.25rem;
+  }
+
+  .stop-text {
+    color: #3A3A3A;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.75;
+    max-width: 600px;
+  }
+
+  .stop-pullquote {
+    margin: 2rem 0;
+    padding: 1.5rem 0 1.5rem 1.5rem;
+    border-left: 3px solid var(--red);
+    max-width: 520px;
+  }
+
+  .stop-pullquote p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  .stop-tag {
+    display: inline-block;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    border: 1px solid var(--red);
+    padding: 0.2rem 0.6rem;
+    margin-bottom: 1rem;
+    border-radius: 2px;
+  }
+
+  /* ── TRANSITION NOTES ── */
+  .transition-note {
+    padding: 2rem 0;
+    max-width: 600px;
+    margin-left: 180px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--sepia);
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+  }
+
+  .transition-note::before {
+    content: '→';
+    font-size: 1rem;
+  }
+
+  /* ── CLOSING ── */
+  .closing-section {
+    background: var(--ink);
+    color: var(--white);
+    padding: 8rem 6vw;
+    margin-top: 6rem;
+  }
+
+  .closing-section .section-label {
+    color: var(--sepia-light);
+  }
+
+  .closing-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    max-width: 700px;
+    margin-bottom: 2.5rem;
+  }
+
+  .closing-section h2 em {
+    font-style: italic;
+    color: var(--red);
+  }
+
+  .closing-body {
+    max-width: 620px;
+    color: rgba(255,255,255,0.72);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+
+  .closing-body strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .award-block {
+    margin-top: 4rem;
+    padding: 2.5rem;
+    border: 1px solid rgba(255,255,255,0.12);
+    max-width: 560px;
+  }
+
+  .award-block .section-label { margin-bottom: 1rem; }
+
+  .award-block p {
+    color: rgba(255,255,255,0.65);
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 3rem 6vw;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  footer p {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sepia);
+  }
+
+  /* ── STOP IMAGES ── */
+  .stop-img-wrap {
+    max-width: 600px;
+    margin-bottom: 0.5rem;
+    background: var(--rule);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .stop-img-lead {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    border: 1px solid var(--rule);
+    /* Fade in once loaded */
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .stop-img-lead.loaded { opacity: 1; }
+
+  .stop-img-caption {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sepia);
+    margin-bottom: 1.5rem;
+    display: block;
+    padding-top: 0.4rem;
+  }
+
+  .stop-img-strip {
+    display: flex;
+    gap: 0.5rem;
+    max-width: 600px;
+    margin-bottom: 1.5rem;
+  }
+
+  .stop-img-strip img {
+    flex: 1;
+    min-width: 0;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border: 1px solid var(--rule);
+    cursor: pointer;
+    transition: opacity 0.15s;
+    opacity: 0;
+  }
+
+  .stop-img-strip img.loaded { opacity: 1; transition: opacity 0.4s ease; }
+  .stop-img-strip img:hover { opacity: 0.88 !important; }
+
+  /* ── CAROUSEL ── */
+  .carousel {
+    width: 100%;
+    height: 380px;
+    margin-bottom: 0.5rem;
+    position: relative;
+    background: var(--ink);
+    overflow: hidden;
+  }
+
+  .carousel-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    cursor: pointer;
+  }
+
+  .carousel-slide img.loaded { opacity: 1; }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(26,26,26,0.75);
+    border: none;
+    color: white;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.15s;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .carousel-btn:hover { background: rgba(192,57,43,0.9); }
+  .carousel-btn.prev { left: 0; }
+  .carousel-btn.next { right: 0; }
+
+  .carousel-dots {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    padding: 10px 0 6px;
+    background: var(--ink);
+  }
+
+  .carousel-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .carousel-dot.active {
+    background: var(--red);
+    transform: scale(1.3);
+  }
+
+  .carousel-counter {
+    position: absolute;
+    bottom: 0.6rem;
+    right: 0.75rem;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.5);
+    pointer-events: none;
+  }
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .lightbox.open { display: flex; }
+
+  .lightbox img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+  }
+
+  .lightbox-close:hover { color: white; }
+  /* Tablet: drop media column, carousel goes below content */
+  @media (max-width: 1024px) {
+    .stop {
+      grid-template-columns: 140px 1fr;
+      grid-template-areas:
+        "dateline header"
+        "dateline body"
+        ". media";
+    }
+
+    .stop-media {
+      position: static;
+      padding-top: 1.5rem;
+    }
+  }
+
+  /* Mobile: dateline → header → media → body */
+  @media (max-width: 680px) {
+    .stop {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "dateline"
+        "header"
+        "media"
+        "body";
+      gap: 1.5rem 0;
+    }
+
+    .stop-dateline {
+      text-align: left;
+      position: static;
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+    }
+
+    .stop-year {
+      font-size: 2.5rem;
+      border-right: none;
+      border-bottom: 3px solid var(--red);
+      padding-right: 0;
+      padding-bottom: 0.25rem;
+    }
+
+    .stop-media {
+      position: static;
+    }
+
+    .carousel {
+      height: 260px;
+    }
+
+    .transition-note { margin-left: 0; }
+
+    .hero-stats { gap: 2rem; flex-wrap: wrap; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-hint::after { animation: none; }
+  }
+</style>
+</head>
+<body>
+<!-- HERO -->
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="hero-inner">
+<div class="hero-left">
+<span class="hero-eyebrow">Congressional Award Expedition · Gold Medal Level · May 2026</span>
+<p class="hero-brand-mark">Diamonds <em>Discovered.</em></p>
+<h1 class="hero-title">Baseball and<br/>Integration<br/><em>Expedition.</em></h1>
+<p class="hero-sub">A road trip from Atlanta to Kansas City and back that spanned over 5 Days and 4 Nights and covered 2,020 Miles. With countless stops along the way, some serious and some fun, the road trip was inspired by my lifelong love of baseball and it came into fruition via a school project that turned into something bigger.</p>
+<div class="hero-stats">
+<div class="stat-item">
+<span class="stat-num">5</span>
+<span class="stat-label">Days</span>
+</div>
+<div class="stat-item">
+<span class="stat-num">4</span>
+<span class="stat-label">Nights</span>
+</div>
+<div class="stat-item">
+<span class="stat-num">11</span>
+<span class="stat-label">States</span>
+</div>
+<div class="stat-item">
+<span class="stat-num">9</span>
+<span class="stat-label">Historic Sites</span>
+</div>
+<div class="stat-item">
+<span class="stat-num">2,020</span>
+<span class="stat-label">Miles</span>
+</div>
+</div>
+<div class="scroll-hint">Scroll</div>
+</div>
+<div class="hero-right">
+<img alt="Expedition route map: Atlanta to Kansas City and back" class="hero-map-img" src="route_header.png"/>
+</div>
+</div>
+</section>
+<!-- NAV -->
+<nav class="site-nav" id="main-nav">
+<a class="nav-link" href="#intro">The Plan</a>
+<a class="nav-link" href="#route">The Route</a>
+<a class="nav-link" href="#day1">Day 1: Birmingham</a>
+<a class="nav-link" href="#day2">Day 2: Memphis</a>
+<a class="nav-link" href="#day3">Day 3: Kansas City</a>
+<a class="nav-link" href="#day4">Day 4: St. Louis</a>
+<a class="nav-link" href="#day5">Day 5: Nashville</a>
+<a class="nav-link" href="#closing">What's Next</a>
+</nav>
+<!-- INTRO -->
+<section class="intro-section" id="intro">
+<span class="section-label">The Plan</span>
+<h2>It started with two points on a map.</h2>
+<p>From the first conception of this trip, we knew that Atlanta to Kansas City would be the main destination. The challenge was to discover what was in between. I had always wanted to travel to Kansas City to try their BBQ, but after working on my AP African American Studies project, I wanted to tour the Negro Leagues Baseball Museum and meet its president Bob Kendrick.</p><p>While doing research, I stumbled upon the Rickwood Game at Rickwood Field in Birmingham, Alabama. I had heard about the significance of Rickwood Field and the players who competed there, including Jackie Robinson during his time in the Negro Leagues. As I looked at the map, I realized Birmingham was directly on the route to Kansas City. What started as a trip to visit the Negro Leagues Baseball Museum quickly grew into something larger as we began identifying other important baseball and civil rights sites along the way.</p><p>The rule was simple: back home by Sunday night. Everything else was open.</p></section>
+<!-- ROUTE MAP -->
+<section class="route-section" id="route">
+<div class="route-header">
+<span class="section-label" style="margin-bottom:0;">The Route</span>
+<h2 class="route-title">Baseball and Integration Tour Route</h2>
+<span class="route-header-note">Interactive Map · Hover any stop for details · 11 states · 2,020 miles</span>
+</div>
+<div class="route-planning-copy">
+<p>I started planning in Google Maps: Atlanta and Kansas City. Once I realized the Rickwood Game in Birmingham could be part of the trip, that locked down the dates and the direction. I had five days to work with, including driving.</p>
+<p>The route started falling into place between Birmingham and Memphis. We were already talking about the Civil Rights Museum in Memphis when I realized we would pass close to Oxford, Mississippi on the way. I made the call to stop at Ole Miss. Not having a set schedule turned every stretch of highway into a "what if." The Civil Rights Museum in particular inspired several stops I hadn't planned.</p>
+<p>I would have liked to add more baseball games. There were minor league teams in several cities along the route, plus the Kansas City Royals. But somewhere along the way I realized that baseball was the common thread that started the trip, not the main purpose.</p>
+<p>When you look at the map, you'll see filter buttons to sort stops by baseball, integration, civil rights, and colleges. For fun, I added the states we visited too. Hit the play button and you can follow the exact route I took, in 60 seconds instead of five days.</p>
+</div>
+<div class="map-embed-wrap">
+<iframe src="expedition_map.html" title="Diamonds Discovered: Expedition Route Map"></iframe>
+</div>
+</section>
+<!-- STOPS -->
+<div class="stops-container">
+<!-- DAY 1 -->
+<div class="day-header" id="day1">
+<span class="day-label">Wednesday, May 27 · Day One</span>
+<h2 class="day-title">Atlanta → Birmingham → Oxford → Memphis</h2>
+</div>
+<!-- Stop: Birmingham Negro Southern League Museum -->
+<div class="stop">
+<div class="stop-dateline">
+<span class="stop-city">Birmingham, AL</span>
+<span class="stop-year">1910</span>
+</div>
+<div class="stop-header"><span class="stop-tag">Negro Leagues</span><h3 class="stop-headline">The Negro Southern League Museum</h3></div><div class="stop-body">
+<p class="stop-text">After departing from Atlanta to Birmingham, we ran into less traffic than expected, and when we reached Birmingham with extra time to spare before the Rickwood Game, we decided to go to the Negro Southern League Museum. Once we walked in, the staff notified us that they would be closing early as they were going to the Rickwood Game to introduce some former Negro League players.</p><p class="stop-text">One hour turned out to be the perfect amount of time as we were able to see all of the exhibits without having to rush, while also avoiding a long wait before the Rickwood Game. The museum focuses specifically on the Negro Southern League, which served as an important part of Black professional baseball and helped develop many players who would later compete in the Negro Leagues. One of the players featured most prominently throughout the museum is Willie Mays, who began his professional career with the Birmingham Black Barons before eventually becoming one of the greatest players in baseball history. Although much smaller than the Negro Leagues Baseball Museum in Kansas City, the museum provided valuable background information and introduced many of the topics that would continue to appear throughout the rest of the trip.</p><div class="stop-pullquote"><p>"Downtown Birmingham was nice. What I didn't realize until after leaving the museum is that it backs up to Regions Field, the regular home of the Birmingham Barons (AA). It would be a great place to go to the museum and then watch a game."</p></div></div>
+<div class="stop-media">
+<div class="carousel" id="carousel-birmingham">
+<div class="carousel-track" id="track-birmingham">
+<div class="carousel-slide">
+<img alt="Carter in front of the Negro Southern League Museum in Birmingham" decoding="async" loading="eager" onclick="openLightbox(this.src, 'Carter at the Negro Southern League Museum - Birmingham, AL · May 27, 2026')" src="birmingham_museum_carter_front.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Civil Rights and Baseball in Birmingham exhibit" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Civil Rights and Baseball in Birmingham - Negro Southern League Museum')" src="birmingham_museum_civil_rights.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Integration and Birmingham Black Baseball Players exhibit" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Integration and Birmingham Black Baseball Players - Negro Southern League Museum')" src="birmingham_museum_famous_localplayers.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Historic Southern League standings newspaper clipping" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Negro Southern League standings - Negro Southern League Museum, Birmingham')" src="birmingham_museum_southernleague_standings.jpg"/>
+</div>
+</div>
+<button aria-label="Previous photo" class="carousel-btn prev" onclick="moveCarousel('birmingham', -1)">←</button>
+<button aria-label="Next photo" class="carousel-btn next" onclick="moveCarousel('birmingham', 1)">→</button>
+<span class="carousel-counter" id="counter-birmingham">1 / 4</span>
+</div>
+<div class="carousel-dots" id="dots-birmingham">
+<button class="carousel-dot active" onclick="goToSlide('birmingham', 0)"></button>
+<button class="carousel-dot" onclick="goToSlide('birmingham', 1)"></button>
+<button class="carousel-dot" onclick="goToSlide('birmingham', 2)"></button>
+<button class="carousel-dot" onclick="goToSlide('birmingham', 3)"></button>
+</div>
+<span class="stop-img-caption">Negro Southern League Museum, Birmingham, AL · May 27, 2026</span>
+</div>
+</div>
+<!-- Stop: Rickwood -->
+<div class="stop">
+<div class="stop-dateline">
+<span class="stop-city">Birmingham, AL</span>
+<span class="stop-year">1948</span>
+</div>
+<div class="stop-header"><span class="stop-tag">Negro Leagues</span><h3 class="stop-headline">Rickwood Field: The Oldest Professional Baseball Stadium in America</h3></div><div class="stop-body">
+<p class="stop-text">The Rickwood Game took place at Rickwood Field, the oldest ballpark in the United States, which opened in 1910. While the stadium has hosted many notable players and teams throughout its history, it is perhaps best known as the longtime home of the Birmingham Black Barons, one of the most successful franchises in Negro League baseball. The game is held each year to celebrate that history, with both teams wearing throwback uniforms, a jazz band performing outside the stadium and vintage automobiles displayed near the entrance. Seeing Rickwood Field filled with fans once again made it easier to appreciate the important role the stadium played in Negro League baseball and the generations of players who competed there before the integration of Major League Baseball.</p><div class="stop-pullquote"><p>"Before the game they introduced six former Negro League players on the field. The Negro League folded in 1960, so those men were at least in their eighties. You always hear about WW2 veterans passing away. In the same way, we need to appreciate these players while they're still around."</p></div></div>
+<div class="stop-media">
+<div class="carousel" id="carousel-rickwood">
+<div class="carousel-track" id="track-rickwood">
+<div class="carousel-slide">
+<img alt="Rickwood Field facade: green building, bunting on the arches, vintage car to the left" decoding="async" loading="eager" onclick="openLightbox(this.src, 'Rickwood Field entrance - Birmingham, AL · May 27, 2026')" src="rickwood_entrance_wide.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Rickwood Field through the netting: scoreboard, light towers, summer sky" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'The field - Rickwood, 1910. Still looks like it.')" src="rickwood_field.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Six former Negro League players honored on the field at Rickwood" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Six former Negro League players introduced on the field before the game')" src="rickwood_ceremony.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="The old steel stands at Rickwood Field, packed with fans" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'The stands - original steel structure, 1910')" src="rickwood_stands.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Game program: Birmingham Black Barons vs. Pensacola Seagulls" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'The Rickwood Game program - Black Barons vs. Seagulls · May 27, 2026')" src="rickwood_program.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="The Color of Baseball exhibit sign at Rickwood" baseball"="" color="" decoding="async" exhibit="" field')"="" loading="lazy" of="" onclick="openLightbox(this.src, '" rickwood="" src="rickwood_color_exhibit.jpg" the="" -=""/>
+</div>
+</div>
+<button aria-label="Previous photo" class="carousel-btn prev" onclick="moveCarousel('rickwood', -1)">←</button>
+<button aria-label="Next photo" class="carousel-btn next" onclick="moveCarousel('rickwood', 1)">→</button>
+<span class="carousel-counter" id="counter-rickwood">1 / 6</span>
+</div>
+<div class="carousel-dots" id="dots-rickwood">
+<button class="carousel-dot active" onclick="goToSlide('rickwood', 0)"></button>
+<button class="carousel-dot" onclick="goToSlide('rickwood', 1)"></button>
+<button class="carousel-dot" onclick="goToSlide('rickwood', 2)"></button>
+<button class="carousel-dot" onclick="goToSlide('rickwood', 3)"></button>
+<button class="carousel-dot" onclick="goToSlide('rickwood', 4)"></button>
+<button class="carousel-dot" onclick="goToSlide('rickwood', 5)"></button>
+</div>
+<span class="stop-img-caption">Rickwood Field, Birmingham, AL · May 27, 2026</span>
+</div>
+</div>
+<!-- Stop: Ole Miss -->
+<div class="stop">
+<div class="stop-dateline">
+<span class="stop-city">Oxford, MS</span>
+<span class="stop-year">1962</span>
+</div>
+<div class="stop-header"><span class="stop-tag">Integration</span><h3 class="stop-headline">Ole Miss and James Meredith</h3></div><div class="stop-body">
+<p class="stop-text">Once the Rickwood Game ended, we decided to make a stop in Oxford, Mississippi, which was very close to our route to Memphis. As we walked onto the campus of Ole Miss, we found the statue for James Meredith, the first Black student to integrate the university in 1962. To put it in perspective, the MLB color barrier had been broken for 15 years at that point.</p><div class="stop-pullquote"><p>"Oxford and Ole Miss were so nice, it's hard to imagine all the chaos back then. The Civil Rights Museum later showed us a news video of what Meredith would have seen in 1962. That helped. But standing there, it still didn't feel real."</p></div></div>
+<div class="stop-media">
+<div class="carousel" id="carousel-olemiss">
+<div class="carousel-track" id="track-olemiss">
+<div class="carousel-slide">
+<img alt="Carter with the James Meredith statue at Ole Miss" decoding="async" loading="eager" onclick="openLightbox(this.src, 'Carter with the James Meredith statue - University of Mississippi, Oxford · May 27, 2026')" src="olemiss_carter_meredith.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="The Lyceum historical marker at Ole Miss" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'The Lyceum - University of Mississippi, Oxford')" src="olemiss_lyceum.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="James Meredith statue walking toward the Courage gate" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'James Meredith statue walking toward the &quot;Courage&quot; gate - Ole Miss')" src="olemiss_meredith_walking.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="James Meredith statue at Ole Miss" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'James Meredith statue - University of Mississippi, Oxford')" src="olemiss_meredith_statue.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Opportunity gate at the James Meredith Memorial" decoding="async" loading="lazy" onclick="openLightbox(this.src, '&quot;Opportunity&quot; gate - James Meredith Memorial, Ole Miss')" src="olemiss_opportunity_gate.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Myrlie Evers-Williams plaque at Ole Miss" decoding="async" loading="lazy" onclick="openLightbox(this.src, '&quot;Yes, Mississippi was. But Mississippi is.&quot; - Myrlie Evers-Williams, Open Doors Ceremony 2002')" src="olemiss_myrlie_evers_plaque.jpg"/>
+</div>
+</div>
+<button aria-label="Previous photo" class="carousel-btn prev" onclick="moveCarousel('olemiss', -1)">←</button>
+<button aria-label="Next photo" class="carousel-btn next" onclick="moveCarousel('olemiss', 1)">→</button>
+<span class="carousel-counter" id="counter-olemiss">1 / 6</span>
+</div>
+<div class="carousel-dots" id="dots-olemiss">
+<button class="carousel-dot active" onclick="goToSlide('olemiss', 0)"></button>
+<button class="carousel-dot" onclick="goToSlide('olemiss', 1)"></button>
+<button class="carousel-dot" onclick="goToSlide('olemiss', 2)"></button>
+<button class="carousel-dot" onclick="goToSlide('olemiss', 3)"></button>
+<button class="carousel-dot" onclick="goToSlide('olemiss', 4)"></button>
+<button class="carousel-dot" onclick="goToSlide('olemiss', 5)"></button>
+</div>
+<span class="stop-img-caption">James Meredith Memorial, University of Mississippi, Oxford · May 27, 2026</span>
+</div>
+</div>
+<!-- DAY 2 -->
+<div class="day-header" id="day2">
+<span class="day-label">Thursday, May 28 · Day Two</span>
+<h2 class="day-title">Memphis → Little Rock → Fayetteville</h2>
+</div>
+<!-- Stop: Memphis -->
+<div class="stop">
+<div class="stop-dateline">
+<span class="stop-city">Memphis, TN</span>
+<span class="stop-year">1968</span>
+</div>
+<div class="stop-header"><span class="stop-tag">Civil Rights</span><h3 class="stop-headline">The Lorraine Motel and National Civil Rights Museum</h3></div><div class="stop-body">
+<p class="stop-text">Once we arrived at the Lorraine Motel, my perspective on Dr. King's assassination was immediately shattered. What happened seems so big in your mind, but it was a relatively small two-story motel. It felt strange that such a significant event in American history had taken place at such an ordinary location. Standing across the street and looking at the balcony where Dr. King was standing made the event feel much more real than it ever had while reading about it in a textbook or watching a documentary.</p><p class="stop-text">One unexpected part of the museum was an exhibit on school integration that included photographs from Sturgis, Kentucky, my father's hometown. The exhibit showed scenes similar to those I had previously studied in places such as Little Rock, including the presence of National Guard troops during integration efforts. My grandfather was a student in Sturgis during that time, and seeing his hometown included in the exhibit made me realize that these historical events were much closer to my own family's experiences than I had previously understood.</p><div class="stop-pullquote"><p>"The entire visit was powerful. Thanks to my AP African American Studies class, I feel like I had a strong understanding of the history (Thanks Mrs. Wheeler!). I also thought it would be amazing for all APAAS students to be able to visit the museum to bring the class to life."</p></div></div>
+<div class="stop-media">
+<div class="carousel" id="carousel-memphis">
+<div class="carousel-track" id="track-memphis">
+<div class="carousel-slide">
+<img alt="Carter standing in front of the Lorraine Motel sign reading 'I Have a Dream: MLK'" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Lorraine Motel - Memphis, TN · May 28, 2026')" src="memphis_lorraine_sign.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Lorraine Motel second floor balcony with wreath marking where Dr. King was standing" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'The wreath on the second-floor railing - Room 306')" src="memphis_lorraine_balcony.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Lorraine Motel exterior and sign from the parking lot" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Lorraine Motel exterior - National Civil Rights Museum')" src="memphis_lorraine_exterior.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Civil Rights Museum exhibit on Sturgis High School, Kentucky 1956" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Sturgis High School, KY - 1956. Inside the Civil Rights Museum.')" src="memphis_sturgis_exhibit.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Civil Rights Museum exhibit on Ole Miss integration" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Ole Miss integration exhibit - National Civil Rights Museum')" src="memphis_ole_miss_exhibit.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Exhibit photo of Melba Patillo, one of the Little Rock Nine" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Melba Patillo - Little Rock Nine, Central High School 1957')" src="memphis_melba_patillo.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Dred Scott exhibit panel" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Dred Scott - Civil Rights Museum exhibit')" src="memphis_dred_scott_exhibit.jpg"/>
+</div>
+</div>
+<button aria-label="Previous photo" class="carousel-btn prev" onclick="moveCarousel('memphis', -1)">←</button>
+<button aria-label="Next photo" class="carousel-btn next" onclick="moveCarousel('memphis', 1)">→</button>
+<span class="carousel-counter" id="counter-memphis">1 / 7</span>
+</div>
+<div class="carousel-dots" id="dots-memphis">
+<button class="carousel-dot active" onclick="goToSlide('memphis', 0)"></button>
+<button class="carousel-dot" onclick="goToSlide('memphis', 1)"></button>
+<button class="carousel-dot" onclick="goToSlide('memphis', 2)"></button>
+<button class="carousel-dot" onclick="goToSlide('memphis', 3)"></button>
+<button class="carousel-dot" onclick="goToSlide('memphis', 4)"></button>
+<button class="carousel-dot" onclick="goToSlide('memphis', 5)"></button>
+<button class="carousel-dot" onclick="goToSlide('memphis', 6)"></button>
+</div>
+<span class="stop-img-caption">National Civil Rights Museum / Lorraine Motel, Memphis, TN · May 28, 2026</span>
+</div>
+</div>
+<!-- Stop: Little Rock -->
+<div class="stop">
+<div class="stop-dateline">
+<span class="stop-city">Little Rock, AR</span>
+<span class="stop-year">1957</span>
+</div>
+<div class="stop-header"><span class="stop-tag">Integration</span><h3 class="stop-headline">Little Rock Central High School</h3></div><div class="stop-body">
+<p class="stop-text">Unlike many of the sites we visited during the trip, Little Rock Central High School is still a functioning high school today. As we approached the campus, one of the first things we noticed was a restored gas station from the 1950s that now serves as part of the National Park site. The school itself was much larger and more impressive than I had expected, which helped me understand why it was considered one of the premier high schools in the country when it opened.</p><p class="stop-text">After touring the visitor center and learning more about the experiences of the Little Rock Nine, we walked up the same front steps that the students had climbed in 1957. Standing in front of the school made it easier to understand the challenges they faced and the national attention that surrounded their decision to attend Central High. While the school remains an impressive building, it is impossible to separate it from the events that took place there and the role it played in the broader civil rights movement.</p><div class="stop-pullquote"><p>"The hardest thing to understand during this visit was learning about the Lost Year. To try and stop integration, the following year after the Little Rock Nine, they closed the schools for the entire school year. The school is huge. It is hard to imagine it sitting there empty on purpose."</p></div></div>
+<div class="stop-media">
+<div class="carousel" id="carousel-littlerock">
+<div class="carousel-track" id="track-littlerock">
+<div class="carousel-slide">
+<img alt="Carter at Little Rock Central High School National Historic Site sign" decoding="async" loading="eager" onclick="openLightbox(this.src, 'Carter at Little Rock Central High School National Historic Site · May 28, 2026')" src="littlerock_carter_sign.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Carter in front of Little Rock Central High School" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Carter in front of Little Rock Central High School - Little Rock, AR')" src="littlerock_carter_front.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Carter on the steps of Little Rock Central High School" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Carter on the steps of Little Rock Central High School')" src="littlerock_carter_steps.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Little Rock Nine commemoration exhibit" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Little Rock Nine commemoration - Central High School National Historic Site')" src="littlerock_nine_exhibit.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="1958-1959: The Lost Year exhibit panel" decoding="async" loading="lazy" onclick="openLightbox(this.src, '1958–1959: The Lost Year - Central High School National Historic Site')" src="littlerock_lost_year.jpg"/>
+</div>
+</div>
+<button aria-label="Previous photo" class="carousel-btn prev" onclick="moveCarousel('littlerock', -1)">←</button>
+<button aria-label="Next photo" class="carousel-btn next" onclick="moveCarousel('littlerock', 1)">→</button>
+<span class="carousel-counter" id="counter-littlerock">1 / 5</span>
+</div>
+<div class="carousel-dots" id="dots-littlerock">
+<button class="carousel-dot active" onclick="goToSlide('littlerock', 0)"></button>
+<button class="carousel-dot" onclick="goToSlide('littlerock', 1)"></button>
+<button class="carousel-dot" onclick="goToSlide('littlerock', 2)"></button>
+<button class="carousel-dot" onclick="goToSlide('littlerock', 3)"></button>
+<button class="carousel-dot" onclick="goToSlide('littlerock', 4)"></button>
+</div>
+<span class="stop-img-caption">Little Rock Central High School National Historic Site, Little Rock, AR · May 28, 2026</span>
+</div>
+</div>
+<!-- Stop: Fayetteville -->
+<div class="stop">
+<div class="stop-dateline">
+<span class="stop-city">Fayetteville, AR</span>
+<span class="stop-year">1948</span>
+</div>
+<div class="stop-header"><span class="stop-tag">Integration</span><h3 class="stop-headline">Silas Hunt at the University of Arkansas</h3></div><div class="stop-body">
+<p class="stop-text">During our visit, I learned about Silas Hunt, who integrated the University of Arkansas in 1948 and became the first Black student admitted to a predominantly white university in the South. His achievement came one year after Jackie Robinson integrated Major League Baseball and nine years before the Little Rock Nine integrated Central High School. Despite the significance of his accomplishment, Hunt is not nearly as well-known as some of the other figures associated with school integration, which made his story particularly interesting to learn about.</p><div class="stop-pullquote"><p>"What made Silas Hunt's story more impressive was that he was a WW2 war hero, but one year after integration he died from tuberculosis. He never got to see the bigger cultural impact of what he did play out."</p></div></div>
+<div class="stop-media">
+<div class="carousel" id="carousel-fayetteville">
+<div class="carousel-track" id="track-fayetteville">
+<div class="carousel-slide">
+<img alt="Carter at the Silas Hunt memorial at University of Arkansas" decoding="async" loading="eager" onclick="openLightbox(this.src, 'Carter at the Silas Hunt memorial - University of Arkansas, Fayetteville · May 29, 2026')" src="fayetteville_carter_memorial.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Carter reading the Silas Hunt memorial stones" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Carter reading the Silas Hunt memorial - University of Arkansas, Fayetteville')" src="fayetteville_carter_reading.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Silas Hunt memorial stone panel 1" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Silas Hunt memorial - University of Arkansas, Fayetteville')" src="fayetteville_silas_hunt_1.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Silas Hunt memorial stone panel 2" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Silas Hunt memorial - University of Arkansas, Fayetteville')" src="fayetteville_silas_hunt_2.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Silas Hunt memorial stone panel 3" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Silas Hunt memorial - University of Arkansas, Fayetteville')" src="fayetteville_silas_hunt_3.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Silas Hunt memorial stone panel 4" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Silas Hunt memorial - University of Arkansas, Fayetteville')" src="fayetteville_silas_hunt_4.jpg"/>
+</div>
+</div>
+<button aria-label="Previous photo" class="carousel-btn prev" onclick="moveCarousel('fayetteville', -1)">←</button>
+<button aria-label="Next photo" class="carousel-btn next" onclick="moveCarousel('fayetteville', 1)">→</button>
+<span class="carousel-counter" id="counter-fayetteville">1 / 6</span>
+</div>
+<div class="carousel-dots" id="dots-fayetteville">
+<button class="carousel-dot active" onclick="goToSlide('fayetteville', 0)"></button>
+<button class="carousel-dot" onclick="goToSlide('fayetteville', 1)"></button>
+<button class="carousel-dot" onclick="goToSlide('fayetteville', 2)"></button>
+<button class="carousel-dot" onclick="goToSlide('fayetteville', 3)"></button>
+<button class="carousel-dot" onclick="goToSlide('fayetteville', 4)"></button>
+<button class="carousel-dot" onclick="goToSlide('fayetteville', 5)"></button>
+</div>
+<span class="stop-img-caption">Silas Hunt Memorial, University of Arkansas, Fayetteville · May 29, 2026</span>
+</div>
+</div>
+<div class="transition-note">Drove the state line between Arkansas and Missouri, with a 20-minute detour into Oklahoma just to check off the state.</div>
+<!-- DAY 3 -->
+<div class="day-header" id="day3">
+<span class="day-label">Friday, May 29 · Day Three</span>
+<h2 class="day-title">Kansas City: The Destination</h2>
+</div>
+<!-- Stop: Paseo YMCA -->
+<div class="stop">
+<div class="stop-dateline">
+<span class="stop-city">Kansas City, MO</span>
+<span class="stop-year">1920</span>
+</div>
+<div class="stop-header"><span class="stop-tag">Negro Leagues</span><h3 class="stop-headline">The Paseo YMCA</h3></div><div class="stop-body">
+<p class="stop-text">On our way to the Negro Leagues Baseball Museum, a large mural featuring Buck O'Neil, Satchel Paige, Jackie Robinson and several other notable players caught our attention. After stopping to learn more about the site, we discovered that the Paseo YMCA was where the Negro National League was founded in 1920. Given the importance of the Negro Leagues to both my research project and the purpose of the trip, it ended up being a valuable stop and provided additional context before we arrived at the museum.</p><div class="stop-pullquote"><p>"This was an unplanned stop. We were looking for the museum and then we stopped at a red light, looked up, and there was this huge mural. It clicked once I saw Buck O'Neil's name. He was the founder of the Negro Leagues Baseball Museum and was featured in Ken Burns' Baseball series. It is just around the corner from the museum and was a great stop."</p></div></div>
+<div class="stop-media">
+<div class="carousel" id="carousel-paseo">
+<div class="carousel-track" id="track-paseo">
+<div class="carousel-slide">
+<img alt="Carter on the commemorative diamond at the Buck O'Neil Center" decoding="async" loading="eager" onclick="openLightbox(this.src, 'Carter on the commemorative diamond - John &quot;Buck&quot; O\'Neil Center, Kansas City · May 28, 2026')" src="paseo_carter_diamond.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Kansas City Monarchs mural at Paseo YMCA" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Kansas City Monarchs mural - Paseo YMCA, Kansas City')" src="paseo_monarchs_mural.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Buck O'Neil Center mural" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'John &quot;Buck&quot; O\'Neil Center mural - Kansas City, MO')" src="paseo_buck_oneil_mural.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Carter at the Paseo YMCA entrance" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Carter at the Paseo YMCA - Kansas City, MO · May 28, 2026')" src="paseo_carter_entrance.jpg"/>
+</div>
+</div>
+<button aria-label="Previous photo" class="carousel-btn prev" onclick="moveCarousel('paseo', -1)">←</button>
+<button aria-label="Next photo" class="carousel-btn next" onclick="moveCarousel('paseo', 1)">→</button>
+<span class="carousel-counter" id="counter-paseo">1 / 4</span>
+</div>
+<div class="carousel-dots" id="dots-paseo">
+<button class="carousel-dot active" onclick="goToSlide('paseo', 0)"></button>
+<button class="carousel-dot" onclick="goToSlide('paseo', 1)"></button>
+<button class="carousel-dot" onclick="goToSlide('paseo', 2)"></button>
+<button class="carousel-dot" onclick="goToSlide('paseo', 3)"></button>
+</div>
+<span class="stop-img-caption">Paseo YMCA / Buck O'Neil Center, Kansas City, MO · May 28, 2026</span>
+</div>
+</div>
+<!-- Stop: NLBM -->
+<div class="stop">
+<div class="stop-dateline">
+<span class="stop-city">Kansas City, MO</span>
+<span class="stop-year">1920–60</span>
+</div>
+<div class="stop-header"><span class="stop-tag">Destination</span><h3 class="stop-headline">The Negro Leagues Baseball Museum and Bob Kendrick</h3></div><div class="stop-body">
+<p class="stop-text">Being the reason we planned this trip in the first place, I was quite excited to finally visit the Negro Leagues Baseball Museum. During my AP African American Studies research project on Hank Aaron and the integration of Major League Baseball, I had frequently encountered Bob Kendrick through interviews, presentations and articles, which made meeting him one of my primary goals for the trip. Although I had reached out before leaving Atlanta and never received a response, I was still hopeful that I might have an opportunity to speak with him while visiting the museum.</p><p class="stop-text">Shortly after we entered the museum, we noticed Kendrick speaking to a group of visitors near the entrance and decided to stop and listen. Once the presentation ended and the rest of the group dispersed, we introduced ourselves and explained my research project, the purpose of the trip and the various sites we had visited on our way to Kansas City. What I expected to be a brief conversation turned into a discussion that lasted nearly thirty minutes and covered many of the topics that had inspired the trip in the first place.</p><p class="stop-text">After speaking with Kendrick, we began making our way through the museum. One of the first exhibits was a film narrated by James Earl Jones that provided an overview of the Negro Leagues and the circumstances that led to their creation. As we continued through the exhibits, I was struck by how much attention was given not only to the challenges that Negro League players faced, but also to the accomplishments of the players, teams and communities that built the leagues into a successful institution. Rather than focusing entirely on discrimination and segregation, the museum also highlighted the talent, innovation and perseverance that allowed the Negro Leagues to thrive for decades.</p><div class="stop-pullquote"><p>"Mr. Kendrick sounded exactly the same in person as he did on the radio and interviews I've watched. I had heard his voice many times, from Saturday morning drives to baseball tournaments listening to his show on MLB Network Radio, to research for my project. He is the best storyteller I've ever heard."</p></div></div>
+<div class="stop-media">
+<div class="carousel" id="carousel-nlbm">
+<div class="carousel-track" id="track-nlbm">
+<div class="carousel-slide">
+<img alt="Carter with the museum director at the NLBM" decoding="async" loading="eager" onclick="openLightbox(this.src, 'Carter with the museum director - Negro Leagues Baseball Museum, Kansas City · May 28, 2026')" src="kc_nlbm_carter_director.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="East-West All-Star Classic exhibit at NLBM" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'East-West All-Star Classic exhibit - Negro Leagues Baseball Museum')" src="kc_nlbm_east_west_classic.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Satchel Paige and KC Monarchs poster" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Satchel Paige and the KC Monarchs poster - Negro Leagues Baseball Museum')" src="kc_nlbm_satchel_paige.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Birthplace of Jackie Robinson marker at NLBM" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Birthplace of Jackie Robinson marker - Negro Leagues Baseball Museum')" src="kc_nlbm_jackie_robinson.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="The field exhibit with player statues at NLBM" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'The field exhibit with player statues - Negro Leagues Baseball Museum')" src="kc_nlbm_field_exhibit.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="They Were All Stars Grandstand Theatre sign" decoding="async" loading="lazy" onclick="openLightbox(this.src, '&quot;They Were All Stars&quot; - Grandstand Theatre, Negro Leagues Baseball Museum')" src="kc_nlbm_they_were_all_stars.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Historic photo of Paseo YMCA Kansas City" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Paseo YMCA, Kansas City, Missouri - Negro Leagues Baseball Museum')" src="kc_nlbm_paseo_ymca_photo.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Carter at the Celebrity Baseball exhibit" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Carter at the Celebrity Baseball exhibit - Negro Leagues Baseball Museum')" src="kc_nlbm_carter_celebrity.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Night ball exhibit at NLBM" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Night ball exhibit - Negro Leagues Baseball Museum')" src="kc_nlbm_night_ball.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Carter at the Negro Leagues Baseball Museum sign" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Carter at the Negro Leagues Baseball Museum sign - Kansas City, MO · May 28, 2026')" src="kc_nlbm_carter_sign.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Museum director addresses visitors in the lobby" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Museum director addresses visitors in the lobby - Negro Leagues Baseball Museum')" src="kc_nlbm_director_lobby.jpg"/>
+</div>
+</div>
+<button aria-label="Previous photo" class="carousel-btn prev" onclick="moveCarousel('nlbm', -1)">←</button>
+<button aria-label="Next photo" class="carousel-btn next" onclick="moveCarousel('nlbm', 1)">→</button>
+<span class="carousel-counter" id="counter-nlbm">1 / 11</span>
+</div>
+<div class="carousel-dots" id="dots-nlbm">
+<button class="carousel-dot active" onclick="goToSlide('nlbm', 0)"></button>
+<button class="carousel-dot" onclick="goToSlide('nlbm', 1)"></button>
+<button class="carousel-dot" onclick="goToSlide('nlbm', 2)"></button>
+<button class="carousel-dot" onclick="goToSlide('nlbm', 3)"></button>
+<button class="carousel-dot" onclick="goToSlide('nlbm', 4)"></button>
+<button class="carousel-dot" onclick="goToSlide('nlbm', 5)"></button>
+<button class="carousel-dot" onclick="goToSlide('nlbm', 6)"></button>
+<button class="carousel-dot" onclick="goToSlide('nlbm', 7)"></button>
+<button class="carousel-dot" onclick="goToSlide('nlbm', 8)"></button>
+<button class="carousel-dot" onclick="goToSlide('nlbm', 9)"></button>
+<button class="carousel-dot" onclick="goToSlide('nlbm', 10)"></button>
+</div>
+<span class="stop-img-caption">Negro Leagues Baseball Museum, Kansas City, MO · May 28, 2026</span>
+</div>
+</div>
+<!-- Stop: Gates BBQ -->
+<div class="stop">
+<div class="stop-dateline">
+<span class="stop-city">Kansas City, MO</span>
+<span class="stop-year">1946</span>
+</div>
+<div class="stop-header"><span class="stop-tag">Culture</span><h3 class="stop-headline">Gates BBQ: A Required Stop</h3></div><div class="stop-body">
+<p class="stop-text">Before leaving the museum, Bob Kendrick strongly recommended that we visit Gates Bar-B-Q, explaining that no trip to the Negro Leagues Baseball Museum was complete without it. Since trying Kansas City barbecue had already been one of the things I was most looking forward to about the trip, it did not take much convincing. Founded in 1946, Gates has been a Kansas City institution for decades and has served generations of local residents and visitors alike. After spending the morning learning about the history of the Negro Leagues, it seemed like an appropriate way to experience another part of Kansas City's history and culture. Fortunately, the food lived up to the recommendation.</p><div class="stop-pullquote"><p>"Gates BBQ was originally Ol' Kentuck BBQ, which I liked because of my family connections to Kentucky. Kansas City BBQ has some Kentucky in it."</p></div></div>
+<div class="stop-media">
+<div class="carousel" id="carousel-gates">
+<div class="carousel-track" id="track-gates">
+<div class="carousel-slide">
+<img alt="Gates BBQ food Kansas City" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Gates BBQ - a Kansas City institution · May 29, 2026')" src="kansascity-gatesbbq-1food.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Gates BBQ a Monarchs tradition" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Gates BBQ - a Monarchs tradition, Kansas City')" src="kansascity-gatesbbq-2olkentuck.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Gates BBQ today" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Gates BBQ today - still going strong, Kansas City')" src="kansascity-gatesbbq-3modern.jpg"/>
+</div>
+</div>
+<button aria-label="Previous photo" class="carousel-btn prev" onclick="moveCarousel('gates', -1)">←</button>
+<button aria-label="Next photo" class="carousel-btn next" onclick="moveCarousel('gates', 1)">→</button>
+<span class="carousel-counter" id="counter-gates">1 / 3</span>
+</div>
+<div class="carousel-dots" id="dots-gates">
+<button class="carousel-dot active" onclick="goToSlide('gates', 0)"></button>
+<button class="carousel-dot" onclick="goToSlide('gates', 1)"></button>
+<button class="carousel-dot" onclick="goToSlide('gates', 2)"></button>
+</div>
+<span class="stop-img-caption">Gates BBQ, Kansas City, MO · May 29, 2026</span>
+</div>
+</div>
+<!-- Stop: Topeka -->
+<div class="stop">
+<div class="stop-dateline">
+<span class="stop-city">Topeka, KS</span>
+<span class="stop-year">1954</span>
+</div>
+<div class="stop-header"><span class="stop-tag">Civil Rights</span><h3 class="stop-headline">Brown v. Board of Education</h3></div><div class="stop-body">
+<p class="stop-text">I have always found it interesting that Brown v. Board of Education originated in Kansas rather than in one of the Deep South states that are often associated with segregation. It serves as a reminder that racism and segregation were not just Southern issues, but rather national ones. By taking a one-hour detour to visit Monroe Elementary I was able to get another physical representation of ordinary people making difficult decisions that ultimately changed the course of history. Standing outside the school, I was reminded that many of the most important moments in the civil rights movement began with individuals willing to challenge systems that others simply accepted.</p><div class="stop-pullquote"><p>"This was an unplanned stop, but we were so close and it gave us a reason to go to Kansas. If you didn't know, Kansas City is in Missouri, at least the part we were in. The one thing you realize looking at the map: Topeka is literally in the middle of the United States, and the decision made here spread across the country."</p></div></div>
+<div class="stop-media">
+<div class="carousel" id="carousel-topeka">
+<div class="carousel-track" id="track-topeka">
+<div class="carousel-slide">
+<img alt="Carter at Monroe Elementary Brown v Board National Historic Site" decoding="async" loading="eager" onclick="openLightbox(this.src, 'Carter at Monroe Elementary - Brown v. Board of Education National Historic Site · May 29, 2026')" src="topeka_carter.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="A Separate But Equal School marker at Monroe Elementary" decoding="async" loading="lazy" onclick="openLightbox(this.src, '&quot;A Separate But Equal School?&quot; - Monroe Elementary, Brown v. Board National Historic Site')" src="topeka_separate_but_equal.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="A Turning Point for Equality marker" decoding="async" loading="lazy" onclick="openLightbox(this.src, '&quot;A Turning Point for Equality&quot; - Brown v. Board of Education National Historic Site, Topeka')" src="topeka_turning_point.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="On the road to Topeka Kansas" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'On the road to Topeka, KS · May 29, 2026')" src="topeka_highway.jpg"/>
+</div>
+</div>
+<button aria-label="Previous photo" class="carousel-btn prev" onclick="moveCarousel('topeka', -1)">←</button>
+<button aria-label="Next photo" class="carousel-btn next" onclick="moveCarousel('topeka', 1)">→</button>
+<span class="carousel-counter" id="counter-topeka">1 / 4</span>
+</div>
+<div class="carousel-dots" id="dots-topeka">
+<button class="carousel-dot active" onclick="goToSlide('topeka', 0)"></button>
+<button class="carousel-dot" onclick="goToSlide('topeka', 1)"></button>
+<button class="carousel-dot" onclick="goToSlide('topeka', 2)"></button>
+<button class="carousel-dot" onclick="goToSlide('topeka', 3)"></button>
+</div>
+<span class="stop-img-caption">Brown v. Board of Education National Historic Site, Topeka, KS · May 29, 2026</span>
+</div>
+</div>
+<!-- Stop: Lawrence KS -->
+<div class="stop">
+<div class="stop-dateline">
+<span class="stop-city">Lawrence, KS</span>
+<span class="stop-year">1863</span>
+</div>
+<div class="stop-header"><span class="stop-tag">Campus</span><h3 class="stop-headline">University of Kansas</h3></div><div class="stop-body">
+<p class="stop-text">After visiting Ole Miss and the University of Arkansas earlier in the trip, it seemed only fitting to stop at the University of Kansas as well. Lawrence was directly on our route from Topeka back to Kansas City, and since Kansas played such an important role in the history of school integration through Brown v. Board of Education, we thought it would be worthwhile to spend some time on campus. One of the places we had hoped to visit was the "Fully Integrated" exhibit inside the Kansas Memorial Union, which explores the university's history with integration and civil rights. Unfortunately, our unplanned stops earlier in the day put us behind schedule, and by the time we arrived, the exhibit had already closed.</p><p class="stop-text">Although we were unable to visit the exhibit, we still spent some time walking around campus and exploring the surrounding area. The campus felt noticeably different from the SEC schools that I am more familiar with in the Southeast, and it was interesting to see another type of college environment while traveling.</p><div class="stop-pullquote"><p>"Driving west out of Kansas City and driving around KU's campus, it felt different. I am from the South, and I've spent a lot of time in the Midwest. Kansas feels more Western."</p></div></div>
+</div>
+<!-- DAY 4 -->
+<div class="day-header" id="day4">
+<span class="day-label">Saturday, May 30 · Day Four</span>
+<h2 class="day-title">Kansas City → St. Louis</h2>
+</div>
+<!-- Stop: NLBM Day 2 -->
+<div class="stop">
+<div class="stop-dateline">
+<span class="stop-city">Kansas City, MO</span>
+<span class="stop-year">1960</span>
+</div>
+<div class="stop-header"><span class="stop-tag">Negro Leagues</span><h3 class="stop-headline">Back to the Museum Before We Leave Town</h3></div><div class="stop-body">
+<p class="stop-text">One thing I wanted to learn more about was how the Negro Leagues came to an end and what happened to the players. As more Black athletes were signed by Major League teams, the Negro Leagues slowly lost many of their best players. With the top talent now playing in the majors, fewer fans attended games, and many teams struggled financially. Before visiting the museum, I had never really thought about what happened after Jackie Robinson broke baseball's color barrier. I knew integration was an important step forward, but I had not considered the effect it had on the Negro Leagues themselves. The museum helped me understand that while opportunities expanded for individual players, one of the most important institutions in Black baseball was gradually disappearing.</p><div class="stop-pullquote"><p>"The single best part of touring the museum and listening to Mr. Kendrick was how he focuses on the positive, celebrating the excellence and memories rather than the loss that you will naturally feel. I'm a big believer in balance, and his positivity leaves me with good memories of my visit. I hope to return in the future."</p></div></div>
+<div class="stop-media">
+<div class="carousel" id="carousel-nlbm2">
+<div class="carousel-track" id="track-nlbm2">
+<div class="carousel-slide">
+<img alt="Carter at the Negro Leagues Baseball Museum second visit" decoding="async" loading="eager" onclick="openLightbox(this.src, 'Carter at the Negro Leagues Baseball Museum - Kansas City, MO · May 30, 2026')" src="nlbm2_carter_rickwood.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Rube Foster and the Paseo YMCA exhibit" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Rube Foster and the Paseo YMCA - birthplace of the Negro Leagues, Kansas City')" src="nlbm2_paseo_ymca.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Andrew Rube Foster and the founding of the Negro Leagues exhibit" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Andrew &quot;Rube&quot; Foster and the founding of the Negro Leagues - Negro Leagues Baseball Museum')" src="nlbm2_rube_foster.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Effa Manley Owner of the Newark Eagles exhibit" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Effa Manley, Owner of the Newark Eagles (1897–1981) - Negro Leagues Baseball Museum')" src="nlbm2_effa_manley.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Excelling on the Field legacy exhibit" decoding="async" loading="lazy" onclick="openLightbox(this.src, '&quot;Excelling on the Field&quot; - Legacy exhibit, Negro Leagues Baseball Museum')" src="nlbm2_legacy.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Black players in Major League Baseball 1947 to 1959" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Black players in Major League Baseball, 1947–1959 - Negro Leagues Baseball Museum')" src="nlbm2_integration_roster.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Indianapolis Clowns Baseball Circus poster" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Indianapolis Clowns &quot;Baseball Circus&quot; poster - Negro Leagues Baseball Museum')" src="nlbm2_indianapolis_clowns.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Shadow ball and clown teams exhibit" decoding="async" loading="lazy" onclick="openLightbox(this.src, '&quot;Shadow ball&quot; and clown teams - Negro Leagues Baseball Museum')" src="nlbm2_clown_teams.jpg"/>
+</div>
+</div>
+<button aria-label="Previous photo" class="carousel-btn prev" onclick="moveCarousel('nlbm2', -1)">←</button>
+<button aria-label="Next photo" class="carousel-btn next" onclick="moveCarousel('nlbm2', 1)">→</button>
+<span class="carousel-counter" id="counter-nlbm2">1 / 8</span>
+</div>
+<div class="carousel-dots" id="dots-nlbm2">
+<button class="carousel-dot active" onclick="goToSlide('nlbm2', 0)"></button>
+<button class="carousel-dot" onclick="goToSlide('nlbm2', 1)"></button>
+<button class="carousel-dot" onclick="goToSlide('nlbm2', 2)"></button>
+<button class="carousel-dot" onclick="goToSlide('nlbm2', 3)"></button>
+<button class="carousel-dot" onclick="goToSlide('nlbm2', 4)"></button>
+<button class="carousel-dot" onclick="goToSlide('nlbm2', 5)"></button>
+<button class="carousel-dot" onclick="goToSlide('nlbm2', 6)"></button>
+<button class="carousel-dot" onclick="goToSlide('nlbm2', 7)"></button>
+</div>
+<span class="stop-img-caption">Negro Leagues Baseball Museum, Kansas City, MO · May 30, 2026</span>
+</div>
+</div>
+<!-- Stop: Old Courthouse -->
+<div class="stop">
+<div class="stop-dateline">
+<span class="stop-city">St. Louis, MO</span>
+<span class="stop-year">1850</span>
+</div>
+<div class="stop-header"><span class="stop-tag">Civil Rights</span><h3 class="stop-headline">The Old Courthouse in St. Louis</h3></div><div class="stop-body">
+<p class="stop-text">Although most people associate Gateway Arch National Park with the Arch itself, one of the places I was most interested in visiting was the Old Courthouse. The courthouse played an important role in the history of Dred Scott, who first sued for his freedom there in the 1850s before his case eventually reached the United States Supreme Court. The exhibits inside the building explain both the original trial and the Supreme Court decision that ultimately ruled against Scott and denied citizenship to African Americans.</p><p class="stop-text">One detail that stood out to me was that the Gateway Arch is clearly visible from several of the courthouse windows. While the Arch and the courthouse represent very different periods of American history, seeing both landmarks together was an interesting reminder of how many significant events have taken place in St. Louis. After spending much of the trip learning about figures such as Jackie Robinson, James Meredith and Martin Luther King Jr., visiting the site of the Dred Scott case provided additional context for many of the civil rights struggles that would follow in later generations.</p><div class="stop-pullquote"><p>"We drove in from the west, from Kansas City, so we didn't see the Arch until we were already in St. Louis. Downtown St. Louis was nice. The Old Courthouse is easy to walk to and is near the Arch and Busch Stadium. I know the history of the Dred Scott case, but standing in the Old Courthouse, you realize how old St. Louis is. This all happened before the Civil War."</p></div></div>
+<div class="stop-media">
+<div class="carousel" id="carousel-stlouis">
+<div class="carousel-track" id="track-stlouis">
+<div class="carousel-slide">
+<img alt="Carter at the Old Courthouse Gateway Arch National Park" decoding="async" loading="eager" onclick="openLightbox(this.src, 'Carter at the Old Courthouse - Gateway Arch National Park, St. Louis · May 30, 2026')" src="stlouis_courthouse_carter.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Carter at the Dred and Harriet Scott exhibit" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Carter at the Dred and Harriet Scott exhibit - Old Courthouse, St. Louis')" src="stlouis_dred_scott_carter.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Pathways to Freedom and Dred Scott exhibit banners" decoding="async" loading="lazy" onclick="openLightbox(this.src, '&quot;Pathways to Freedom&quot; and Dred &amp; Harriet Scott - Old Courthouse, St. Louis')" src="stlouis_dred_scott_exhibit.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Carter at the Gateway Arch" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Carter at the Gateway Arch - St. Louis, MO · May 30, 2026')" src="stlouis_arch_carter.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Looking up at the Gateway Arch from below" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'The Gateway Arch from below - 630 feet of stainless steel')" src="stlouis_arch_lookup.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="The Mississippi River from the Arch grounds" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'The Mississippi River from the Arch grounds - St. Louis, MO')" src="stlouis_mississippi.jpg"/>
+</div>
+</div>
+<button aria-label="Previous photo" class="carousel-btn prev" onclick="moveCarousel('stlouis', -1)">←</button>
+<button aria-label="Next photo" class="carousel-btn next" onclick="moveCarousel('stlouis', 1)">→</button>
+<span class="carousel-counter" id="counter-stlouis">1 / 6</span>
+</div>
+<div class="carousel-dots" id="dots-stlouis">
+<button class="carousel-dot active" onclick="goToSlide('stlouis', 0)"></button>
+<button class="carousel-dot" onclick="goToSlide('stlouis', 1)"></button>
+<button class="carousel-dot" onclick="goToSlide('stlouis', 2)"></button>
+<button class="carousel-dot" onclick="goToSlide('stlouis', 3)"></button>
+<button class="carousel-dot" onclick="goToSlide('stlouis', 4)"></button>
+<button class="carousel-dot" onclick="goToSlide('stlouis', 5)"></button>
+</div>
+<span class="stop-img-caption">Old Courthouse / Gateway Arch, St. Louis, MO · May 30, 2026</span>
+</div>
+</div>
+<!-- Stop: Busch Stadium -->
+<div class="stop">
+<div class="stop-dateline">
+<span class="stop-city">St. Louis, MO</span>
+<span class="stop-year">2026</span>
+</div>
+<div class="stop-header"><span class="stop-tag">Baseball</span><h3 class="stop-headline">Busch Stadium: Cardinals vs. Cubs, Top Row, Left Field Corner</h3></div><div class="stop-body">
+<p class="stop-text">Since the Cardinals were at home and the Cubs happened to be in town, attending a game at Busch Stadium seemed like an easy decision. Because the game was sold out by the time we started looking for tickets, we ended up purchasing seats near the top of the stadium in the left field corner. Despite being high up, the seats turned out to be excellent as they provided cover from both the sun and a passing rain shower during the game.</p><p class="stop-text">One of the more memorable moments occurred when a home run landed just a few rows below us and was immediately reviewed to determine whether it was fair or foul. During the replay shown on the stadium video board, we could clearly see ourselves sitting in the background of the shot. The play was ultimately ruled a fair ball, although from our angle we already knew the correct call. Later in the game, I also spent some time in one of the standing-room areas beyond the outfield where many of the most passionate fans had gathered. Being able to talk baseball with people from both fan bases and experience the atmosphere from a different part of the stadium ended up being one of the highlights of the evening.</p><p class="stop-text">After spending much of the trip visiting museums, historic sites and locations connected to civil rights history, attending a Major League Baseball game provided an opportunity to simply relax and enjoy an evening at the ballpark. The Cubs won 6–1, but the final score was not particularly important. More than anything, it was a chance to visit another historic stadium and end that portion of the trip with a baseball game.</p><div class="stop-pullquote"><p>"The most fun I had on the trip was taking part in a unique part of 2026 culture. The Tarps Off trend is a cultural phenomenon that actually started at Busch Stadium in St. Louis. I didn't know anyone there, but I joined in and made new friends. An experience I will never forget."</p></div></div>
+<div class="stop-media">
+<div class="carousel" id="carousel-busch">
+<div class="carousel-track" id="track-busch">
+<div class="carousel-slide">
+<img alt="Cardinals Nation at Busch Stadium" decoding="async" loading="eager" onclick="openLightbox(this.src, 'Cardinals Nation - Busch Stadium, St. Louis · May 30, 2026')" src="stlouis_cardinals_village.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="The Arch from the Cardinals baseball village" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'The Arch from the Cardinals baseball village - St. Louis, MO')" src="stlouis_arch_street.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Tarp coming off after rain delay at Busch Stadium" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Tarp coming off after the rain delay - Busch Stadium, St. Louis')" src="stlouis_busch_tarp.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="On the jumbotron after a disputed home run" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'On the jumbotron after a disputed home run - Busch Stadium, St. Louis')" src="stlouis_jumbotron.jpg"/>
+</div>
+<div class="carousel-slide">
+<img alt="Tarps off celebration in the crowd at Busch Stadium" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Tarps off in the crowd - Busch Stadium, St. Louis · May 30, 2026')" src="stlouis_tarps_off.jpg"/>
+</div>
+</div>
+<button aria-label="Previous photo" class="carousel-btn prev" onclick="moveCarousel('busch', -1)">←</button>
+<button aria-label="Next photo" class="carousel-btn next" onclick="moveCarousel('busch', 1)">→</button>
+<span class="carousel-counter" id="counter-busch">1 / 5</span>
+</div>
+<div class="carousel-dots" id="dots-busch">
+<button class="carousel-dot active" onclick="goToSlide('busch', 0)"></button>
+<button class="carousel-dot" onclick="goToSlide('busch', 1)"></button>
+<button class="carousel-dot" onclick="goToSlide('busch', 2)"></button>
+<button class="carousel-dot" onclick="goToSlide('busch', 3)"></button>
+<button class="carousel-dot" onclick="goToSlide('busch', 4)"></button>
+</div>
+<span class="stop-img-caption">Busch Stadium, St. Louis, MO · May 30, 2026</span>
+</div>
+</div>
+<!-- DAY 5 -->
+<div class="day-header" id="day5">
+<span class="day-label">Sunday, May 31 · Day Five</span>
+<h2 class="day-title">Evansville → Nashville → Atlanta</h2>
+</div>
+<!-- Stop: Woolworth -->
+<div class="stop">
+<div class="stop-dateline">
+<span class="stop-city">Nashville, TN</span>
+<span class="stop-year">1960</span>
+</div>
+<div class="stop-header"><span class="stop-tag">Civil Rights</span><h3 class="stop-headline">Woolworth's Nashville Sit-Ins</h3></div><div class="stop-body">
+<p class="stop-text">As we made our way back toward Atlanta, we decided to make one final stop in Nashville. Earlier in the trip, the National Civil Rights Museum had highlighted the student sit-in movement that took place at the Woolworth lunch counter in downtown Nashville during 1960, and since the site was only a short detour from our route home, it seemed worthwhile to visit. Although the building was closed when we arrived, standing outside still provided an opportunity to reflect on the actions of the students who participated in the protests and the role they played in the broader civil rights movement.</p><div class="stop-pullquote"><p>"This stop was not originally planned, but the exhibit at the National Civil Rights Museum stood out for the way it brought the sit-ins to life with videos. College students, close to my age, were the ones who showed bravery and started the change."</p></div></div>
+<div class="stop-media">
+<img alt="Nashville Sit-Ins historical marker outside Woolworths" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Nashville Sit-Ins historical marker - Woolworth\'s, Nashville, TN · May 31, 2026')" src="nashville_woolworths.jpg" style="width:100%;height:380px;object-fit:cover;border:1px solid var(--rule);cursor:pointer;"/>
+<span class="stop-img-caption">Nashville Sit-Ins historical marker, Woolworth's, Nashville, TN · May 31, 2026</span>
+</div>
+</div>
+<!-- Stop: Sulphur Dell -->
+<div class="stop">
+<div class="stop-dateline">
+<span class="stop-city">Nashville, TN</span>
+<span class="stop-year">1932</span>
+</div>
+<div class="stop-header"><span class="stop-tag">Negro Leagues</span><h3 class="stop-headline">The Site of Sulphur Dell</h3></div><div class="stop-body">
+<p class="stop-text">Nashville also had important connections to Negro League baseball. During my visit to the Negro Leagues Baseball Museum, I learned about several Nashville-based teams, including the Elite Giants and the Stars, both of which played at Sulphur Dell. Originally built in the nineteenth century, Sulphur Dell served as an important baseball venue for generations before being demolished in 1969. Today, First Horizon Park sits on the same site and contains several tributes to the stadium and the teams that once played there. Although the ballpark itself is modern, it serves as another reminder of how much baseball history remains connected to places that are still part of everyday life.</p><div class="stop-pullquote"><p>"Another unplanned stop, and I realized this would be the last one. Apparently there are several tributes to Sulphur Dell throughout the new stadium. The stadium is in the heart of Nashville, not far from the Woolworth's building. It is a beautiful stadium and there was a game starting in a couple of hours. It was tempting, but we had to get home. Nashville is so close to Atlanta I'm sure I will return."</p></div></div>
+<div class="stop-media">
+<img alt="Carter at Sulphur Dell Nashville" decoding="async" loading="lazy" onclick="openLightbox(this.src, 'Carter at Sulphur Dell - Nashville, TN · May 31, 2026')" src="nashville_sulphur_dell.jpg" style="width:100%;height:380px;object-fit:cover;border:1px solid var(--rule);cursor:pointer;"/>
+<span class="stop-img-caption">Sulphur Dell, Nashville, TN · May 31, 2026</span>
+</div>
+</div>
+<div class="transition-note">Final stretch: Nashville to Atlanta. About 2,000 miles on the odometer. Final count: 2,020.</div>
+<!-- Stop: Atlanta Home -->
+<div class="stop">
+<div class="stop-dateline">
+<span class="stop-city">Atlanta, GA</span>
+<span class="stop-year">2026</span>
+</div>
+<div class="stop-header"><span class="stop-tag">Home Base</span><h3 class="stop-headline">Back Home in Atlanta</h3></div>
+<div class="stop-body">
+<p class="stop-text">By the time we returned home, we had traveled approximately 2,020 miles across five days and spent nearly twenty-nine hours in the car. Some days were devoted primarily to driving, while others were spent visiting museums, memorials, ballparks and historic sites. Looking back, the statistics themselves are not what I remember most. Instead, I remember the conversations, the people we met and the stories behind the places we visited.</p><p class="stop-text">As we drove back into Atlanta, I found myself thinking about how many of the topics we had explored throughout the week were connected to places much closer to home. Hank Aaron played in Atlanta, the Atlanta History Center preserves many of the stories we had spent the week discussing and baseball remains a significant part of the city's identity. The difference was that after spending five days traveling through the South and Midwest, I returned with a much deeper understanding of the people and events that helped shape those places and the country as a whole.</p><div class="stop-pullquote"><p>"The last five days were amazing, but it is great to be home. Now I know why they call it an expedition. It isn't just a trip. It was a journey that I will never forget, not just because I chose the destinations and planned it, but for how much I experienced."</p></div></div>
+</div>
+</div>
+<!-- CLOSING -->
+<section class="closing-section" id="closing">
+<span class="section-label">What's Next</span>
+<h2>This turned into something much more than a school project or a requirement.</h2>
+<p class="closing-body">This was sparked by my AP African American Studies research project on MLB integration, including the Negro Leagues and famous names like Hank Aaron. The overlap with my AP US History oral history project and my interview with Mr. Terence Moore, and what I learned from him, only deepened my interest. Yes, the expedition did achieve the Gold Medal level requirements for Congressional Award exploration, but I could have gone anywhere and explored anything for that.</p><p class="closing-body">I chose something that combines my love of baseball and history, and combined that with the Negro Leagues, integration, and ultimately civil rights.</p><p class="closing-body">As we traveled from Atlanta to Kansas City and visited sites connected to both baseball and civil rights history, I found myself learning about topics that I had previously only encountered through books, documentaries and classroom discussions. Seeing these places in person and speaking with people such as Bob Kendrick made the history feel much more real and helped me better understand the connections between many of the stories I had spent the past year researching.</p><p class="closing-body">One of the most valuable parts of the trip was gaining a better understanding of how complicated history can be. Before visiting the Negro Leagues Baseball Museum, I had largely viewed integration through the story of Jackie Robinson breaking baseball's color barrier, but the museum helped me understand what happened to the Negro Leagues after integration and how the decline of those leagues affected players, teams and communities across the country. Speaking with Bob Kendrick provided additional context and helped answer many of the questions that had developed throughout my research.</p><p class="closing-body">Although visiting the Negro Leagues Baseball Museum was the original purpose of the trip, some of the most meaningful experiences came from the stops we made along the way. Whether it was Rickwood Field in Birmingham, Monroe Elementary in Topeka or the Lorraine Motel in Memphis, each location offered a different perspective on the broader story of baseball, race and civil rights in America. More importantly, each stop encouraged me to ask new questions and look beyond the simplified versions of history that are often presented in textbooks, which is something I hope to continue doing long after this trip is over.</p><p class="closing-body">I'll be honest, the trip was exhausting in a good way. We did it in five days in part because of the requirement but also because I had to get back to my job at Publix. It would have been nice to stretch the trip over a couple more days. I would have gone to Tulsa.</p><p class="closing-body">When I looked back at the route we took and the 11 states we touched, I realized that what I planned might be valuable to other people. The route is an oval loop stretching from the Southeast through the Midwest. There are 67 million people living in the 11 states on this route. That is 20% of the country within driving distance of this itinerary.</p><p class="closing-body">Anybody could do this trip, or some pieces of it, adding new stops or dropping some of mine. I live in Atlanta. I've been to the King Center and the Atlanta History Center, but if you are from somewhere else you would want to add those. You could fly into Atlanta from anywhere and follow a similar path. I haven't been to the Baseball Hall of Fame in Cooperstown, New York yet, but now having been to the Negro Leagues Baseball Museum in Kansas City, I can't imagine seeing one without seeing the other.</p><p class="closing-body">So if you are reading this and you have a little Anthony Bourdain in you, if you like driving, and you love history and people, I think you should consider my expedition as inspiration to visit some of the places I shared here. If you are a baseball player or a baseball fan, you need to go to Kansas City. Six months ago, I was not aware of the Negro Leagues Baseball Museum. Now I have an entire journey that I will never forget.</p><div class="award-block">
+<span class="section-label">Congressional Award: Gold Medal Level</span>
+<p>The Congressional Award is the United States Congress's highest honor for young Americans. The Gold Medal level requires over 400 hours of public service, personal development, physical fitness, and a five-day expedition into an unfamiliar environment. This trip fulfilled the expedition requirement, but it also turned out to be the most significant part of the whole process.</p>
+</div>
+</section>
+<footer>
+<p>Diamonds Discovered · May 27–31, 2026</p>
+<p>
+<a href="index.html" style="color:var(--sepia);text-decoration:none;margin-right:1.5rem;">The Expedition</a>
+<a href="about.html" style="color:var(--sepia);text-decoration:none;margin-right:1.5rem;">About Carter</a>
+<a href="award.html" style="color:var(--sepia);text-decoration:none;">The Congressional Award</a>
+</p>
+</footer>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+<button class="lightbox-close" onclick="closeLightbox()">Close ✕</button>
+<div style="display:flex;flex-direction:column;align-items:center;gap:1rem;max-width:90vw;">
+<img alt="" id="lightbox-img" src="" style="max-height:82vh;"/>
+<span id="lightbox-caption" style="font-family:'Courier Prime',monospace;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-align:center;"></span>
+</div>
+</div>
+<script>
+  // ── NAV HIGHLIGHT ──
+  const sections = document.querySelectorAll('[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => link.classList.remove('active'));
+        const activeLink = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+        if (activeLink) {
+          activeLink.classList.add('active');
+          activeLink.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      }
+    });
+  }, { rootMargin: '-40% 0px -40% 0px', threshold: 0 });
+  sections.forEach(s => navObserver.observe(s));
+
+  // ── IMAGE FADE IN ──
+  document.querySelectorAll('.carousel-slide img, .stop-img-lead').forEach(img => {
+    if (img.complete) img.classList.add('loaded');
+    else img.addEventListener('load', () => img.classList.add('loaded'));
+  });
+
+  // ── CAROUSEL ──
+  const carouselState = {};
+
+  function initCarousel(id) {
+    const slides = document.querySelectorAll(`#carousel-${id} .carousel-slide img`);
+    carouselState[id] = { current: 0, total: slides.length };
+  }
+
+  function moveCarousel(id, dir) {
+    const state = carouselState[id];
+    if (!state) return;
+    const next = (state.current + dir + state.total) % state.total;
+    goToSlide(id, next);
+  }
+
+  function goToSlide(id, index) {
+    const state = carouselState[id];
+    if (!state) return;
+    state.current = index;
+
+    // Move track
+    const track = document.getElementById(`track-${id}`);
+    track.style.transform = `translateX(-${index * 100}%)`;
+
+    // Update counter
+    const counter = document.getElementById(`counter-${id}`);
+    if (counter) counter.textContent = `${index + 1} / ${state.total}`;
+
+    // Update dots
+    const dots = document.querySelectorAll(`#dots-${id} .carousel-dot`);
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+
+    // Lazy load the upcoming slide image
+    const upcoming = document.querySelector(`#track-${id} .carousel-slide:nth-child(${index + 2}) img`);
+    if (upcoming && upcoming.dataset.src) {
+      upcoming.src = upcoming.dataset.src;
+      delete upcoming.dataset.src;
+    }
+  }
+
+  // Keyboard navigation for carousel (when lightbox is closed)
+  document.addEventListener('keydown', e => {
+    if (document.getElementById('lightbox').classList.contains('open')) {
+      if (e.key === 'Escape') closeLightbox();
+      return;
+    }
+    // Could add carousel keyboard nav here later
+  });
+
+  // Touch/swipe support for carousels
+  document.querySelectorAll('.carousel').forEach(carousel => {
+    let startX = 0;
+    const id = carousel.id.replace('carousel-', '');
+    carousel.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    carousel.addEventListener('touchend', e => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) moveCarousel(id, diff > 0 ? 1 : -1);
+    }, { passive: true });
+  });
+
+  // Init all carousels on page
+  initCarousel('birmingham');
+  initCarousel('rickwood');
+  initCarousel('memphis');
+  initCarousel('olemiss');
+  initCarousel('littlerock');
+  initCarousel('fayetteville');
+  initCarousel('paseo');
+  initCarousel('nlbm');
+  initCarousel('gates');
+  initCarousel('topeka');
+  initCarousel('nlbm2');
+  initCarousel('stlouis');
+  initCarousel('busch');
+
+  // ── LIGHTBOX ──
+  function openLightbox(src, caption) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-caption').textContent = caption || '';
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+</script>
+</body>
+</html>

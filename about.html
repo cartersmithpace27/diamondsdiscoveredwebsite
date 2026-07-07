@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Carter Smith | Diamonds Discovered</title>
+  <meta name="description" content="Rising senior. Twelve years of baseball. An AP thesis on MLB integration. And a 2,020-mile road trip that connected all of it.">
+
+  <meta property="og:title" content="About Carter Smith | Diamonds Discovered">
+  <meta property="og:description" content="Rising senior. Twelve years of baseball. An AP thesis on MLB integration. And a 2,020-mile road trip that connected baseball and integration.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://diamondsdiscovered.com/about.html">
+
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #F7F5F0;
+      --ink: #1A1A1A;
+      --red: #C0392B;
+      --sepia: #8B7355;
+      --sepia-light: #D4C4A8;
+      --rule: #E0DBD0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--ink);
+      border-bottom: 2px solid var(--red);
+      display: flex;
+      align-items: center;
+      overflow-x: auto;
+    }
+
+    nav .brand {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      padding: 14px 20px 14px 24px;
+      border-right: 1px solid rgba(255,255,255,0.15);
+      white-space: nowrap;
+      font-weight: 400;
+    }
+
+    nav a {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      padding: 14px 18px;
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: #fff; }
+    nav a.active { background: var(--red); color: #fff; }
+
+    /* HERO */
+    .hero {
+      background: var(--ink);
+      color: #fff;
+      padding: 80px 40px 72px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 40px,
+        rgba(255,255,255,0.015) 40px,
+        rgba(255,255,255,0.015) 41px
+      );
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sepia-light);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
+      font-weight: 900;
+      line-height: 1.05;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--sepia-light);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 660px;
+      line-height: 1.7;
+    }
+
+    /* ALTERNATING SECTIONS */
+    .split-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .split-section:last-of-type {
+      border-bottom: none;
+    }
+
+    .split-section.reverse .split-text { order: 2; }
+    .split-section.reverse .split-image { order: 1; }
+
+    .split-text p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #2a2a2a;
+      margin-bottom: 1.4rem;
+    }
+
+    .split-text p:last-child { margin-bottom: 0; }
+
+    .split-image img {
+      width: 100%;
+      display: block;
+      border-radius: 3px;
+    }
+
+    /* caption */
+    .img-caption {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--sepia);
+      margin-top: 10px;
+    }
+
+    /* STAT STRIP */
+    .stat-strip {
+      background: var(--ink);
+      color: #fff;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      overflow: hidden;
+    }
+
+    .stat-item {
+      padding: 40px 24px;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--sepia-light);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* SERVICE BLOCK */
+    .service-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+    }
+
+    .service-block {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 36px 40px;
+    }
+
+    .service-block h3 {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sepia);
+      margin-bottom: 20px;
+    }
+
+    .service-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.95rem;
+      color: #2a2a2a;
+    }
+
+    .service-row:last-child { border-bottom: none; }
+    .service-org { font-weight: 500; }
+
+    .service-hours {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.8rem;
+      color: var(--red);
+      white-space: nowrap;
+      margin-left: 16px;
+    }
+
+    /* CLOSING */
+    .closing {
+      background: var(--ink);
+      color: #fff;
+      padding: 72px 40px;
+    }
+
+    .closing-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .closing h2 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .closing p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 1.4rem;
+      max-width: 680px;
+    }
+
+    .closing-links {
+      margin-top: 40px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 13px 24px;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+
+    .btn-primary { background: var(--red); color: #fff; border: 1px solid var(--red); }
+    .btn-primary:hover { background: #a93226; border-color: #a93226; }
+    .btn-outline { background: transparent; color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.3); }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.7); color: #fff; }
+
+    /* FOOTER */
+    footer {
+      background: #111;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 32px 40px;
+      text-align: center;
+    }
+
+    footer a {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      margin: 0 14px;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: rgba(255,255,255,0.8); }
+
+    /* RESPONSIVE */
+    @media (max-width: 760px) {
+      .hero { padding: 48px 24px 56px; }
+
+      .split-section {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding: 56px 24px;
+      }
+
+      .split-section.reverse .split-text { order: 1; }
+      .split-section.reverse .split-image { order: 2; }
+
+      .stat-strip { grid-template-columns: 1fr; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .stat-item:last-child { border-bottom: none; }
+
+      .service-wrap { padding: 0 24px 56px; }
+      .service-block { padding: 24px 20px; }
+
+      .closing { padding: 56px 24px; }
+      footer { padding: 28px 24px; }
+      nav .brand { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- NAV -->
+<nav>
+  <span class="brand">Diamonds Discovered.</span>
+  <a href="index.html">The Expedition</a>
+  <a href="expedition_map.html">Map</a>
+  <a href="about.html" class="active">About Carter</a>
+  <a href="award.html">The Award</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Pace Academy, Atlanta · Class of 2027</p>
+    <h1>Carter Smith.<br><em>How I wound up on this journey.</em></h1>
+    <p class="hero-sub">Rising senior. Twelve years of baseball. An AP thesis on MLB integration. Then an AP oral history with a noted sports journalist who has written about Hank Aaron and MLB integration issues. And a 2,020-mile road trip that connected baseball and integration.</p>
+  </div>
+</header>
+
+<!-- SECTION 1: text left, kid photo right -->
+<section class="split-section">
+  <div class="split-text">
+    <p>I've played baseball since I was five. It's been a constant my whole life. When you're a kid you think you'll be a MLB player. When you get older you think you could play in college. I've gotten better at baseball, especially as a pitcher, but sometime in the last year I realized that I won't play beyond high school. Even when it has been tough, baseball has always been something I loved and enjoyed. I had never really thought about the role of baseball in our history, how integration occurred, and how we wound up with baseball as we know it today. But this past year it started meaning something different. In AP African American Studies, I wrote a thesis on the integration of Major League Baseball. The more I researched, the more I realized how much of that story I didn't know. The Negro Leagues, the players who never got a shot, the towns and ballparks that still carry that history. None of it shows up in the box scores.</p>
+    <p>That research is what pushed this expedition from an idea into something I actually had to do. Inspired by my oral history interview with Mr. Terence Moore, I wanted to go to Kansas City to see the Negro Leagues Baseball Museum and meet one of my heavily cited sources, Mr. Bob Kendrick.</p>
+  </div>
+  <div class="split-image">
+    <img src="IMG_3450.JPG" alt="Carter Smith, age 5, in his first baseball uniform">
+    <p class="img-caption">Age 5. The beginning of twelve years.</p>
+  </div>
+</section>
+
+<!-- SECTION 2: mound photo left, text right -->
+<section class="split-section reverse">
+  <div class="split-text">
+    <p>I pitch for Pace Academy's varsity team. Baseball has taught me most of what I actually know about competing and handling failure. When things aren't going your way on the mound, you have to stay in the moment. You can't carry the last pitch into the next one. That carries over into everything else I take on.</p>
+    <p>The thing that drove this expedition is something I've always done naturally: I talk to everyone. Teachers, strangers at a museum, the president of a national institution. On this trip, that turned into the most important part of the whole experience. The exhibits mattered. The conversations mattered more. Bob Kendrick, the president of the Negro Leagues Baseball Museum, sat with us and talked for a long time. He didn't have to do that. I asked him everything I'd wanted to ask since I started my thesis.</p>
+  </div>
+  <div class="split-image">
+    <img src="IMG_0324.PNG" alt="Carter Smith pitching for Pace Academy varsity baseball, number 25">
+    <p class="img-caption">On the mound for Pace Academy, #25.</p>
+  </div>
+</section>
+
+<!-- STAT STRIP -->
+<div class="stat-strip">
+  <div class="stat-item">
+    <div class="stat-number">11</div>
+    <div class="stat-label">AP Classes by graduation</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">400+</div>
+    <div class="stat-label">Volunteer hours logged</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">Job</div>
+    <div class="stat-label">Publix, Part time Job<br>summers, evenings, weekends</div>
+  </div>
+</div>
+
+<!-- SECTION 3: text left, headshot right -->
+<section class="split-section">
+  <div class="split-text">
+    <p>I've put in over 400 hours of community service across 16 different organizations, mostly working as a summer camp counselor with kids. I kept going back because I'm good with kids and I genuinely like the environment. It keeps you grounded in a way that's hard to explain until you've done it.</p>
+    <p>Through YMSL, I've held leadership positions at the grade level and earned the Superior Service Award in 2024-2025. I'm also part of the ICGL Fellows Program at Pace, focused on social innovation, and I serve as a Student Ambassador and National Honor Society member.</p>
+    <p>I'm actively exploring colleges with a focus on business and finance. I want to find a place where I can keep building real relationships and get early exposure to how the business world actually works. This expedition reinforced something I already knew about myself: I do my best learning when I'm in the room, not just reading about it.</p>
+  </div>
+  <div class="split-image">
+    <img src="IMG_9275.jpg" alt="Carter Smith, rising senior at Pace Academy">
+    <p class="img-caption">Atlanta, 2025.</p>
+  </div>
+</section>
+
+
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="closing-inner">
+    <h2>See where the expedition took him.</h2>
+    <p>The full route, the stops, the conversations, and the things that stuck. 2,020 miles in five days across eleven states.</p>
+    <div class="closing-links">
+      <a href="index.html" class="btn btn-primary">Read the Expedition</a>
+      <a href="award.html" class="btn btn-outline">The Congressional Award</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html">The Expedition</a>
+  <a href="expedition_map.html">Interactive Map</a>
+  <a href="about.html">About Carter</a>
+  <a href="award.html">The Award</a>
+</footer>
+
+</body>
+</html>

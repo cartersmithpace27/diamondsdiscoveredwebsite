@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diamonds Discovered — Route Map</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Georgia', serif; background: #F7F5F0; }
+  #map { width: 100%; height: 100vh; min-height: 500px; }
+
+  .map-legend {
+    background: #1A1A1A;
+    padding: 14px 18px;
+    border-radius: 3px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    min-width: 180px;
+  }
+  .legend-title {
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8B7355;
+    display: block;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 8px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 7px;
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.7);
+  }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .legend-line { width: 20px; height: 2px; flex-shrink: 0; }
+  .legend-miles { margin-top: 12px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .legend-miles span {
+    font-family: 'Georgia', serif;
+    font-size: 22px;
+    font-weight: bold;
+    color: #FFFFFF;
+    display: block;
+    line-height: 1;
+  }
+  .legend-miles small {
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8B7355;
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    /* Flex row so filter tabs sit right of the +/- buttons */
+    .leaflet-top.leaflet-left {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: flex-start;
+      width: auto;
+      right: unset;
+    }
+
+    /* Remove Leaflet's default top margin on the filter control */
+    .leaflet-top.leaflet-left .filter-tabs.leaflet-control {
+      margin-top: 10px;
+    }
+
+    .filter-tabs {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr);
+      flex-direction: unset;
+      width: auto;
+      max-width: calc(100vw - 50px);
+      border-radius: 4px;
+      padding: 2px;
+      gap: 2px;
+    }
+
+    .filter-tab {
+      font-size: 8px;
+      font-weight: bold;
+      color: white !important;
+      padding: 7px 4px;
+      letter-spacing: 0.3px;
+      text-align: center;
+      white-space: normal;
+      line-height: 1.2;
+    }
+
+    .play-control { padding: 8px 14px; gap: 10px; }
+    .play-btn { width: 38px; height: 38px; }
+    .play-label { font-size: 9px; letter-spacing: 1px; }
+    .map-legend { display: none; }
+  }
+
+  .leaflet-popup-content-wrapper { background: #1A1A1A !important; border-radius: 3px !important; box-shadow: 0 4px 20px rgba(0,0,0,0.4) !important; border: none !important; color: white !important; }
+  .leaflet-popup-tip { background: #1A1A1A !important; }
+  .leaflet-popup-content { margin: 12px 16px !important; color: white !important; }
+  .leaflet-popup-content * { color: inherit; }
+  .leaflet-container { font-family: 'Georgia', serif; }
+  .leaflet-control-attribution { background: rgba(247,245,240,0.85) !important; font-size: 10px; }
+
+  /* Filter tabs */
+  .filter-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    background: #1A1A1A;
+    border-radius: 4px;
+    padding: 5px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .filter-tab {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    background: none;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    padding: 7px 12px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s;
+    text-align: left;
+  }
+  .filter-tab:hover { color: white; border-color: rgba(255,255,255,0.2); }
+  .filter-tab.active { background: #C0392B; color: white; border-color: #C0392B; }
+
+  /* Play button */
+  .play-control {
+    background: #1A1A1A;
+    border-radius: 4px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.4);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .play-btn {
+    background: #C0392B;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  .play-btn:hover { background: #a93226; }
+  .play-btn svg { width: 18px; height: 18px; fill: white; }
+  @keyframes labelPulse {
+    0%   { opacity: 1; }
+    50%  { opacity: 0.4; }
+    100% { opacity: 1; }
+  }
+  .play-label-pulse { animation: labelPulse 2s ease-in-out infinite; }
+  .play-label {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.95);
+    white-space: nowrap;
+    font-weight: bold;
+  }
+  .play-progress {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    color: #C0392B;
+    letter-spacing: 1px;
+    margin-top: 2px;
+  }
+
+  /* Pulse animation */
+  @keyframes markerPulse {
+    0%   { transform: scale(1); opacity: 1; }
+    50%  { transform: scale(2); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .marker-pulse div {
+    animation: markerPulse 0.6s ease-in-out 2;
+    transform-origin: center center;
+  }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+
+// ── MAP INIT ──
+const initialZoom = window.innerWidth < 640 ? 4 : 6;
+const map = L.map('map', {
+  center: [36.5, -90.5],
+  zoom: initialZoom,
+  minZoom: 4,
+  maxZoom: 8,
+  zoomControl: true,
+  scrollWheelZoom: false,
+  touchZoom: false
+});
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  maxZoom: 19
+}).addTo(map);
+
+// ── STOP DATA ──
+const stops = [
+  { name:"Atlanta", site:"Start & Finish", city:"Atlanta, GA", year:null, tag:"Home Base", lat:33.7490, lng:-84.3880, type:"origin", day:null },
+  { name:"Negro Southern League Museum", site:"First Stop of the Trip", city:"Birmingham, AL", year:"1910", tag:"Baseball|Integration", lat:33.5120, lng:-86.8123, type:"major", day:"Day 1 · Wed May 27" },
+  { name:"Rickwood Field", site:"Rickwood Field", city:"Birmingham, AL", year:"1948", tag:"Baseball", lat:33.5023, lng:-86.8559, type:"major", day:"Day 1 · Wed May 27" },
+  { name:"Ole Miss", site:"James Meredith Monument", city:"Oxford, MS", year:"1962", tag:"Integration|Colleges", lat:34.3653, lng:-89.5366, type:"major", day:"Day 1 · Wed May 27" },
+  { name:"Lorraine Motel", site:"National Civil Rights Museum", city:"Memphis, TN", year:"1968", tag:"Civil Rights|Integration", lat:35.1342, lng:-90.0578, type:"major", day:"Day 2 · Thu May 28" },
+  { name:"Little Rock Central High", site:"National Historic Site", city:"Little Rock, AR", year:"1957", tag:"Integration", lat:34.7380, lng:-92.2975, type:"major", day:"Day 2 · Thu May 28" },
+  { name:"University of Arkansas", site:"Silas Hunt Monument", city:"Fayetteville, AR", year:"1948", tag:"Integration|Colleges", lat:36.0699, lng:-94.1760, type:"major", day:"Day 2 · Thu May 28" },
+  { name:"Oklahoma Border", site:"State Line Detour", city:"Miami, OK", year:null, tag:"State #6", lat:36.5900, lng:-94.8500, type:"minor", day:"Day 2 · Thu May 28" },
+  { name:"Paseo YMCA", site:"Where the Negro Leagues Were Founded", city:"Kansas City, MO", year:"1920", tag:"Baseball", lat:39.0857, lng:-94.5785, type:"major", day:"Day 3 · Fri May 29" },
+  { name:"Negro Leagues Baseball Museum", site:"The Destination", city:"Kansas City, MO", year:"1920–60", tag:"Baseball|Integration", lat:39.0914, lng:-94.5627, type:"destination", day:"Day 3 · Fri May 29" },
+  { name:"Gates BBQ", site:"A Required Stop — Bob Kendrick's Orders", city:"Kansas City, MO", year:"1946", tag:"Culture", lat:39.0889, lng:-94.5591, type:"minor", day:"Day 3 · Fri May 29" },
+  { name:"Brown v. Board of Education", site:"National Historical Park", city:"Topeka, KS", year:"1954", tag:"Integration", lat:39.0380, lng:-95.6764, type:"major", day:"Day 3 · Fri May 29" },
+  { name:"University of Kansas", site:"Fully Integrated exhibit — closed", city:"Lawrence, KS", year:null, tag:"Colleges", lat:38.9543, lng:-95.2558, type:"minor", day:"Day 3 · Fri May 29" },
+  { name:"Negro Leagues Baseball Museum", site:"Second Visit — What Happens When a League Ends", city:"Kansas City, MO", year:"1960", tag:"Baseball|Integration", lat:39.0914, lng:-94.5627, type:"major", day:"Day 4 · Sat May 30" },
+  { name:"University of Missouri", site:"Columbia, MO — Drove Through Campus", city:"Columbia, MO", year:null, tag:"Colleges", lat:38.9517, lng:-92.3341, type:"minor", day:"Day 4 · Sat May 30" },
+  { name:"Old Courthouse", site:"Dred Scott Trials, 1847–1857", city:"St. Louis, MO", year:"1850", tag:"Civil Rights", lat:38.6257, lng:-90.1893, type:"major", day:"Day 4 · Sat May 30" },
+  { name:"Busch Stadium", site:"Cardinals vs. Cubs", city:"St. Louis, MO", year:"2026", tag:"Baseball", lat:38.6226, lng:-90.1928, type:"major", day:"Day 4 · Sat May 30" },
+  { name:"Evansville", site:"Overnight Stop", city:"Evansville, IN", year:null, tag:"Overnight", lat:37.9716, lng:-87.5711, type:"minor", day:"Day 4 · Sat May 30" },
+  { name:"Woolworth Theatre", site:"1960 Sit-In Protests", city:"Nashville, TN", year:"1960", tag:"Civil Rights", lat:36.1637, lng:-86.7809, type:"major", day:"Day 5 · Sun May 31" },
+  { name:"First Horizon Park", site:"Sulphur Dell — Historic Negro Leagues Field", city:"Nashville, TN", year:"1932", tag:"Baseball", lat:36.1672, lng:-86.7784, type:"major", day:"Day 5 · Sun May 31" },
+  { name:"Vanderbilt University", site:"Final Stop Before Home", city:"Nashville, TN", year:null, tag:"Colleges", lat:36.1447, lng:-86.8027, type:"minor", day:"Day 5 · Sun May 31" },
+  { name:"Atlanta — Home", site:"2,020 Miles · May 27–31, 2026", city:"Atlanta, GA", year:null, tag:"Trip Complete", lat:33.7490, lng:-84.3880, type:"origin", day:"Day 5 · Sun May 31" }
+];
+
+// ── ROUTE ──
+const routeCoords = [
+  [33.7490,-84.3880],
+  [33.6000,-86.5000],[33.5023,-86.8559],[33.5120,-86.8123],
+  [34.0000,-88.0000],[34.3653,-89.5366],
+  [35.0000,-89.8000],[35.1342,-90.0578],
+  [34.9000,-91.0000],[34.7380,-92.2975],
+  [35.5000,-93.5000],[36.0699,-94.1760],
+  [36.5300,-94.8000],[36.5300,-94.8500],[36.6000,-94.8500],[36.6500,-94.8000],[36.5800,-94.6500],
+  [37.5000,-94.5000],[38.5000,-94.5000],[39.0857,-94.5785],[39.0914,-94.5627],
+  [39.1000,-94.6500],[39.0000,-95.2350],[39.0380,-95.6764],
+  [39.0380,-95.6764],[39.0000,-95.2350],[38.9543,-95.2558],[39.0000,-95.2350],[39.1000,-94.6500],[39.0914,-94.5627],
+  [39.0500,-94.3000],[39.0000,-93.8000],[38.9500,-93.5000],[38.9517,-92.3341],[38.8500,-91.9500],[38.7500,-91.2000],[38.7000,-90.8000],
+  [38.6257,-90.1893],[38.6226,-90.1928],
+  [38.6200,-90.0500],[37.9716,-87.5711],
+  [37.5000,-87.0000],[36.8000,-86.9000],[36.1637,-86.7809],[36.1447,-86.8027],
+  [35.5000,-86.5000],[34.5000,-85.5000],[33.7490,-84.3880]
+];
+
+L.polyline(routeCoords, { color:'#C0392B', weight:3, opacity:0.85, lineJoin:'round' }).addTo(map);
+
+// ── MARKER ICONS ──
+function makeIcon(type) {
+  const cfg = {
+    destination: { size:20, bg:'#C0392B', border:'white' },
+    origin:      { size:16, bg:'#1A1A1A', border:'#C0392B' },
+    major:       { size:14, bg:'#FFFFFF', border:'#1A1A1A' },
+    minor:       { size:10, bg:'#D4C4A8', border:'#8B7355' }
+  }[type] || { size:10, bg:'#D4C4A8', border:'#8B7355' };
+  const s = cfg.size;
+  return L.divIcon({
+    className: '',
+    html: '<div style="width:'+s+'px;height:'+s+'px;border-radius:50%;background:'+cfg.bg+';border:2.5px solid '+cfg.border+';box-shadow:0 1px 6px rgba(0,0,0,0.35);position:relative;left:-'+(s/2)+'px;top:-'+(s/2)+'px;"></div>',
+    iconSize: [0,0],
+    iconAnchor: [0,0]
+  });
+}
+
+// ── GROUP STOPS BY CITY ──
+const cityGroups = {};
+stops.forEach((stop, i) => {
+  const isOpenAtlanta = (i === 0);
+  const key = isOpenAtlanta ? 'Atlanta-start' : stop.city;
+  if (!cityGroups[key]) cityGroups[key] = { lat:stop.lat, lng:stop.lng, stops:[], type:stop.type };
+  const pri = { destination:3, origin:2, major:1, minor:0 };
+  if ((pri[stop.type]||0) > (pri[cityGroups[key].type]||0)) cityGroups[key].type = stop.type;
+  cityGroups[key].stops.push(stop);
+});
+
+// ── BUILD POPUP HTML ──
+function buildPopupHTML(group, index) {
+  const stop = group.stops[index];
+  const total = group.stops.length;
+  const yearStr = stop.year ? '<div style="font-family:Courier New,monospace;font-size:11px;color:#C0392B;margin-top:3px;letter-spacing:1px;">'+stop.year+'</div>' : '';
+  const dayStr  = stop.day  ? '<div style="font-family:Courier New,monospace;font-size:9px;color:#8B7355;margin-top:6px;letter-spacing:1px;text-transform:uppercase;">'+stop.day+'</div>' : '';
+  const tagStr  = '<div style="display:inline-block;font-family:Courier New,monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#C0392B;border:1px solid #C0392B;padding:1px 5px;border-radius:2px;margin-top:6px;">'+stop.tag.split('|')[0]+'</div>';
+  const ctrStr  = total > 1 ? '<div style="font-family:Courier New,monospace;font-size:9px;color:#8B7355;margin-top:6px;border-top:1px solid rgba(255,255,255,0.1);padding-top:6px;">'+(index+1)+' of '+total+' stops · click marker to cycle</div>' : '';
+
+  // Special treatment for NLBM — the destination
+  if (stop.type === 'destination') {
+    return '<div style="min-width:200px;border-top:3px solid #C0392B;padding-top:10px;">'
+      + '<div style="font-family:Courier New,monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#C0392B;margin-bottom:6px;">★ The Destination</div>'
+      + '<div style="font-family:Georgia,serif;font-size:17px;font-weight:bold;color:#FFFFFF;line-height:1.2;">'+stop.name+'</div>'
+      + '<div style="font-family:Georgia,serif;font-size:12px;color:rgba(255,255,255,0.7);margin-top:3px;">'+stop.site+'</div>'
+      + (stop.year ? '<div style="font-family:Courier New,monospace;font-size:11px;color:#C0392B;margin-top:5px;letter-spacing:1px;">'+stop.year+'</div>' : '')
+      + (stop.day  ? '<div style="font-family:Courier New,monospace;font-size:9px;color:#8B7355;margin-top:8px;letter-spacing:1px;text-transform:uppercase;">'+stop.day+'</div>' : '')
+      + '<div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(192,57,43,0.4);font-family:Courier New,monospace;font-size:9px;color:rgba(255,255,255,0.5);letter-spacing:1px;">The whole trip started here.</div>'
+      + ctrStr + '</div>';
+  }
+
+  return '<div style="min-width:160px;"><div style="font-family:Courier New,monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#FFFFFF;margin-bottom:3px;">'+stop.city+'</div><div style="font-family:Georgia,serif;font-size:14px;font-weight:bold;color:#FFFFFF;line-height:1.3;">'+stop.name+'</div><div style="font-family:Georgia,serif;font-size:11px;color:rgba(255,255,255,0.6);margin-top:1px;">'+stop.site+'</div>'+yearStr+dayStr+tagStr+ctrStr+'</div>';
+}
+
+// ── PLACE MARKERS ──
+const markerIndex = {};
+Object.entries(cityGroups).forEach(function(entry) {
+  var key = entry[0], group = entry[1];
+  markerIndex[key] = 0;
+  var marker = L.marker([group.lat, group.lng], {
+    icon: makeIcon(group.type),
+    zIndexOffset: group.type === 'destination' ? 1000 : group.type === 'origin' ? 900 : 0
+  }).addTo(map);
+  group.marker = marker;
+  marker.bindPopup(buildPopupHTML(group, 0), { maxWidth:240, closeButton:true, offset:[0,-6], autoClose:false, closeOnClick:false });
+  marker.on('click', function() {
+    Object.values(cityGroups).forEach(function(g) { if (g.marker !== marker) g.marker.closePopup(); });
+    if (marker.isPopupOpen() && group.stops.length > 1) {
+      markerIndex[key] = (markerIndex[key] + 1) % group.stops.length;
+    } else {
+      // Start at first stop matching active filter, or 0
+      var startIdx = 0;
+      if (activeFilter !== 'All' && activeFilter !== 'States') {
+        for (var si = 0; si < group.stops.length; si++) {
+          if (stopMatchesFilter(group.stops[si], activeFilter)) { startIdx = si; break; }
+        }
+      }
+      markerIndex[key] = startIdx;
+    }
+    marker.setPopupContent(buildPopupHTML(group, markerIndex[key]));
+    marker.openPopup();
+  });
+});
+
+// ── TOUR ──
+var tourStopsFull = [];
+var cityCounter = {};
+stops.forEach(function(stop, i) {
+  if (i === 0) return; // skip opening Atlanta
+  var key = stop.city;
+  if (!cityCounter[key]) cityCounter[key] = 0;
+  tourStopsFull.push({ city: key, stopIndex: cityCounter[key] });
+  cityCounter[key]++;
+});
+
+var tourIndex = 0, tourTimer = null, isPlaying = false;
+
+function tourStep() {
+  Object.values(cityGroups).forEach(function(g) { g.marker.closePopup(); });
+  var entry = tourStopsFull[tourIndex];
+  var group = cityGroups[entry.city];
+  if (!group) { stopTour(); return; }
+  markerIndex[entry.city] = entry.stopIndex;
+  group.marker.setPopupContent(buildPopupHTML(group, entry.stopIndex));
+  group.marker.openPopup();
+  map.panTo(group.marker.getLatLng(), { animate:true, duration:0.8 });
+  var prog = document.getElementById('play-progress');
+  if (prog) prog.textContent = (tourIndex+1) + ' / ' + tourStopsFull.length;
+  tourIndex++;
+  if (tourIndex >= tourStopsFull.length) {
+    tourTimer = setTimeout(stopTour, 2800);
+  } else {
+    tourTimer = setTimeout(tourStep, 2800);
+  }
+}
+
+function startTour() {
+  isPlaying = true; tourIndex = 0;
+  var icon = document.getElementById('play-icon');
+  var label = document.getElementById('play-label');
+  if (icon) icon.innerHTML = '<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
+  if (label) { label.textContent = 'Playing tour...'; label.classList.remove('play-label-pulse'); }
+  tourStep();
+}
+
+function stopTour() {
+  isPlaying = false; clearTimeout(tourTimer); tourIndex = 0;
+  Object.values(cityGroups).forEach(function(g) { g.marker.closePopup(); });
+  var icon = document.getElementById('play-icon');
+  var label = document.getElementById('play-label');
+  var prog = document.getElementById('play-progress');
+  if (icon) icon.innerHTML = '<svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>';
+  if (label) { label.textContent = 'Tour the Route in 60 Seconds'; if (activeFilter === 'All') label.classList.add('play-label-pulse'); }
+  if (prog) prog.textContent = '';
+}
+
+function toggleTour() { if (isPlaying) stopTour(); else startTour(); }
+
+// ── FILTER ──
+var activeFilter = 'All';
+var stateLayer = null;
+
+function stopMatchesFilter(stop, filter) {
+  if (filter === 'All') return true;
+  return stop.tag.split('|').indexOf(filter) >= 0;
+}
+
+function setFilter(filter) {
+  activeFilter = filter;
+  document.querySelectorAll('.filter-tab').forEach(function(btn) {
+    var label = btn.textContent.trim();
+    btn.classList.toggle('active', (filter === 'All' && label === 'Full Trip') || label === filter);
+  });
+  var playEl = document.querySelector('.play-control');
+  if (playEl) {
+    playEl.style.opacity = filter === 'All' ? '1' : '0.35';
+    playEl.style.pointerEvents = filter === 'All' ? 'auto' : 'none';
+  }
+  // Pulse label only on Full Trip when not playing
+  var labelEl = document.getElementById('play-label');
+  if (labelEl) {
+    if (filter === 'All' && !isPlaying) {
+      labelEl.classList.add('play-label-pulse');
+    } else {
+      labelEl.classList.remove('play-label-pulse');
+    }
+  }
+  if (filter !== 'All' && isPlaying) stopTour();
+  if (stateLayer) {
+    if (filter === 'States') {
+      stateLayer.setStyle({ fillOpacity:0.45, opacity:0.7, weight:1.5 });
+      map.setZoom(initialZoom - 1);
+    } else {
+      stateLayer.setStyle({ fillOpacity:0, opacity:0, weight:0 });
+      map.setZoom(initialZoom);
+    }
+  }
+  Object.entries(cityGroups).forEach(function(entry) {
+    var key = entry[0], group = entry[1];
+    var anyMatch = filter !== 'States' && group.stops.some(function(s) { return stopMatchesFilter(s, filter); });
+    var el = group.marker.getElement();
+    if (!el) return;
+    if (filter === 'All') {
+      el.style.opacity = '1';
+      el.style.pointerEvents = 'auto';
+      el.classList.remove('marker-pulse');
+    } else if (filter === 'States' || !anyMatch) {
+      el.style.opacity = '0.12';
+      el.style.pointerEvents = 'none';
+      el.classList.remove('marker-pulse');
+    } else {
+      el.style.opacity = '1';
+      el.style.pointerEvents = 'auto';
+      el.classList.remove('marker-pulse');
+      void el.offsetWidth;
+      el.classList.add('marker-pulse');
+      setTimeout(function() { el.classList.remove('marker-pulse'); }, 1400);
+    }
+    if (group.marker.isPopupOpen()) group.marker.closePopup();
+  });
+}
+
+// ── SPECIAL FLAGS ──
+function makeFlag(html) {
+  return L.divIcon({
+    className: '',
+    html: '<div style="position:relative;left:-4px;top:-28px;filter:drop-shadow(0 1px 3px rgba(0,0,0,0.5));">'+html+'</div>',
+    iconSize: [0,0],
+    iconAnchor: [0,0]
+  });
+}
+
+// Green start flag at Atlanta
+var greenFlag = '<svg width="24" height="28" viewBox="0 0 24 28" xmlns="http://www.w3.org/2000/svg">'
+  + '<line x1="3" y1="0" x2="3" y2="28" stroke="#1A1A1A" stroke-width="2"/>'
+  + '<polygon points="3,2 20,8 3,14" fill="#27AE60" stroke="#1A1A1A" stroke-width="0.5"/>'
+  + '</svg>';
+
+// Checkered flag at Kansas City
+var checkeredFlag = '<svg width="24" height="28" viewBox="0 0 24 28" xmlns="http://www.w3.org/2000/svg">'
+  + '<line x1="3" y1="0" x2="3" y2="28" stroke="#1A1A1A" stroke-width="2"/>'
+  + '<rect x="3" y="2" width="18" height="12" fill="white" stroke="#1A1A1A" stroke-width="0.5"/>'
+  + '<rect x="3" y="2" width="4.5" height="4" fill="#1A1A1A"/>'
+  + '<rect x="12" y="2" width="4.5" height="4" fill="#1A1A1A"/>'
+  + '<rect x="7.5" y="6" width="4.5" height="4" fill="#1A1A1A"/>'
+  + '<rect x="16.5" y="6" width="4.5" height="4" fill="#1A1A1A"/>'
+  + '<rect x="3" y="10" width="4.5" height="4" fill="#1A1A1A"/>'
+  + '<rect x="12" y="10" width="4.5" height="4" fill="#1A1A1A"/>'
+  + '</svg>';
+
+L.marker([33.8000,-84.3880], { icon: makeFlag(greenFlag), zIndexOffset: 2000 }).addTo(map);
+L.marker([39.1300,-94.5627], { icon: makeFlag(checkeredFlag), zIndexOffset: 2000 }).addTo(map);
+
+// ── FILTER TABS CONTROL ──
+var filterControl = L.control({ position: 'topleft' });
+filterControl.onAdd = function() {
+  var div = L.DomUtil.create('div', 'filter-tabs');
+  div.innerHTML = '<button class="filter-tab active" onclick="setFilter(\'All\')">Full Trip</button>'
+    + '<button class="filter-tab" onclick="setFilter(\'Baseball\')">Baseball</button>'
+    + '<button class="filter-tab" onclick="setFilter(\'Integration\')">Integration</button>'
+    + '<button class="filter-tab" onclick="setFilter(\'Civil Rights\')">Civil Rights</button>'
+    + '<button class="filter-tab" onclick="setFilter(\'Colleges\')">Colleges</button>'
+    + '<button class="filter-tab" onclick="setFilter(\'States\')">States</button>';
+  L.DomEvent.disableClickPropagation(div);
+  return div;
+};
+filterControl.addTo(map);
+
+// ── PLAY BUTTON CONTROL ──
+var playControl = L.control({ position: 'bottomleft' });
+playControl.onAdd = function() {
+  var div = L.DomUtil.create('div', 'play-control');
+  div.innerHTML = '<button class="play-btn" onclick="toggleTour()">'
+    + '<span id="play-icon"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></span>'
+    + '</button>'
+    + '<div><div class="play-label" id="play-label">Tour the Route in 60 Seconds</div>'
+    + '<div class="play-progress" id="play-progress"></div></div>';
+  L.DomEvent.disableClickPropagation(div);
+  return div;
+};
+playControl.addTo(map);
+
+// Center the play button at bottom
+setTimeout(function() {
+  var containers = document.querySelectorAll('.leaflet-bottom.leaflet-left');
+  containers.forEach(function(c) {
+    if (c.querySelector('.play-control')) {
+      c.style.cssText = 'position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:1000;';
+    }
+  });
+}, 100);
+
+// ── LEGEND ──
+var legend = L.control({ position: 'bottomright' });
+legend.onAdd = function() {
+  var div = L.DomUtil.create('div', 'map-legend');
+  div.innerHTML = '<span class="legend-title">Diamonds Discovered · May 2026</span>'
+    + '<div class="legend-item"><div class="legend-dot" style="background:#C0392B;border:2px solid white;"></div>Destination</div>'
+    + '<div class="legend-item"><div class="legend-dot" style="background:#FFFFFF;border:2px solid #1A1A1A;"></div>Major Stop</div>'
+    + '<div class="legend-item"><div class="legend-dot" style="background:#D4C4A8;border:2px solid #8B7355;"></div>Minor / Overnight</div>'
+    + '<div class="legend-item"><div class="legend-line" style="background:#C0392B;"></div>Route</div>'
+    + '<div class="legend-miles"><small>Total Distance</small><span>2,020</span><small>Miles · 11 States</small></div>';
+  return div;
+};
+legend.addTo(map);
+
+// ── INITIAL MARKER PULSE ──
+// All markers visible immediately, no pulse on Full Trip
+setTimeout(function() {
+  Object.values(cityGroups).forEach(function(group) {
+    var el = group.marker.getElement();
+    if (el) { el.style.opacity = '1'; el.style.pointerEvents = 'auto'; }
+  });
+}, 100);
+
+// ── STATE SHADING ──
+var visitedStates = ['Georgia','Alabama','Mississippi','Tennessee','Arkansas','Oklahoma','Missouri','Kansas','Illinois','Indiana','Kentucky'];
+fetch('https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json')
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    stateLayer = L.geoJSON(data, {
+      filter: function(f) { return visitedStates.indexOf(f.properties.name) >= 0; },
+      style: { fillColor:'#8B7355', fillOpacity:0, color:'#8B7355', weight:0, opacity:0 }
+    }).addTo(map);
+  });
+
+</script>
+</body>
+</html>
