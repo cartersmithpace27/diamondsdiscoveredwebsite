@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Congressional Award | Diamonds Discovered</title>
+  <meta name="description" content="The Congressional Award is the highest honor Congress bestows upon American youth. Carter Smith earned the Gold Medal level through four years of volunteer service, personal development, physical fitness, and a 2,020-mile expedition.">
+
+  <!-- OG -->
+  <meta property="og:title" content="The Congressional Award | Diamonds Discovered">
+  <meta property="og:description" content="What it takes to earn the Congressional Award Gold Medal, and how Carter got there.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://diamondsdiscovered.com/award.html">
+
+  <!-- GTM -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #F7F5F0;
+      --ink: #1A1A1A;
+      --red: #C0392B;
+      --sepia: #8B7355;
+      --sepia-light: #D4C4A8;
+      --rule: #E0DBD0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--ink);
+      border-bottom: 2px solid var(--red);
+      display: flex;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+    }
+
+    nav a {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      padding: 14px 18px;
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: #fff; }
+    nav a.active { background: var(--red); color: #fff; }
+
+    nav .brand {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      padding: 14px 20px 14px 24px;
+      border-right: 1px solid rgba(255,255,255,0.15);
+      white-space: nowrap;
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 400;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--ink);
+      color: #fff;
+      padding: 80px 40px 72px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 40px,
+        rgba(255,255,255,0.015) 40px,
+        rgba(255,255,255,0.015) 41px
+      );
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sepia-light);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 6vw, 4.4rem);
+      font-weight: 900;
+      line-height: 1.08;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--sepia-light);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 640px;
+      line-height: 1.7;
+    }
+
+    /* ── MAIN CONTENT ── */
+    .content-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 72px 40px 100px;
+    }
+
+    .section-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sepia);
+      margin-bottom: 6px;
+    }
+
+    .content-wrap p {
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #2a2a2a;
+    }
+
+    .content-wrap p:last-child { margin-bottom: 0; }
+
+    .section-break {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 56px 0;
+    }
+
+    /* ── PULLQUOTE ── */
+    .pullquote {
+      border-left: 3px solid var(--red);
+      padding: 8px 0 8px 28px;
+      margin: 48px 0;
+    }
+
+    .pullquote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.35rem !important;
+      line-height: 1.55 !important;
+      color: var(--ink) !important;
+      margin-bottom: 12px !important;
+    }
+
+    .pullquote cite {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sepia);
+      font-style: normal;
+    }
+
+    /* ── LEARN MORE BUTTON ── */
+    .learn-more-btn {
+      display: inline-block;
+      margin-top: 12px;
+      background: var(--red);
+      color: #fff;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 18px 36px;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+
+    .learn-more-btn:hover { background: #a93226; }
+
+    .req-col-headers {
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      background: rgba(139,115,85,0.1);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .req-col-headers span {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sepia);
+      padding: 10px 28px;
+    }
+
+    .req-col-headers span:last-child {
+      border-left: 1px solid var(--rule);
+      text-align: center;
+      padding: 10px 20px;
+    }
+
+    /* ── REQUIREMENTS TABLE ── */
+    .req-block {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 48px 0;
+    }
+
+    .req-header {
+      background: var(--ink);
+      padding: 16px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .req-header-title {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .req-header-badge {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--sepia-light);
+    }
+
+    .req-row {
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      align-items: center;
+      border-bottom: 1px solid var(--rule);
+      gap: 0;
+    }
+
+    .req-row:last-child { border-bottom: none; }
+
+    .req-col-label {
+      padding: 24px 28px;
+      border-right: 1px solid var(--rule);
+    }
+
+    .req-activity {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .req-detail {
+      font-size: 0.85rem;
+      color: #666;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    .req-minimum {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-top: 8px;
+    }
+
+    .req-col-carter {
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    .req-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      font-weight: 900;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .req-asof {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--sepia);
+      line-height: 1.4;
+    }
+
+    /* ── CLOSING ── */
+    .closing {
+      background: var(--ink);
+      color: #fff;
+      padding: 72px 40px;
+    }
+
+    .closing-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .closing h2 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: #fff;
+    }
+
+    .closing p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 1.4rem;
+      max-width: 680px;
+    }
+
+    .closing-links {
+      margin-top: 40px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 13px 24px;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+      border: 1px solid var(--red);
+    }
+
+    .btn-primary:hover { background: #a93226; border-color: #a93226; }
+
+    .btn-outline {
+      background: transparent;
+      color: rgba(255,255,255,0.8);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .btn-outline:hover { border-color: rgba(255,255,255,0.7); color: #fff; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 32px 40px;
+      text-align: center;
+    }
+
+    footer a {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      margin: 0 14px;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: rgba(255,255,255,0.8); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      .hero { padding: 48px 24px 56px; }
+      .content-wrap { padding: 48px 24px 72px; }
+      .req-row { grid-template-columns: 1fr; }
+      .req-col-label { border-right: none; border-bottom: 1px solid var(--rule); padding-bottom: 16px; }
+      .req-col-carter { text-align: left; padding-top: 16px; }
+      .closing { padding: 56px 24px; }
+      footer { padding: 28px 24px; }
+      nav .brand { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- GTM noscript -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- ── NAV ── -->
+<nav>
+  <span class="brand">Diamonds Discovered.</span>
+  <a href="index.html">The Expedition</a>
+  <a href="expedition_map.html">Map</a>
+  <a href="about.html">About Carter</a>
+  <a href="award.html" class="active">The Award</a>
+</nav>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Congressional Award · Gold Medal Level · 2026</p>
+    <h1>The highest honor<br>Congress gives<br><em>to young Americans.</em></h1>
+    <p class="hero-sub">A multi-year commitment to volunteer service, personal development, physical fitness, and a self-designed expedition. Here's what it actually takes.</p>
+  </div>
+</header>
+
+<!-- ── MAIN CONTENT ── -->
+<main class="content-wrap">
+
+  <p class="section-label">What it is</p>
+
+  <p>Most people have never heard of the Congressional Award. That's partly by design. It isn't handed out at a ceremony you get invited to. There's no national ranking, no competition to enter. You either put in the work over years and earn it, or you don't.</p>
+
+  <p>Congress established the award in 1979 to recognize young Americans who set personal goals and achieve them through sustained effort. It covers four activity areas, and at the Gold Medal level, you have to demonstrate real commitment across all four: not just checking boxes, but logging meaningful hours and documenting what you actually did.</p>
+
+  <p>It is attainable, but it was harder than I expected. Balancing the time it requires with school and everything else you do can be challenging. Keeping track of everything: the hours, the dates, the months, and how it all adds up. The final push to hit the next level of volunteer public service hours while studying for the ACT and working part time. Now that I've hit the requirements, I still have to go through a review process with possible revisions. Around 800 people earned the Gold Medal last year. I started pursuing mine on September 13, 2023, the beginning of my 9th grade year.</p>
+
+  <a href="https://www.congressionalaward.org/the-program/" target="_blank" rel="noopener" class="learn-more-btn">Learn More About the Congressional Award</a>
+
+  <hr class="section-break">
+
+  <p class="section-label">The four areas</p>
+
+  <p>Gold Medal requires logged hours across all four areas. Bronze, Silver, and Gold Bronze levels build up to it. Here's how the program is structured, and where I stand.</p>
+
+  <div class="req-block">
+    <div class="req-header">
+      <span class="req-header-title">Gold Medal Requirements</span>
+      <span class="req-header-badge">Carter Smith · Started Sept. 13, 2023</span>
+    </div>
+    <div class="req-col-headers">
+      <span>Activity</span>
+      <span>Carter's Achievement</span>
+    </div>
+    <div class="req-row">
+      <div class="req-col-label">
+        <div class="req-activity">Volunteer Public Service</div>
+        <div class="req-detail">Unpaid service to your community. Hours must be real, documented, and ongoing.</div>
+        <div class="req-minimum">Gold Medal minimum: 400 hours</div>
+      </div>
+      <div class="req-col-carter">
+        <div class="req-number">400.5</div>
+        <div class="req-asof">hours as of 7/1/26</div>
+      </div>
+    </div>
+    <div class="req-row">
+      <div class="req-col-label">
+        <div class="req-activity">Personal Development</div>
+        <div class="req-detail">Learning or deepening a skill with a structured goal and verifiable progress.</div>
+        <div class="req-minimum">Gold Medal minimum: 200 hours</div>
+      </div>
+      <div class="req-col-carter">
+        <div class="req-number">238</div>
+        <div class="req-asof">hours as of 7/1/26</div>
+      </div>
+    </div>
+    <div class="req-row">
+      <div class="req-col-label">
+        <div class="req-activity">Physical Fitness</div>
+        <div class="req-detail">A sustained fitness program with measurable goals you set and prove you hit.</div>
+        <div class="req-minimum">Gold Medal minimum: 200 hours</div>
+      </div>
+      <div class="req-col-carter">
+        <div class="req-number">1,025</div>
+        <div class="req-asof">hours as of 7/1/26</div>
+      </div>
+    </div>
+    <div class="req-row">
+      <div class="req-col-label">
+        <div class="req-activity">Expedition / Exploration</div>
+        <div class="req-detail">A self-planned journey with specific educational objectives, designed and executed by the awardee.</div>
+        <div class="req-minimum">Gold Medal minimum: 5 days, 4 nights</div>
+      </div>
+      <div class="req-col-carter">
+        <div class="req-number">5 days</div>
+        <div class="req-asof">Baseball and integration.<br>Destination: Kansas City, MO</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-break">
+
+  <p class="section-label">Why this matters</p>
+
+  <p>Most people reading this won't know what the Congressional Award is. That's fine. The point isn't the credential. It's what it required me to actually do over nearly three years, and what it says about how I operate.</p>
+
+  <p>I didn't approach the service hours as a checklist. I went back to the same organizations year after year because I genuinely like working with kids. I didn't treat the expedition as a formality. I planned it around my thesis, built a real route, and spent five days in conversations that a classroom couldn't replicate.</p>
+
+  <p>It's a multi-year pattern of showing up. Not a single impressive weekend.</p>
+
+</main>
+
+<!-- ── CLOSING ── -->
+<section class="closing">
+  <div class="closing-inner">
+    <h2>Read the expedition that completed it.</h2>
+    <p>Every stop, every conversation, and everything I took away from 2,020 miles of civil rights and Negro Leagues history.</p>
+    <div class="closing-links">
+      <a href="index.html" class="btn btn-primary">The Full Expedition</a>
+      <a href="about.html" class="btn btn-outline">About Carter</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── */
+<footer>
+  <a href="index.html">The Expedition</a>
+  <a href="expedition_map.html">Interactive Map</a>
+  <a href="about.html">About Carter</a>
+  <a href="award.html">The Award</a>
+</footer>
+
+</body>
+</html>
