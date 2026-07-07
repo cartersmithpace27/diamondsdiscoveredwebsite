@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Diamonds Discovered — Route Map</title>
+<!-- Google Analytics (events only; page_view is handled by the parent page via GTM) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J0DFZEV8J0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-J0DFZEV8J0', { send_page_view: false });
+</script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <style>
@@ -380,6 +388,7 @@ function tourStep() {
 }
 
 function startTour() {
+  if (window.gtag) gtag('event','map_tour_play');
   isPlaying = true; tourIndex = 0;
   var icon = document.getElementById('play-icon');
   var label = document.getElementById('play-label');
@@ -411,6 +420,7 @@ function stopMatchesFilter(stop, filter) {
 }
 
 function setFilter(filter) {
+  if (window.gtag) gtag('event','map_filter',{filter_name: filter});
   activeFilter = filter;
   document.querySelectorAll('.filter-tab').forEach(function(btn) {
     var label = btn.textContent.trim();
