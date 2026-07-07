@@ -166,6 +166,7 @@
 
   <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
     <input type="hidden" name="form-name" value="contact">
+    <input type="hidden" name="subject" id="form-subject">
     <p class="hp"><label>Leave this empty: <input name="bot-field"></label></p>
 
     <div class="field">
@@ -212,5 +213,20 @@
 </footer>
 
 <script src="menu.js"></script>
+<script>
+  // Put the visitor's name (and role) into the email subject line
+  (function () {
+    var f = document.querySelector('form[name="contact"]');
+    if (!f) return;
+    f.addEventListener('submit', function () {
+      var name = (f.elements['name'] && f.elements['name'].value || '').trim();
+      var role = (f.elements['role'] && f.elements['role'].value || '').trim();
+      var subj = 'New message from ' + (name || 'the website');
+      if (role) subj += ' (' + role + ')';
+      var s = document.getElementById('form-subject');
+      if (s) s.value = subj;
+    });
+  })();
+</script>
 </body>
 </html>
