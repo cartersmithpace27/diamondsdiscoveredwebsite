@@ -1,0 +1,90 @@
+/* ============================================================
+   Diamonds Discovered — shared site menu
+   One consistent top menu across every page, with a mobile
+   hamburger. Colors are hard-coded (not CSS variables) so this
+   file works identically on every page regardless of its :root.
+   ============================================================ */
+
+.site-menu {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: #1A1A1A;
+  border-bottom: 2px solid #C0392B;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  overflow-x: visible;
+  gap: 0;
+}
+
+/* Home page uses .site-menu.at-top so the dark menu is NOT sticky
+   there (the home page already has its own sticky section nav). */
+.site-menu.at-top { position: static; }
+
+.site-menu__brand {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.55);
+  padding: 14px 20px 14px 24px;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-menu__brand:hover { color: rgba(255,255,255,0.9); }
+
+.site-menu__links {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.site-menu__links::-webkit-scrollbar { display: none; }
+
+.site-menu__links a {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  padding: 14px 18px;
+  white-space: nowrap;
+  transition: color 0.2s, background 0.2s;
+}
+.site-menu__links a:hover { color: #fff; }
+.site-menu__links a.active { background: #C0392B; color: #fff; }
+
+.site-menu__toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.35rem;
+  line-height: 1;
+  padding: 12px 22px;
+  cursor: pointer;
+}
+
+/* ---- Mobile: collapse links behind a hamburger ---- */
+@media (max-width: 760px) {
+  .site-menu__toggle { display: block; }
+  .site-menu__links {
+    display: none;
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    overflow-x: hidden;
+    background: #1A1A1A;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .site-menu.open .site-menu__links { display: flex; }
+  .site-menu__links a {
+    padding: 15px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+}

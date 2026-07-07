@@ -355,18 +355,23 @@
       nav .brand { display: none; }
     }
   </style>
+<link rel="stylesheet" href="menu.css">
 </head>
 <body>
 
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-56HXCB96" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- NAV -->
-<nav>
-  <span class="brand">Diamonds Discovered.</span>
-  <a href="index.html">The Expedition</a>
-  <a href="expedition_map.html">Map</a>
-  <a href="about.html" class="active">About Carter</a>
-  <a href="award.html">The Award</a>
+<nav class="site-menu" aria-label="Main menu">
+  <a class="site-menu__brand" href="index.html">Diamonds Discovered.</a>
+  <button class="site-menu__toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+  <div class="site-menu__links">
+    <a href="index.html">The Expedition</a>
+    <a href="expedition_map.html">Map</a>
+    <a href="about.html" class="active">About Carter</a>
+    <a href="award.html">The Award</a>
+    <a href="contact.html">Contact</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -453,5 +458,6 @@
   <a href="award.html">The Award</a>
 </footer>
 
+<script src="menu.js"></script>
 </body>
 </html>
