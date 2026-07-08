@@ -42,6 +42,9 @@ WHAT I NEED FROM YOU:
    a browser.
 3. Explain, in plain language, how to view it and how to change it.
 4. When I give feedback, update the file and tell me what changed.
+5. Once I like a first version, create a master requirements document that
+   captures the whole project, and keep updating it as we make changes — so I
+   can paste it into a new chat if this one gets too long.
 
 Start by asking me your questions.
 ------------------------------------------------------------
@@ -62,7 +65,7 @@ When you're happy with the files, you need hosting so other people can see it. T
 
 ## STEP 4 — Keep a master requirements document (this is the big one)
 
-AI chats break when they get too long, or when they're stuffed with images. When that happens you lose your momentum. The fix: keep one document that explains everything about your project — what it is, the pages, the style, the decisions you've made, where the files and photos live. When a chat dies, start a fresh one, paste in this document, and you're back where you were.
+AI chats break when they get too long, or when they're stuffed with images. When that happens you lose your momentum. The fix: keep one document that explains everything about your project — what it is, the pages, the style, the decisions you've made, where the files and photos live. Update it every time you make a change so it never goes stale. When a chat dies, start a fresh one, paste in this document, and you're back where you were.
 
 Use this template:
 
