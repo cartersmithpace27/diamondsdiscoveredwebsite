@@ -15,6 +15,48 @@
   <!-- GTM -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-56HXCB96');</script>
 
+  <!-- FAQ structured data (helps Google + AI tools surface these answers) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "When should you register for the Congressional Award?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Right now. Every activity you do counts from the moment you are registered, and nothing you did before registering counts. For example, 10 hours of service done in August before registering in September did not count. If you are aiming for the Gold Medal, the 24 unique months of activity you need are hard to hit \u2014 some months, like May and December with finals and holidays, are especially tough \u2014 so registering early lets you bank the easy months instead of scrambling at the end."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you register for the Congressional Award?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Register at https://www.congressionalaward.org/register/. It only takes a few minutes, and the day you register becomes your official activity start date \u2014 the day your hours and unique months begin counting toward your award."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the hardest part of the Congressional Award Gold Medal requirements?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The 24 unique months of activity needed to qualify. Some months it is hard to fit activity in, and for students the ends of semesters and the holidays are the toughest. For Carter that was May and December."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When should you plan and complete your Congressional Award expedition?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "First decide what level you are targeting, because the expedition scales with it. Plan it once you are confident you can reach your service hours and unique months. A Silver expedition requires 2 overnights and a Gold expedition requires 4 overnights, so unless you can do 4 overnights during a school break, summer is the best time to complete it."
+        }
+      }
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
@@ -431,6 +473,42 @@
       footer { padding: 28px 24px; }
       nav .brand { display: none; }
     }
+    /* -- FAQ -- */
+    .faq-section { max-width: 820px; margin: 0 auto; padding: 28px 24px 76px; }
+    .faq-section h2 {
+      font-family: 'Playfair Display', serif; font-weight: 900;
+      font-size: clamp(1.8rem, 5vw, 2.6rem); line-height: 1.08; margin: 10px 0 26px;
+    }
+    details.faq-item { border-bottom: 1px solid var(--rule); }
+    details.faq-item:first-of-type { border-top: 1px solid var(--rule); }
+    details.faq-item summary {
+      list-style: none; cursor: pointer; position: relative;
+      padding: 22px 46px 22px 0;
+      font-family: 'Playfair Display', serif; font-weight: 700;
+      font-size: clamp(1.1rem, 3vw, 1.4rem); line-height: 1.25; color: var(--ink);
+    }
+    details.faq-item summary::-webkit-details-marker { display: none; }
+    details.faq-item summary::after {
+      content: "+"; position: absolute; right: 6px; top: 16px;
+      font-family: 'Inter', sans-serif; font-weight: 300; font-size: 1.9rem; color: var(--red);
+    }
+    details.faq-item[open] summary::after { content: "\2013"; }
+    .faq-badge {
+      display: inline-block; font-family: 'Courier Prime', monospace;
+      font-size: 0.58rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: #fff; background: var(--red); padding: 3px 8px; border-radius: 3px;
+      margin-left: 10px; vertical-align: middle;
+    }
+    .faq-answer { padding: 0 0 26px; color: #333; font-size: 1.02rem; }
+    .faq-answer p { margin-bottom: 14px; }
+    .faq-cta {
+      display: inline-block; margin-top: 4px;
+      font-family: 'Courier Prime', monospace; font-size: 0.74rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: var(--red);
+      padding: 12px 24px; border-radius: 3px; text-decoration: none; transition: background 0.2s;
+    }
+    .faq-cta:hover { background: #a5311f; }
+
   </style>
 <link rel="stylesheet" href="menu.css">
 </head>
@@ -557,6 +635,44 @@
   <p>I'll continue doing the same things that got me here. Even after submitting in July 2026, I'm still a member of YMSL and doing service, I'll keep playing baseball and training as a pitcher, and I'll keep working and finding ways to improve.</p>
 
 </main>
+
+<!-- ── FAQ ── -->
+<section class="faq-section">
+  <p class="section-label">Questions from people considering it</p>
+  <h2>Congressional Award FAQ</h2>
+
+  <details class="faq-item" open>
+    <summary>When should you register for the Congressional Award?<span class="faq-badge">Most important</span></summary>
+    <div class="faq-answer">
+      <p>Right now. Every activity you do counts from the moment you&#8217;re registered &mdash; and nothing you did before it does.</p>
+      <p>Learn from me: I did 10 hours of service in August the year I started, but I didn&#8217;t register until September, so those 10 hours didn&#8217;t count.</p>
+      <p>And if you&#8217;re aiming for the Gold Medal, the 24 unique months you need are genuinely hard to hit. Some months there&#8217;s barely time for activity &mdash; for me, May and December, between finals and the holidays, were the worst. So if you can register early, do it. Every month you start banking while it&#8217;s easy is one less you&#8217;re scrambling for at the end.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>How do you register for the Congressional Award?</summary>
+    <div class="faq-answer">
+      <p>Go to the official registration page. It only takes a few minutes, and the day you register becomes your official activity start date &mdash; the day your hours and months start counting. So the sooner you finish it, the sooner everything you do actually counts toward your award.</p>
+      <p><a class="faq-cta" href="https://www.congressionalaward.org/register/" target="_blank" rel="noopener">Register for the Congressional Award &rarr;</a></p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>What&#8217;s the hardest part of the Gold Medal requirements?</summary>
+    <div class="faq-answer">
+      <p>The 24 unique months you need to qualify. Some months it&#8217;s just hard to fit activity in, and for students the ends of semesters and the holidays are the toughest. For me, that was May and December.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>When should you plan and complete your expedition?</summary>
+    <div class="faq-answer">
+      <p>First you need to know what level you&#8217;re targeting, because the expedition scales with it. I was going for Gold, but I didn&#8217;t plan mine until I was sure I had a real path to 400 hours of Volunteer Public Service and the 24 unique months.</p>
+      <p>The difference between a Silver expedition (2 overnights) and a Gold one (4 overnights) is big. And unless you can pull off 4 overnights during a school break, summer is the best time to do it.</p>
+    </div>
+  </details>
+</section>
 
 <!-- ── CLOSING ── -->
 <section class="closing">
