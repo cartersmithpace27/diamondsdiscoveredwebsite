@@ -1,0 +1,6 @@
+# Netlify build config for diamondsdiscovered.com
+# The site is plain static HTML, but we run one tiny step on each deploy:
+# regenerate sitemap.xml from the current HTML files so it's never stale.
+[build]
+  command = "node generate-sitemap.js"
+  publish = "."
