@@ -42,7 +42,9 @@ WHAT I NEED FROM YOU:
    a browser.
 3. Explain, in plain language, how to view it and how to change it.
 4. When I give feedback, update the file and tell me what changed.
-5. Once I like a first version, create a master requirements document that
+5. When I'm happy with it, recommend a free way to get it online and walk me
+   through it step by step (for example, hosting it on Netlify).
+6. Once I like a first version, create a master requirements document that
    captures the whole project, and keep updating it as we make changes — so I
    can paste it into a new chat if this one gets too long.
 
