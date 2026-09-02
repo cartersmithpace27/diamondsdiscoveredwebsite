@@ -3,13 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Carter Smith | Diamonds Discovered</title>
-  <meta name="description" content="Rising senior. Twelve years of baseball. An AP thesis on MLB integration. And a 2,020-mile road trip that connected all of it.">
+  <title>Carter Smith — Pace Academy, Atlanta | Class of 2027 · Diamonds Discovered</title>
+  <meta name="description" content="Carter Smith is a Pace Academy student-athlete in Atlanta, Class of 2027 — varsity baseball pitcher, Congressional Award Gold Medalist, and NHSCA Academic All-American. Twelve years of baseball led to an AP thesis on MLB integration and a 2,020-mile expedition.">
+  <link rel="canonical" href="https://diamondsdiscovered.com/about.html">
 
-  <meta property="og:title" content="About Carter Smith | Diamonds Discovered">
-  <meta property="og:description" content="Rising senior. Twelve years of baseball. An AP thesis on MLB integration. And a 2,020-mile road trip that connected baseball and integration.">
-  <meta property="og:type" content="website">
+  <meta property="og:title" content="Carter Smith — Pace Academy, Atlanta | Class of 2027">
+  <meta property="og:description" content="Pace Academy student-athlete in Atlanta. Baseball pitcher, Congressional Award Gold Medalist, and the story behind the Diamonds Discovered expedition.">
+  <meta property="og:type" content="profile">
   <meta property="og:url" content="https://diamondsdiscovered.com/about.html">
+  <meta property="og:image" content="https://diamondsdiscovered.com/IMG_9275.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Person structured data: tells Google + AI search that this Carter Smith = Pace Academy, Atlanta, and that these profiles are all the same person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Carter Smith",
+    "url": "https://diamondsdiscovered.com/about.html",
+    "mainEntityOfPage": "https://diamondsdiscovered.com/about.html",
+    "image": "https://diamondsdiscovered.com/IMG_9275.jpg",
+    "description": "Pace Academy student-athlete in Atlanta, Georgia (Class of 2027). Varsity baseball pitcher, Congressional Award Gold Medalist, and creator of the Diamonds Discovered baseball-and-integration expedition.",
+    "jobTitle": "Student-athlete",
+    "homeLocation": {
+      "@type": "Place",
+      "address": { "@type": "PostalAddress", "addressLocality": "Atlanta", "addressRegion": "GA", "addressCountry": "US" }
+    },
+    "memberOf": [
+      { "@type": "EducationalOrganization", "name": "Pace Academy", "address": { "@type": "PostalAddress", "addressLocality": "Atlanta", "addressRegion": "GA", "addressCountry": "US" } },
+      { "@type": "Organization", "name": "National Honor Society" }
+    ],
+    "award": [
+      "Congressional Award — Gold Medal level",
+      "NHSCA Academic All-American — Honorable Mention",
+      "American Volunteer Service Award — Gold Medal",
+      "YMSL Chastain Chapter Elite Service Award (2025–26)",
+      "AP Scholar with Distinction"
+    ],
+    "knowsAbout": ["Baseball", "Pitching", "Negro Leagues history", "Integration of Major League Baseball"],
+    "sameAs": [
+      "https://www.linkedin.com/in/cartersmithprofile",
+      "https://www.maxpreps.com/ga/atlanta/pace-academy-knights/athletes/carter-smith/?careerid=a5btsh4nhm466",
+      "https://www.perfectgame.org/Players/Playerprofile.aspx?ID=1327888",
+      "https://www.prepbaseballreport.com/profiles/GA/Carter-Smith-2694507183"
+    ]
+  }
+  </script>
 
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-56HXCB96');</script>
 
@@ -330,8 +369,125 @@
 
     footer a:hover { color: rgba(255,255,255,0.8); }
 
+    /* RECOGNITION */
+    .recognition {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 40px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .recognition-head { text-align: center; margin-bottom: 48px; }
+
+    .recognition-head .rec-eyebrow {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sepia);
+      margin-bottom: 14px;
+    }
+
+    .recognition-head h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.1;
+    }
+
+    .recognition-head p {
+      max-width: 620px;
+      margin: 16px auto 0;
+      color: #4a4a4a;
+      font-size: 1rem;
+    }
+
+    .recognition-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .rec-card {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      padding: 28px 28px 20px;
+    }
+
+    .rec-card h3 {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sepia);
+      margin-bottom: 8px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .rec-card a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--ink);
+      padding: 12px 0;
+      border-bottom: 1px solid var(--rule);
+      transition: color 0.2s;
+    }
+
+    .rec-card a:last-child { border-bottom: none; }
+    .rec-card a:hover { color: var(--red); }
+
+    .rec-label {
+      display: flex;
+      flex-direction: column;
+      font-size: 0.98rem;
+      font-weight: 600;
+    }
+
+    .rec-note {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--sepia);
+      margin-top: 2px;
+    }
+
+    .rec-arrow {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.85rem;
+      color: var(--sepia);
+      flex-shrink: 0;
+    }
+
+    .rec-card a:hover .rec-arrow { color: var(--red); }
+
+    /* non-linked recognition rows (awards without a URL) */
+    .rec-card .rec-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      color: var(--ink);
+      padding: 12px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .rec-card .rec-row:last-child { border-bottom: none; }
+
+    /* single centered card (LinkedIn / connect) */
+    .recognition-grid.single {
+      grid-template-columns: minmax(0, 460px);
+      justify-content: center;
+    }
+
     /* RESPONSIVE */
     @media (max-width: 760px) {
+      .recognition { padding: 56px 24px; }
+      .recognition-grid { grid-template-columns: 1fr; gap: 16px; }
+
       .hero { padding: 48px 24px 56px; }
 
       .split-section {
@@ -379,8 +535,8 @@
 <header class="hero">
   <div class="hero-inner">
     <p class="hero-eyebrow">Pace Academy, Atlanta · Class of 2027</p>
-    <h1>Carter Smith.<br><em>How I wound up on this journey.</em></h1>
-    <p class="hero-sub">Rising senior. Twelve years of baseball. An AP thesis on MLB integration. Then an AP oral history with a noted sports journalist who has written about Hank Aaron and MLB integration issues. And a 2,020-mile road trip that connected baseball and integration.</p>
+    <h1>Carter Smith.<br><em>Who I am and what got me started learning about baseball and integration.</em></h1>
+    <p class="hero-sub">Senior at Pace Academy in Atlanta, GA. 12+ years of baseball. The spark was an AP thesis on MLB integration. Then an AP oral history with a noted sports journalist who has written about Hank Aaron and MLB integration issues. And then a 2,020-mile road trip that I planned that connected baseball and integration. Now I'm finding ways to share what I learned about baseball and integration with others at school and online.</p>
   </div>
 </header>
 
@@ -428,7 +584,7 @@
 <section class="split-section">
   <div class="split-text">
     <p>I've put in over 400 hours of community service across 16 different organizations, mostly working as a summer camp counselor with kids. I kept going back because I'm good with kids and I genuinely like the environment. It keeps you grounded in a way that's hard to explain until you've done it.</p>
-    <p>Through YMSL, I've held leadership positions at the grade level and earned the Superior Service Award in 2024-2025. I'm also part of the ICGL Fellows Program at Pace, focused on social innovation, and I serve as a Student Ambassador and National Honor Society member.</p>
+    <p>Through YMSL, I've held leadership positions at the grade level. I'm also part of the ICGL Fellows Program at Pace, focused on social innovation, and I serve as a Student Ambassador and National Honor Society member.</p>
     <p>I'm actively exploring colleges with a focus on business and finance. I want to find a place where I can keep building real relationships and get early exposure to how the business world actually works. This expedition reinforced something I already knew about myself: I do my best learning when I'm in the room, not just reading about it.</p>
   </div>
   <div class="split-image">
@@ -438,6 +594,85 @@
 </section>
 
 
+
+<!-- RECOGNITION & AROUND THE WEB -->
+<section class="recognition" id="recognition">
+  <div class="recognition-head">
+    <h2>About Carter Smith</h2>
+  </div>
+
+  <div class="recognition-grid">
+
+    <div class="rec-card">
+      <h3>Baseball</h3>
+      <a href="https://www.maxpreps.com/ga/atlanta/pace-academy-knights/athletes/carter-smith/?careerid=a5btsh4nhm466" target="_blank" rel="noopener me">
+        <span class="rec-label">MaxPreps profile</span>
+        <span class="rec-arrow">&#8599;</span>
+      </a>
+      <a href="https://www.perfectgame.org/Players/Playerprofile.aspx?ID=1327888" target="_blank" rel="noopener me">
+        <span class="rec-label">Perfect Game profile</span>
+        <span class="rec-arrow">&#8599;</span>
+      </a>
+      <a href="https://www.prepbaseballreport.com/profiles/GA/Carter-Smith-2694507183" target="_blank" rel="noopener me">
+        <span class="rec-label">Prep Baseball Report (PBR) Profile</span>
+        <span class="rec-arrow">&#8599;</span>
+      </a>
+    </div>
+
+    <div class="rec-card">
+      <h3>Honors &amp; Recognition</h3>
+      <a href="award.html">
+        <span class="rec-label">Congressional Award &mdash; Gold Medal level<span class="rec-note">Qualified &amp; waiting on response &middot; Validated hours: Service 400+, Personal Dev. 200+, Fitness 1000+</span></span>
+        <span class="rec-arrow">&#8594;</span>
+      </a>
+      <a href="https://nhsca.com/academic-all-americans/#honorable-mention" target="_blank" rel="noopener">
+        <span class="rec-label">NHSCA Academic All-American, Honorable Mention<span class="rec-note">Coach nominated, based on academics and athletic performance</span></span>
+        <span class="rec-arrow">&#8599;</span>
+      </a>
+      <div class="rec-row">
+        <span class="rec-label">American Volunteer Service Award<span class="rec-note">Gold Medal, 122 hours in 2025&ndash;26</span></span>
+      </div>
+      <div class="rec-row">
+        <span class="rec-label">YMSL Chastain Chapter &ldquo;Elite Service Award&rdquo; &mdash; 2025&ndash;26<span class="rec-note">100+ hours, chapter's top service recognition</span></span>
+      </div>
+      <div class="rec-row">
+        <span class="rec-label">AP Scholar with Distinction &mdash; avg. 4.3 across 6 AP exams (College Board)<span class="rec-note">5's on AP US History, AP European History, and AP African American Studies</span></span>
+      </div>
+    </div>
+
+    <div class="rec-card">
+      <h3>Pace Academy Highlights</h3>
+      <a href="https://www.paceacademy.org/academics/isdell-center-for-global-leadership/upper-school#fsElementTitle_59030" target="_blank" rel="noopener">
+        <span class="rec-label">ICGL Fellow (2024&ndash;2026)<span class="rec-note">Selected for team-based leadership program, Social Innovation track</span></span>
+        <span class="rec-arrow">&#8599;</span>
+      </a>
+      <a href="https://www.paceacademy.org/post-detail/~board/pace-news/post/feb262026national-honor-society-inducts-new-members" target="_blank" rel="noopener">
+        <span class="rec-label">National Honor Society<span class="rec-note">2026 inductee, Pace Academy</span></span>
+        <span class="rec-arrow">&#8599;</span>
+      </a>
+      <a href="https://www.paceacademy.org/post-detail/~board/pace-news/post/meet-the-2025-homecoming-court" target="_blank" rel="noopener">
+        <span class="rec-label">2025 Homecoming Court<span class="rec-note">Fall 2025 / Junior Year</span></span>
+        <span class="rec-arrow">&#8599;</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONNECT / LINKEDIN -->
+<section class="recognition" id="connect">
+  <div class="recognition-head">
+    <h2>LinkedIn</h2>
+  </div>
+  <div class="recognition-grid single">
+    <div class="rec-card">
+      <a href="https://www.linkedin.com/in/cartersmithprofile" target="_blank" rel="noopener me">
+        <span class="rec-label">Carter Smith LinkedIn Profile<span class="rec-note">Connect with me!</span></span>
+        <span class="rec-arrow">&#8599;</span>
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- CLOSING -->
 <section class="closing">
