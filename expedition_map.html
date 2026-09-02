@@ -204,8 +204,24 @@
     transform-origin: center center;
   }
 </style>
+<link rel="stylesheet" href="menu.css">
 </head>
 <body>
+
+<!-- Site menu: only shown when this page is opened on its own (hidden when embedded in the home page iframe) -->
+<nav class="site-menu" id="siteMenu" aria-label="Main menu" style="display:none;">
+  <a class="site-menu__brand" href="index.html">Diamonds Discovered.</a>
+  <button class="site-menu__toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+  <div class="site-menu__links">
+    <a href="index.html">The Expedition</a>
+    <a href="expedition_map.html" class="active">Map</a>
+    <a href="about.html">About Carter</a>
+    <a href="award.html">The Award</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
 <div id="map"></div>
 <script>
 
@@ -579,6 +595,15 @@ fetch('https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geo
     }).addTo(map);
   });
 
+</script>
+<script src="menu.js"></script>
+<script>
+  // Reveal the site menu only when the map is viewed on its own page,
+  // not when it's embedded as an iframe inside the home page.
+  if (window.self === window.top) {
+    var m = document.getElementById('siteMenu');
+    if (m) m.style.display = '';
+  }
 </script>
 </body>
 </html>
