@@ -88,3 +88,41 @@
     border-bottom: 1px solid rgba(255,255,255,0.06);
   }
 }
+
+/* ── Footer email signup (injected above <footer> on every page by menu.js) ── */
+.footer-signup {
+  background: #fff;
+  border-top: 1px solid #E0DBD0;
+  border-bottom: 1px solid #E0DBD0;
+  padding: 36px 24px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+}
+.footer-signup h3 {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: #C0392B; margin: 0 0 14px;
+}
+.footer-signup form { display: inline-flex; gap: 8px; flex-wrap: wrap; justify-content: center; max-width: 480px; }
+.footer-signup input[type="email"] {
+  font-family: 'Inter', sans-serif; font-size: 0.95rem; padding: 11px 13px;
+  border: 1px solid #E0DBD0; border-radius: 3px; background: #fff; color: #1A1A1A; min-width: 220px;
+}
+.footer-signup input[type="email"]:focus { outline: none; border-color: #C0392B; }
+.footer-signup button {
+  font-family: 'Courier Prime', monospace; font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: #C0392B;
+  border: none; border-radius: 3px; padding: 11px 20px; cursor: pointer; white-space: nowrap;
+  transition: background 0.2s;
+}
+.footer-signup button:hover { background: #a5311f; }
+.footer-signup .fs-hp { position: absolute; left: -5000px; }
+.footer-signup .fs-li {
+  display: inline-block; margin-top: 14px; font-family: 'Courier Prime', monospace;
+  font-size: 0.66rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: #1A1A1A; text-decoration: none;
+}
+.footer-signup .fs-li:hover { color: #C0392B; }
+.footer-signup .fs-success { display: none; color: #1A1A1A; font-size: 0.98rem; }
+.footer-signup.done form { display: none; }
+.footer-signup.done .fs-success { display: block; }
