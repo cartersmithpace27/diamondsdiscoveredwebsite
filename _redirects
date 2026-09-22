@@ -1,1 +1,2 @@
-/expedition  /  302
+# /expedition serves the expedition page (pretty URL)
+/expedition  /expedition.html  200

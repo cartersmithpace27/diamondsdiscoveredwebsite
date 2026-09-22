@@ -1,8 +1,8 @@
 /* ============================================================
    Diamonds Discovered — shared site menu
-   One consistent top menu across every page, with a mobile
-   hamburger. Colors are hard-coded (not CSS variables) so this
-   file works identically on every page regardless of its :root.
+   One hamburger menu on every page, at every screen width.
+   Colors are hard-coded (not CSS variables) so this file works
+   identically on every page regardless of its :root.
    ============================================================ */
 
 .site-menu {
@@ -14,79 +14,82 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  overflow-x: visible;
-  gap: 0;
 }
 
-/* Home page uses .site-menu.at-top so the dark menu is NOT sticky
-   there (the home page already has its own sticky section nav). */
-.site-menu.at-top { position: static; }
+/* Legacy class — kept so older markup still works. The menu is sticky everywhere now. */
+.site-menu.at-top { position: sticky; }
 
 .site-menu__brand {
   font-family: 'Playfair Display', serif;
   font-style: italic;
-  font-weight: 400;
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.55);
+  font-weight: 700;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.85);
   padding: 14px 20px 14px 24px;
   white-space: nowrap;
   text-decoration: none;
+  text-transform: none;
+  letter-spacing: normal;
   transition: color 0.2s;
 }
-.site-menu__brand:hover { color: rgba(255,255,255,0.9); }
-
-.site-menu__links {
-  display: flex;
-  align-items: center;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.site-menu__links::-webkit-scrollbar { display: none; }
-
-.site-menu__links a {
-  font-family: 'Courier Prime', monospace;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.7);
-  text-decoration: none;
-  padding: 14px 18px;
-  white-space: nowrap;
-  transition: color 0.2s, background 0.2s;
-}
-.site-menu__links a:hover { color: #fff; }
-.site-menu__links a.active { background: #C0392B; color: #fff; }
+.site-menu__brand:hover { color: #fff; }
 
 .site-menu__toggle {
-  display: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   background: none;
   border: none;
   color: #fff;
-  font-size: 1.35rem;
-  line-height: 1;
-  padding: 12px 22px;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 12px 24px;
   cursor: pointer;
 }
+.site-menu__toggle-icon { font-size: 1.35rem; line-height: 1; }
+.site-menu.open .site-menu__toggle { color: #C0392B; }
+.site-menu__toggle:focus-visible { outline: 2px solid #C0392B; outline-offset: -6px; }
 
-/* ---- Mobile: collapse links behind a hamburger ---- */
+/* Links live in a dropdown panel at every width */
+.site-menu__links {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 280px;
+  flex-direction: column;
+  align-items: stretch;
+  background: #1A1A1A;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-top: 2px solid #C0392B;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+}
+.site-menu.open .site-menu__links { display: flex; }
+
+.site-menu__links a {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  padding: 15px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  white-space: nowrap;
+  transition: color 0.2s, background 0.2s;
+}
+.site-menu__links a:last-child { border-bottom: none; }
+.site-menu__links a:hover { color: #fff; background: rgba(255,255,255,0.05); }
+.site-menu__links a.active { background: #C0392B; color: #fff; }
+
+/* Phones: panel spans the full width under the bar */
 @media (max-width: 760px) {
-  .site-menu__toggle { display: block; }
-  .site-menu__links {
-    display: none;
-    flex-basis: 100%;
-    flex-direction: column;
-    align-items: stretch;
-    overflow-x: hidden;
-    background: #1A1A1A;
-    border-top: 1px solid rgba(255,255,255,0.12);
-  }
-  .site-menu.open .site-menu__links { display: flex; }
-  .site-menu__links a {
-    padding: 15px 24px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
+  .site-menu__links { left: 0; min-width: 0; border-left: none; border-right: none; }
+  .site-menu__toggle-label { display: none; }
 }
 
 /* ── Footer email signup (injected above <footer> on every page by menu.js) ── */
@@ -126,3 +129,55 @@
 .footer-signup .fs-success { display: none; color: #1A1A1A; font-size: 0.98rem; }
 .footer-signup.done form { display: none; }
 .footer-signup.done .fs-success { display: block; }
+
+/* ── Sticky email bar (injected by menu.js) ──
+   Shows while the visitor is scrolling; fades out 4s after scrolling stops. */
+.sticky-signup {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 150;
+  background: #1A1A1A;
+  border-top: 2px solid #C0392B;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  padding: 12px 24px calc(12px + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.sticky-signup.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.sticky-signup__text {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.02rem;
+}
+.sticky-signup form { display: flex; gap: 8px; }
+.sticky-signup input[type="email"] {
+  font-family: 'Inter', sans-serif; font-size: 0.95rem; padding: 10px 12px;
+  border: 1px solid rgba(255,255,255,0.2); border-radius: 3px; background: #fff; color: #1A1A1A;
+  min-width: 220px;
+}
+.sticky-signup input[type="email"]:focus { outline: none; border-color: #C0392B; }
+.sticky-signup button {
+  font-family: 'Courier Prime', monospace; font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: #C0392B;
+  border: none; border-radius: 3px; padding: 10px 18px; cursor: pointer; white-space: nowrap;
+  transition: background 0.2s;
+}
+.sticky-signup button:hover { background: #a5311f; }
+.sticky-signup .ss-hp { position: absolute; left: -5000px; }
+.sticky-signup .ss-success { display: none; font-size: 0.98rem; }
+.sticky-signup.done form, .sticky-signup.done .sticky-signup__text { display: none; }
+.sticky-signup.done .ss-success { display: block; }
+@media (max-width: 600px) {
+  .sticky-signup { gap: 8px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px)); }
+  .sticky-signup__text { font-size: 0.92rem; width: 100%; text-align: center; }
+  .sticky-signup form { width: 100%; }
+  .sticky-signup input[type="email"] { flex: 1; min-width: 0; }
+}
