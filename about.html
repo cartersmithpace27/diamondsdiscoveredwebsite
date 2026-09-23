@@ -518,7 +518,7 @@
       align-items: center;
       gap: 12px;
       text-decoration: none;
-      color: var(--red);
+      color: var(--ink);
       padding: 12px 12px;
       margin: 0 -12px;
       border-radius: 3px;
@@ -527,9 +527,7 @@
     }
 
     .rec-card a:last-child { border-bottom: none; }
-    .rec-card a .rec-label { color: var(--red); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
-    .rec-card a:hover { background: #faf4ea; }
-    .rec-card a:hover .rec-label { color: #a93226; }
+    .rec-card a:hover { background: #faf4ea; color: var(--red); }
 
     .rec-label {
       display: flex;
@@ -550,13 +548,13 @@
 
     .rec-arrow {
       font-family: 'Courier Prime', monospace;
-      font-size: 0.95rem;
+      font-size: 1.2rem;
       font-weight: 700;
-      color: var(--red);
+      color: var(--sepia);
       flex-shrink: 0;
     }
 
-    .rec-card a:hover .rec-arrow { color: #a93226; }
+    .rec-card a:hover .rec-arrow { color: var(--red); }
 
     /* non-linked recognition rows (awards without a URL) */
     .rec-card .rec-row {
@@ -802,6 +800,14 @@
       <a href="https://www.paceacademy.org/post-detail/~board/pace-news/post/meet-the-2025-homecoming-court" target="_blank" rel="noopener">
         <span class="rec-label">2025 Homecoming Court<span class="rec-note">Fall 2025 / Junior Year</span></span>
         <span class="rec-arrow">&#8599;</span>
+      </a>
+      <a href="documentary-screening.html">
+        <span class="rec-label">Documentary Screening &mdash; &ldquo;The Other Boys of Summer&rdquo;<span class="rec-note">Screening &amp; discussion panel at Pace &middot; Coming Feb 2027</span></span>
+        <span class="rec-arrow">&#8594;</span>
+      </a>
+      <a href="new-program.html">
+        <span class="rec-label">Proposed Program for Student-Driven Projects<span class="rec-note">Working with Head of School on a program to support self-directed student projects</span></span>
+        <span class="rec-arrow">&#8594;</span>
       </a>
     </div>
 
