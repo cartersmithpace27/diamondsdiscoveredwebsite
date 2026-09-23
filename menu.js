@@ -29,6 +29,11 @@
 
 /* Shared submit helper for the Netlify "subscribe" form */
 function ddSubscribe(form, onDone, method) {
+  // Record which page the signup came from, and which widget was used.
+  var pageField = form.querySelector('input[name="page"]');
+  if (pageField) pageField.value = document.title + ' (' + location.pathname + ')';
+  var srcField = form.querySelector('input[name="source"]');
+  if (srcField) srcField.value = method;
   var body = new URLSearchParams(new FormData(form)).toString();
   return fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
     .then(function (r) {
@@ -48,7 +53,7 @@ function ddSubscribe(form, onDone, method) {
   if (!form) return;
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    ddSubscribe(form, function () { wrap.classList.add('done'); }, 'newsletter_footer')
+    ddSubscribe(form, function () { wrap.classList.add('done'); }, 'footer')
       .catch(function () { window.location.href = '/thank-you.html'; });
   });
 })();
@@ -69,6 +74,8 @@ function ddSubscribe(form, onDone, method) {
     '<span class="sticky-signup__text">Get updates on baseball and integration.</span>' +
     '<form name="subscribe" method="POST" action="/thank-you.html">' +
       '<input type="hidden" name="form-name" value="subscribe">' +
+      '<input type="hidden" name="page" value="">' +
+      '<input type="hidden" name="source" value="">' +
       '<p class="ss-hp"><label>Don&#8217;t fill this out: <input name="bot-field" tabindex="-1"></label></p>' +
       '<input type="email" name="email" placeholder="you@email.com" aria-label="Email address" required>' +
       '<button type="submit">Subscribe</button>' +
@@ -101,6 +108,6 @@ function ddSubscribe(form, onDone, method) {
       bar.classList.add('done', 'visible');
       clearTimeout(timer);
       setTimeout(function () { bar.classList.remove('visible'); }, HIDE_AFTER);
-    }, 'newsletter_sticky').catch(function () { form.submit(); });
+    }, 'sticky_bar').catch(function () { form.submit(); });
   });
 })();
