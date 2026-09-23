@@ -32,6 +32,15 @@
   letter-spacing: normal;
   transition: color 0.2s;
 }
+.site-menu__brand::before {
+  content: "";
+  display: inline-block;
+  width: 20px; height: 20px;
+  margin-right: 10px;
+  vertical-align: -4px;
+  background: url('/favicon-32.png') center / contain no-repeat;
+  border-radius: 4px;
+}
 .site-menu__brand:hover { color: #fff; }
 
 .site-menu__toggle {
