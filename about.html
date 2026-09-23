@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Carter Smith — Pace Academy, Atlanta | Class of 2027 · Diamonds Discovered</title>
-  <meta name="description" content="Carter Smith is a Pace Academy student-athlete in Atlanta, Class of 2027 — varsity baseball pitcher, Congressional Award Gold Medal candidate, and NHSCA Academic All-American. Twelve years of baseball led to an AP thesis on MLB integration and a 2,020-mile expedition.">
+  <meta name="description" content="Carter Smith is a Pace Academy student-athlete in Atlanta, Class of 2027 — varsity baseball pitcher, Congressional Award Gold Medal candidate, and NHSCA Academic All-American. Fourteen years of baseball led to an AP thesis on MLB integration and a 2,020-mile expedition.">
   <link rel="canonical" href="https://diamondsdiscovered.com/about.html">
 
   <meta property="og:title" content="Carter Smith — Pace Academy, Atlanta | Class of 2027">
@@ -222,6 +222,43 @@
       color: var(--sepia);
       margin-top: 10px;
     }
+
+    /* SECTION HEADER (era divider) */
+    .section-header {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 72px 40px 0;
+      text-align: center;
+    }
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+    .section-header h2::after {
+      content: '';
+      display: block;
+      width: 56px;
+      height: 3px;
+      background: var(--red);
+      margin: 18px auto 0;
+    }
+
+    /* ERA BANNER (wide team photo) */
+    .era-banner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 40px 0;
+    }
+    .era-banner img { width: 100%; display: block; border-radius: 4px; }
+    .era-banner .img-caption { text-align: center; }
+
+    /* spacing when a header/banner leads into a section */
+    .section-header + .era-banner { padding-top: 28px; }
+    .era-banner + .split-section { padding-top: 40px; }
+    .section-header + .split-section { padding-top: 36px; }
 
     /* STAT STRIP */
     .stat-strip {
@@ -481,14 +518,18 @@
       align-items: center;
       gap: 12px;
       text-decoration: none;
-      color: var(--ink);
-      padding: 12px 0;
+      color: var(--red);
+      padding: 12px 12px;
+      margin: 0 -12px;
+      border-radius: 3px;
       border-bottom: 1px solid var(--rule);
-      transition: color 0.2s;
+      transition: background 0.15s, color 0.15s;
     }
 
     .rec-card a:last-child { border-bottom: none; }
-    .rec-card a:hover { color: var(--red); }
+    .rec-card a .rec-label { color: var(--red); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+    .rec-card a:hover { background: #faf4ea; }
+    .rec-card a:hover .rec-label { color: #a93226; }
 
     .rec-label {
       display: flex;
@@ -498,21 +539,24 @@
     }
 
     .rec-note {
+      display: block;
       font-family: 'Inter', sans-serif;
       font-size: 0.75rem;
       font-weight: 400;
       color: var(--sepia);
       margin-top: 2px;
+      text-decoration: none;
     }
 
     .rec-arrow {
       font-family: 'Courier Prime', monospace;
-      font-size: 0.85rem;
-      color: var(--sepia);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--red);
       flex-shrink: 0;
     }
 
-    .rec-card a:hover .rec-arrow { color: var(--red); }
+    .rec-card a:hover .rec-arrow { color: #a93226; }
 
     /* non-linked recognition rows (awards without a URL) */
     .rec-card .rec-row {
@@ -624,19 +668,30 @@
   <div class="hero-inner">
     <p class="hero-eyebrow">Pace Academy, Atlanta · Class of 2027</p>
     <h1>Carter Smith.<br><em>Learn about me and what I'm interested in.</em></h1>
-    <p class="hero-sub">Senior at Pace Academy in Atlanta, GA. 12+ years of baseball. The spark was an AP thesis on MLB integration. Then an AP oral history with a noted sports journalist who has written about Hank Aaron and MLB integration issues. And then a 2,020-mile road trip that I planned that connected baseball and integration. Now I'm finding ways to share what I learned about baseball and integration with others at school and online.</p>
+    <p class="hero-sub">Senior at Pace Academy in Atlanta, GA. 14 years of baseball. The spark was an AP thesis on MLB integration. Then an AP oral history with a noted sports journalist who has written about Hank Aaron and MLB integration issues. And then a 2,020-mile road trip that I planned that connected baseball and integration. Now I'm finding ways to share what I learned about baseball and integration with others at school and online.</p>
   </div>
 </header>
+
+<!-- ===== 14 YEARS PLAYING BASEBALL ===== -->
+<div class="section-header">
+  <h2>14 Years Playing Baseball</h2>
+</div>
+
+<!-- T-ball team banner (age 4) -->
+<div class="era-banner">
+  <img src="tball-age4.jpg" alt="Carter Smith's first T-ball team, the Cubs, at age 4 in Fall 2012">
+  <p class="img-caption">Where it started &mdash; my first team, T-ball with the Cubs, age 4 &middot; Fall 2012.</p>
+</div>
 
 <!-- SECTION 1: text left, kid photo right -->
 <section class="split-section">
   <div class="split-text">
-    <p>I've played baseball since I was five. It's been a constant my whole life. When you're a kid you think you'll be a MLB player. When you get older you think you could play in college. I've gotten better at baseball, especially as a pitcher, but sometime in the last year I realized that I won't play beyond high school. Even when it has been tough, baseball has always been something I loved and enjoyed. I had never really thought about the role of baseball in our history, how integration occurred, and how we wound up with baseball as we know it today. But this past year it started meaning something different. In AP African American Studies, I wrote a thesis on the integration of Major League Baseball. The more I researched, the more I realized how much of that story I didn't know. The Negro Leagues, the players who never got a shot, the towns and ballparks that still carry that history. None of it shows up in the box scores.</p>
+    <p>I've played baseball since I was four. It's been a constant my whole life. When you're a kid you think you'll be a MLB player. When you get older you think you could play in college. I've gotten better at baseball, especially as a pitcher, but sometime in the last year I realized that I won't play beyond high school. Even when it has been tough, baseball has always been something I loved and enjoyed. I had never really thought about the role of baseball in our history, how integration occurred, and how we wound up with baseball as we know it today. But this past year it started meaning something different. In AP African American Studies, I wrote a thesis on the integration of Major League Baseball. The more I researched, the more I realized how much of that story I didn't know. The Negro Leagues, the players who never got a shot, the towns and ballparks that still carry that history. None of it shows up in the box scores.</p>
     <p>That research is what pushed this expedition from an idea into something I actually had to do. Inspired by my oral history interview with Mr. Terence Moore, I wanted to go to Kansas City to see the Negro Leagues Baseball Museum and meet one of my heavily cited sources, Mr. Bob Kendrick.</p>
   </div>
   <div class="split-image">
-    <img src="IMG_3450.JPG" alt="Carter Smith, age 5, in his first baseball uniform">
-    <p class="img-caption">Age 5. The beginning of twelve years.</p>
+    <img src="IMG_3450.JPG" alt="Carter Smith as a young boy in his Little League Buckhead Baseball uniform">
+    <p class="img-caption">Little League Buckhead Baseball.</p>
   </div>
 </section>
 
@@ -652,20 +707,9 @@
   </div>
 </section>
 
-<!-- STAT STRIP -->
-<div class="stat-strip">
-  <div class="stat-item">
-    <div class="stat-number">12</div>
-    <div class="stat-label">AP Classes by graduation</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-number">508</div>
-    <div class="stat-label">Volunteer hours logged</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-number">Job</div>
-    <div class="stat-label">Publix, Part time Job<br>summers, evenings, weekends</div>
-  </div>
+<!-- ===== FOCUS IN HIGH SCHOOL AT PACE ACADEMY ===== -->
+<div class="section-header">
+  <h2>Focus in High School at Pace Academy</h2>
 </div>
 
 <!-- SECTION 3: text left, headshot right -->
@@ -682,7 +726,21 @@
   </div>
 </section>
 
-
+<!-- STAT STRIP (end of the Pace Academy section) -->
+<div class="stat-strip">
+  <div class="stat-item">
+    <div class="stat-number">12</div>
+    <div class="stat-label">AP Classes by graduation</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">508</div>
+    <div class="stat-label">Volunteer hours logged</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">Job</div>
+    <div class="stat-label">Publix, Part time Job<br>summers, evenings, weekends</div>
+  </div>
+</div>
 
 <!-- RECOGNITION & AROUND THE WEB -->
 <section class="recognition" id="recognition">
@@ -718,12 +776,14 @@
         <span class="rec-label">NHSCA Academic All-American, Honorable Mention<span class="rec-note">Coach nominated, based on academics and athletic performance</span></span>
         <span class="rec-arrow">&#8599;</span>
       </a>
-      <div class="rec-row">
-        <span class="rec-label">American Volunteer Service Award<span class="rec-note">Gold Medal, 122 hours in 2025&ndash;26</span></span>
-      </div>
-      <div class="rec-row">
-        <span class="rec-label">YMSL Chastain Chapter &ldquo;Elite Service Award&rdquo; &mdash; 2025&ndash;26<span class="rec-note">100+ hours, chapter's top service recognition</span></span>
-      </div>
+      <a href="avsa-award-2025-26.pdf" target="_blank" rel="noopener">
+        <span class="rec-label">American Volunteer Service Award<span class="rec-note">Gold Medal, 122 hours in 2025&ndash;26 &middot; view certificate</span></span>
+        <span class="rec-arrow">&#8599;</span>
+      </a>
+      <a href="ymsl-elite-service-award-2025-26.jpg" target="_blank" rel="noopener">
+        <span class="rec-label">YMSL Chastain Chapter &ldquo;Elite Service Award&rdquo; &mdash; 2025&ndash;26<span class="rec-note">100+ hours, chapter's top service recognition &middot; view certificate</span></span>
+        <span class="rec-arrow">&#8599;</span>
+      </a>
       <div class="rec-row">
         <span class="rec-label">AP Scholar with Distinction &mdash; avg. 4.3 across 6 AP exams (College Board)<span class="rec-note">5's on AP US History, AP European History, and AP African American Studies</span></span>
       </div>
