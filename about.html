@@ -483,6 +483,42 @@
       justify-content: center;
     }
 
+    /* "Glue Guy" personal note */
+    .glue-guy {
+      max-width: 720px;
+      margin: 56px auto 0;
+      padding-top: 40px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .glue-guy img {
+      width: 220px;
+      height: auto;
+      flex-shrink: 0;
+      border-radius: 4px;
+      border: 1px solid var(--rule);
+    }
+    .glue-guy .gg-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+    .glue-guy .gg-text p:not(.gg-label) {
+      font-size: 1.02rem;
+      line-height: 1.7;
+      color: #2a2a2a;
+    }
+    @media (max-width: 640px) {
+      .glue-guy { flex-direction: column; text-align: center; gap: 20px; }
+      .glue-guy img { width: 200px; }
+    }
+
     /* RESPONSIVE */
     @media (max-width: 760px) {
       .recognition { padding: 56px 24px; }
@@ -658,6 +694,14 @@
       </a>
     </div>
 
+  </div>
+
+  <div class="glue-guy">
+    <img src="glue-guy.jpg" alt="Paper-plate award reading &quot;Glue Guy - Carter&quot; with a hand-drawn glue bottle" loading="lazy">
+    <div class="gg-text">
+      <p class="gg-label">&ldquo;Glue Guy&rdquo;</p>
+      <p>Near the end of my freshman year, my peer leaders recognized me as &ldquo;Glue Guy.&rdquo; I don&#8217;t know if they realize how big that was to me at the time, or how much I&#8217;ve identified with it since then.</p>
+    </div>
   </div>
 </section>
 
