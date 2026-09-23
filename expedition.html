@@ -923,19 +923,17 @@
   .subscribe-band.done .subscribe-form, .subscribe-band.done .subscribe-sub, .subscribe-band.done .subscribe-or { display: none; }
   .subscribe-band.done .subscribe-success { display: block; }
 
-  /* Mini-hero (echoes the home hero) */
-  .expedition-hero { position: relative; display: flex; align-items: flex-end; min-height: 42vh; min-height: 42svh; padding: 56px 40px 44px; background: var(--ink); color: #fff; text-decoration: none; overflow: hidden; }
-  .expedition-hero__img { position: absolute; inset: 0; background-position: center 55%; background-size: cover; background-repeat: no-repeat; transition: transform 1.2s ease; }
-  .expedition-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,26,26,0.92) 0%, rgba(26,26,26,0.55) 45%, rgba(26,26,26,0.25) 100%); }
-  .expedition-hero:hover .expedition-hero__img { transform: scale(1.03); }
-  .expedition-hero__inner { position: relative; z-index: 1; max-width: 720px; }
-  .expedition-hero .eh-eyebrow { font-family: 'Courier Prime', monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sepia-light); margin-bottom: 14px; display: block; }
-  .expedition-hero h2 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(1.9rem, 4vw, 3.2rem); line-height: 1.02; margin-bottom: 14px; text-shadow: 0 2px 18px rgba(0,0,0,0.55); }
-  .expedition-hero h2 em { display: block; font-style: italic; color: #FF7A5C; font-size: 0.6em; margin-bottom: 8px; }
-  .expedition-hero__sub { font-size: clamp(1rem, 1.8vw, 1.2rem); color: rgba(255,255,255,0.82); margin-bottom: 22px; max-width: 48ch; }
-  .expedition-hero__btn { display: inline-block; font-family: 'Courier Prime', monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 13px 24px; border-radius: 2px; background: var(--red); color: #fff; border: 1px solid var(--red); }
-  .expedition-hero:hover .expedition-hero__btn { background: #a93226; border-color: #a93226; }
-  .expedition-hero:focus-visible { outline: 3px solid var(--red); outline-offset: -3px; }
+  /* Meet Carter card (quieter than a full-bleed hero) */
+  .meet-carter { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; max-width: 1080px; margin: 0 auto; padding: 64px 6vw; }
+  .meet-carter__photo img { width: 100%; height: auto; display: block; border-radius: 4px; box-shadow: 0 10px 30px rgba(26,26,26,0.18); }
+  .meet-carter__text { max-width: 40ch; }
+  .meet-carter .mc-eyebrow { font-family: 'Courier Prime', monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sepia); margin-bottom: 14px; display: block; }
+  .meet-carter h2 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(1.7rem, 3.2vw, 2.4rem); line-height: 1.08; margin-bottom: 14px; color: var(--ink); }
+  .meet-carter h2 em { display: block; font-style: italic; font-weight: 700; color: var(--red); font-size: 0.62em; margin-bottom: 6px; }
+  .meet-carter p { font-size: 1.05rem; line-height: 1.6; color: #444; margin-bottom: 20px; }
+  .meet-carter .mc-link { font-family: 'Courier Prime', monospace; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--red); text-decoration: none; border-bottom: 1px solid var(--red); padding-bottom: 3px; }
+  .meet-carter .mc-link:hover { color: #a93226; border-color: #a93226; }
+  @media (max-width: 720px) { .meet-carter { grid-template-columns: 1fr; gap: 28px; padding: 48px 6vw; } .meet-carter__text { max-width: none; } }
 </style>
 <link rel="stylesheet" href="menu.css">
 <!-- DD-STRUCTURED-DATA -->
@@ -1695,16 +1693,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p class="stop-cta-wrap"><a class="stop-cta" href="award.html">Learn More About The Congressional Award &rarr;</a></p>
 </div>
 </section>
-<!-- About mini-hero -->
-<a class="expedition-hero" href="about.html" aria-label="About Carter Smith">
-<div class="expedition-hero__img" style="background-image:url('about-share.jpg');background-position:center 25%" aria-hidden="true"></div>
-<div class="expedition-hero__inner">
-<span class="eh-eyebrow">The person behind the trip</span>
-<h2><em>Who planned all this?</em> Meet Carter Smith</h2>
-<p class="expedition-hero__sub">Pace Academy senior, baseball pitcher, and Congressional Award candidate &mdash; and the story behind the expedition.</p>
-<span class="expedition-hero__btn">About Carter &rarr;</span>
+<!-- Meet Carter card -->
+<section class="meet-carter">
+<div class="meet-carter__photo">
+<img src="carter-kendrick-meet.jpg" alt="Carter Smith talking with Bob Kendrick at the Negro Leagues Baseball Museum" width="792" height="560" loading="lazy">
 </div>
-</a>
+<div class="meet-carter__text">
+<span class="mc-eyebrow">The person behind the trip</span>
+<h2><em>Want to know how I got here?</em> Meet Me &mdash; Carter Smith</h2>
+<p>Pace Academy senior, baseball pitcher, and Congressional Award candidate. Here&#8217;s the story behind the expedition.</p>
+<a class="mc-link" href="about.html">More about me &rarr;</a>
+</div>
+</section>
 <footer>
 <p>Diamonds Discovered · May 27–31, 2026</p>
 <p>

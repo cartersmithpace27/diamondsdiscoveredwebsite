@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Diamonds Discovered — Carter Smith</title>
+<!-- NOTE: This is a DRAFT of the new modular home page. It does not replace index.html.
+     Google Tag Manager is intentionally left OUT of this draft so it doesn't touch analytics.
+     The GTM snippet gets added only when this becomes the real home page. -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&amp;family=Inter:wght@400;500;600&amp;family=Courier+Prime:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F7F5F0;
+    --ink: #1A1A1A;
+    --red: #C0392B;
+    --sepia: #8B7355;
+    --sepia-light: #D4C4A8;
+    --rule: #E0DBD0;
+    --white: #FFFFFF;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============ SHARED MENU (inlined copy of menu.css so this draft is self-contained) ============ */
+  .site-menu { position: sticky; top: 0; z-index: 200; background: #1A1A1A; border-bottom: 2px solid #C0392B; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0; }
+  .site-menu__brand { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; font-size: 0.85rem; color: rgba(255,255,255,0.55); padding: 14px 20px 14px 24px; white-space: nowrap; text-decoration: none; transition: color 0.2s; }
+  .site-menu__brand:hover { color: rgba(255,255,255,0.9); }
+  .site-menu__links { display: flex; align-items: center; overflow-x: auto; scrollbar-width: none; }
+  .site-menu__links::-webkit-scrollbar { display: none; }
+  .site-menu__links a { font-family: 'Courier Prime', monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.7); text-decoration: none; padding: 14px 18px; white-space: nowrap; transition: color 0.2s, background 0.2s; }
+  .site-menu__links a:hover { color: #fff; }
+  .site-menu__links a.active { background: #C0392B; color: #fff; }
+  .site-menu__toggle { display: none; background: none; border: none; color: #fff; font-size: 1.35rem; line-height: 1; padding: 12px 22px; cursor: pointer; }
+  @media (max-width: 760px) {
+    .site-menu__toggle { display: block; }
+    .site-menu__links { display: none; flex-basis: 100%; flex-direction: column; align-items: stretch; overflow-x: hidden; background: #1A1A1A; border-top: 1px solid rgba(255,255,255,0.12); }
+    .site-menu.open .site-menu__links { display: flex; }
+    .site-menu__links a { padding: 15px 24px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  }
+
+  /* ============ HERO — the baseball origin story ============ */
+  .hero { position: relative; overflow: hidden; background: var(--ink); color: var(--white); padding: 7rem 0 6rem; }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.03) 39px, rgba(255,255,255,0.03) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(255,255,255,0.02) 79px, rgba(255,255,255,0.02) 80px);
+  }
+  .hero-inner { position: relative; z-index: 2; max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+  .kicker { font-family: 'Courier Prime', monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); }
+  .hero h1 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(2.6rem, 6vw, 4.6rem); line-height: 1.04; margin: 1.1rem 0 1.4rem; }
+  .hero h1 em { font-style: italic; color: var(--sepia-light); }
+  .hero-lede { font-size: clamp(1.05rem, 2vw, 1.3rem); max-width: 42ch; color: rgba(255,255,255,0.82); }
+  .hero-cta { margin-top: 2.2rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn { font-family: 'Courier Prime', monospace; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 14px 26px; border: 2px solid var(--red); transition: all 0.2s; }
+  .btn--solid { background: var(--red); color: #fff; }
+  .btn--solid:hover { background: transparent; }
+  .btn--ghost { color: #fff; }
+  .btn--ghost:hover { background: rgba(255,255,255,0.08); }
+
+  /* ============ STADIUM TICKER ============ */
+  .ticker { background: #111; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 14px 0; overflow: hidden; }
+  .ticker-row { display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap; padding: 0 1.5rem; font-family: 'Courier Prime', monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+  .ticker-row span { white-space: nowrap; }
+  .ticker-row span b { color: var(--red); font-weight: 700; }
+
+  /* ============ THE THREAD (intro) ============ */
+  .thread { max-width: 760px; margin: 0 auto; padding: 5.5rem 2rem 3rem; text-align: center; }
+  .thread .kicker { color: var(--sepia); }
+  .thread h2 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.15; margin: 1rem 0 1.5rem; }
+  .thread p { font-size: 1.12rem; color: #3a3a3a; }
+
+  /* ============ TIMELINE — the journey, in order ============ */
+  .journey { max-width: 780px; margin: 0 auto; padding: 1rem 2rem 5rem; }
+  .timeline { list-style: none; position: relative; }
+
+  /* ---- ONE reusable stop. To add a project later, copy a .stop block and fill it in.
+          Order top-to-bottom = chronological order of the story. ---- */
+  .stop { position: relative; display: grid; grid-template-columns: 46px 1fr; gap: 1.5rem; padding-bottom: 2.6rem; }
+  .stop::before { content: ''; position: absolute; left: 22px; top: 8px; height: 100%; width: 2px; background: var(--sepia-light); z-index: 0; }
+  .stop:last-child::before { display: none; }
+  .stop__marker { width: 46px; height: 46px; border-radius: 50%; background: var(--ink); color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Courier Prime', monospace; font-weight: 700; font-size: 0.95rem; position: relative; z-index: 1; }
+  .stop__content { padding-top: 3px; }
+  .stop__meta { font-family: 'Courier Prime', monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sepia); margin-bottom: 0.4rem; }
+  .stop__title { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.5rem; line-height: 1.2; margin-bottom: 0.5rem; }
+  .stop__hook { font-size: 1rem; color: #454545; }
+  .stop__link { display: inline-block; font-family: 'Courier Prime', monospace; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--red); text-decoration: none; margin-top: 0.8rem; }
+  .stop__link:hover { text-decoration: underline; }
+
+  /* ---- Upcoming stop: dashed, muted, same footprint ---- */
+  .stop--reserved .stop__marker { background: var(--cream); color: var(--sepia); border: 2px dashed var(--sepia-light); }
+  .stop--reserved::before { background: none; border-left: 2px dashed var(--sepia-light); width: 0; }
+  .stop--reserved .stop__title { color: var(--sepia); }
+  .stop__flag { display: inline-block; font-family: 'Courier Prime', monospace; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: var(--sepia); padding: 3px 9px; border-radius: 2px; margin-bottom: 0.6rem; }
+
+  .journey-note { max-width: 780px; margin: 0 auto; padding: 0 2rem; }
+  .journey-note p { border-top: 1px solid var(--rule); padding-top: 1.4rem; font-family: 'Courier Prime', monospace; font-size: 0.78rem; letter-spacing: 0.03em; color: var(--sepia); text-align: center; }
+
+  /* ============ THANKS TEASER ============ */
+  .thanks { background: var(--ink); color: rgba(255,255,255,0.85); text-align: center; padding: 4.5rem 2rem; margin-top: 3rem; }
+  .thanks .kicker { color: var(--red); }
+  .thanks h2 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(1.5rem, 3vw, 2.1rem); margin: 0.9rem 0 1rem; color: #fff; }
+  .thanks p { max-width: 52ch; margin: 0 auto 1.6rem; }
+  .thanks a.btn { border-color: rgba(255,255,255,0.4); color: #fff; }
+  .thanks a.btn:hover { background: rgba(255,255,255,0.08); }
+
+  /* ============ FOOTER ============ */
+  footer { background: #0f0f0f; color: rgba(255,255,255,0.6); text-align: center; padding: 2.6rem 2rem; font-size: 0.85rem; }
+  footer a { color: var(--sepia); text-decoration: none; margin: 0 0.75rem; }
+
+  .draft-note { background: #fff8e5; border-bottom: 1px solid #e8dca8; color: #6b5b2e; font-family: 'Courier Prime', monospace; font-size: 0.72rem; letter-spacing: 0.04em; text-align: center; padding: 8px 16px; }
+</style>
+</head>
+<body>
+
+<div class="draft-note">DRAFT — new home page concept. Placeholder copy. Live site is unchanged.</div>
+
+<!-- ============ MENU ============ -->
+<nav class="site-menu" aria-label="Main menu">
+  <a class="site-menu__brand" href="#">Diamonds Discovered.</a>
+  <button class="site-menu__toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+  <div class="site-menu__links">
+    <a href="#journey">The Journey</a>
+    <a href="index.html">The Expedition</a>
+    <a href="expedition_map.html">Map</a>
+    <a href="about.html">About Carter</a>
+    <a href="award.html">The Award</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <p class="kicker">The Origin Story</p>
+    <h1>It started on the <em>diamond.</em></h1>
+    <p class="hero-lede">A ballplayer's love of the game — the stadiums, the history, the stats — that turned into a search for the stories baseball almost forgot.</p>
+    <div class="hero-cta">
+      <a class="btn btn--solid" href="#journey">Follow the thread</a>
+      <a class="btn btn--ghost" href="index.html">The expedition</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ STADIUM TICKER ============ -->
+<div class="ticker">
+  <div class="ticker-row">
+    <span><b>Coors</b></span>
+    <span><b>Fenway</b></span>
+    <span><b>Fulton County</b></span>
+    <span><b>Truist</b></span>
+    <span><b>Petco</b></span>
+    <span><b>Busch</b></span>
+    <span>+ every field in North Georgia</span>
+  </div>
+</div>
+
+<!-- ============ THE THREAD (intro) ============ -->
+<section class="thread">
+  <p class="kicker">The Thread</p>
+  <h2>One kid, one game, and where it led.</h2>
+  <p>Baseball players love stadiums. They love history. They love stats. Follow that love far enough and it stops being about the scoreboard — it becomes about the people the game left out of the record. Here's that path, in order.</p>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section class="journey" id="journey">
+  <ol class="timeline">
+
+    <!-- STOP TEMPLATE: copy this block to add a stop. Keep them in chronological order. -->
+    <li class="stop">
+      <div class="stop__marker">01</div>
+      <div class="stop__content">
+        <div class="stop__meta">The first game</div>
+        <h3 class="stop__title">Falling for the game</h3>
+        <p class="stop__hook">One trip to the ballpark and that was it — hooked. The green of the grass, the noise, the history hanging in the rafters. One game turned into a mission to see as many stadiums as he could.</p>
+      </div>
+    </li>
+
+    <li class="stop">
+      <div class="stop__marker">02</div>
+      <div class="stop__content">
+        <div class="stop__meta">Ages 5–18</div>
+        <h3 class="stop__title">Playing the game</h3>
+        <p class="stop__hook">Thirteen years on the field — travel ball and nearly every high school diamond in North Georgia, plus college visits from Wake Forest and Auburn to Louisiana Tech, Sewanee, and Wofford. The game stopped being something he watched and became something he lived.</p>
+      </div>
+    </li>
+
+    <li class="stop">
+      <div class="stop__marker">03</div>
+      <div class="stop__content">
+        <div class="stop__meta">The thesis · APAAS</div>
+        <h3 class="stop__title">The APAAS Project</h3>
+        <p class="stop__hook">The academic paper where the interest turned into real research — African American history, the game, and the questions that would eventually put him on the road.</p>
+        <a class="stop__link" href="#">Read the project &rarr;</a>
+      </div>
+    </li>
+
+    <li class="stop">
+      <div class="stop__marker">04</div>
+      <div class="stop__content">
+        <div class="stop__meta">Oral history · APUSH</div>
+        <h3 class="stop__title">The Terence Moore Interview</h3>
+        <p class="stop__hook">A sit-down with the veteran sportswriter — the players, the era, and the stories that never made the box score. The conversation that gave the whole journey its shape.</p>
+        <a class="stop__link" href="#">Read the interview &rarr;</a>
+      </div>
+    </li>
+
+    <li class="stop">
+      <div class="stop__marker">05</div>
+      <div class="stop__content">
+        <div class="stop__meta">Expedition · May 2026</div>
+        <h3 class="stop__title">The Baseball &amp; Integration Expedition</h3>
+        <p class="stop__hook">Five days, five cities. The museums, memorials, and ballparks where baseball and the civil rights story meet — the Congressional Award Gold Medal capstone.</p>
+        <a class="stop__link" href="index.html">Explore the expedition &rarr;</a>
+      </div>
+    </li>
+
+    <!-- ===== UPCOMING (shown here to preview how future work slots in;
+             on the live site these appear only once planned or submitted) ===== -->
+    <li class="stop stop--reserved">
+      <div class="stop__marker">&rarr;</div>
+      <div class="stop__content">
+        <span class="stop__flag">In progress</span>
+        <h3 class="stop__title">TEDx: The Glue Guy</h3>
+        <p class="stop__hook">A talk on making connections — between people, between ideas, between eras — and why being the one who links them together matters.</p>
+      </div>
+    </li>
+
+    <li class="stop stop--reserved">
+      <div class="stop__marker">&rarr;</div>
+      <div class="stop__content">
+        <span class="stop__flag">Planned</span>
+        <h3 class="stop__title">The JFK Profiles in Courage Essay</h3>
+        <p class="stop__hook">An entry for the Profiles in Courage essay contest — political courage, integration, and the leaders who chose the harder right over the easier wrong.</p>
+      </div>
+    </li>
+
+  </ol>
+</section>
+
+<div class="journey-note">
+  <p>Future work joins the thread only once it's planned or submitted.</p>
+</div>
+
+<!-- ============ THANKS TEASER ============ -->
+<section class="thanks">
+  <p class="kicker">With Thanks</p>
+  <h2>None of this happened alone.</h2>
+  <p>Teachers, historians, and storytellers opened doors along the way — Mrs. Wheeler, Dr. Carter, Mr. Hoerner, Terence Moore, and Bob Kendrick at the Negro Leagues Baseball Museum.</p>
+  <a class="btn" href="#">Read the acknowledgements</a>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <p>Diamonds Discovered · Carter Smith</p>
+  <p style="margin-top:0.6rem;">
+    <a href="#journey">The Journey</a>
+    <a href="index.html">The Expedition</a>
+    <a href="about.html">About Carter</a>
+    <a href="award.html">The Congressional Award</a>
+    <a href="contact.html">Contact</a>
+  </p>
+</footer>
+
+<script>
+  (function () {
+    var nav = document.querySelector('.site-menu');
+    if (!nav) return;
+    var btn = nav.querySelector('.site-menu__toggle');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  })();
+</script>
+</body>
+</html>
