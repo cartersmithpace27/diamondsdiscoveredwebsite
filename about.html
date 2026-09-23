@@ -348,6 +348,50 @@
     .btn-outline { background: transparent; color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.3); }
     .btn-outline:hover { border-color: rgba(255,255,255,0.7); color: #fff; }
 
+    /* Expedition mini-hero (bottom of About) — echoes the home-page hero */
+    .expedition-hero {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      min-height: 42vh;
+      min-height: 42svh;
+      padding: 56px 40px 44px;
+      background: var(--ink);
+      color: #fff;
+      text-decoration: none;
+      overflow: hidden;
+    }
+    .expedition-hero__img {
+      position: absolute; inset: 0;
+      background: url('topeka_highway.jpg') center 60% / cover no-repeat;
+      transition: transform 1.2s ease;
+    }
+    .expedition-hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(26,26,26,0.92) 0%, rgba(26,26,26,0.55) 45%, rgba(26,26,26,0.25) 100%);
+    }
+    .expedition-hero:hover .expedition-hero__img { transform: scale(1.03); }
+    .expedition-hero__inner { position: relative; z-index: 1; max-width: 720px; }
+    .expedition-hero .eh-eyebrow {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--sepia-light); margin-bottom: 14px; display: block;
+    }
+    .expedition-hero h2 {
+      font-family: 'Playfair Display', serif; font-weight: 900;
+      font-size: clamp(1.9rem, 4vw, 3.2rem); line-height: 1.02;
+      margin-bottom: 14px; text-shadow: 0 2px 18px rgba(0,0,0,0.55);
+    }
+    .expedition-hero h2 em { display: block; font-style: italic; color: #FF7A5C; font-size: 0.6em; margin-bottom: 8px; }
+    .expedition-hero__sub {
+      font-size: clamp(1rem, 1.8vw, 1.2rem); color: rgba(255,255,255,0.82);
+      margin-bottom: 22px; max-width: 48ch;
+    }
+    .expedition-hero .btn { pointer-events: none; }
+    .expedition-hero:hover .btn-primary { background: #a93226; border-color: #a93226; }
+    .expedition-hero:focus-visible { outline: 3px solid var(--red); outline-offset: -3px; }
+
     /* FOOTER */
     footer {
       background: #111;
@@ -720,16 +764,15 @@
 </section>
 
 <!-- CLOSING -->
-<section class="closing">
-  <div class="closing-inner">
-    <h2>See where the expedition took him.</h2>
-    <p>The full route, the stops, the conversations, and the things that stuck. 2,020 miles in five days across eleven states.</p>
-    <div class="closing-links">
-      <a href="expedition.html" class="btn btn-primary">Read the Expedition</a>
-      <a href="award.html" class="btn btn-outline">The Congressional Award</a>
-    </div>
+<a class="expedition-hero" href="expedition.html" aria-label="See the Baseball and Integration Expedition">
+  <div class="expedition-hero__img" aria-hidden="true"></div>
+  <div class="expedition-hero__inner">
+    <span class="eh-eyebrow">The Expedition &middot; Atlanta &rarr; Kansas City &rarr; home</span>
+    <h2><em>See where it took me:</em> The Baseball and Integration Expedition</h2>
+    <p class="expedition-hero__sub">2,020 miles, 5 days, 11 states &mdash; every stop, every conversation, and everything that stuck.</p>
+    <span class="btn btn-primary">Explore the Expedition &rarr;</span>
   </div>
-</section>
+</a>
 
 <!-- FOOTER EMAIL SIGNUP -->
 <div class="footer-signup">
