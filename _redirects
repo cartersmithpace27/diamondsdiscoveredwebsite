@@ -1,2 +1,7 @@
 # /expedition serves the expedition page (pretty URL)
 /expedition  /expedition.html  200
+
+# Bob Kendrick story — pretty URL serves the page, old path redirects
+/negro-leagues-baseball-museum-bob-kendrick  /bob-kendrick.html  200
+/bob-kendrick.html  /negro-leagues-baseball-museum-bob-kendrick  301
+/bob-kendrick  /negro-leagues-baseball-museum-bob-kendrick  301
