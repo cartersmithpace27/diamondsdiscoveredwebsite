@@ -50,10 +50,10 @@ img { max-width: 100%; display: block; }
   padding: 14px 28px;
   transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
-.btn-primary { background: var(--red); color: #fff; border: 1px solid var(--red); }
-.btn-primary:hover { background: var(--red-dark); border-color: var(--red-dark); }
-.btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
-.btn-outline:hover { background: var(--ink); color: #fff; }
+.btn-primary { background: var(--red); color: #fff !important; border: 1px solid var(--red); }
+.btn-primary:hover { background: var(--red-dark); border-color: var(--red-dark); color: #fff !important; }
+.btn-outline { background: transparent; color: var(--ink) !important; border: 1px solid var(--ink); }
+.btn-outline:hover { background: var(--ink); color: #fff !important; }
 
 /* ── Content page hero (dark band, like the original pages) ── */
 .page-hero {

@@ -8,7 +8,9 @@
   if (!nav) return;
   var btn = nav.querySelector('.site-menu__toggle');
   if (!btn) return;
+  var panel = nav.querySelector('.site-menu__links');
   function setOpen(open) {
+    if (open && panel) panel.style.top = nav.getBoundingClientRect().bottom + 'px';
     nav.classList.toggle('open', open);
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   }
@@ -96,8 +98,19 @@ function ddSubscribe(form, onDone, method) {
     }, HIDE_AFTER);
   }
 
+  // Hide the sticky bar once the footer signup (or footer) scrolls into view,
+  // so we don't show two signups at once near the bottom.
+  var nearFooter = false;
+  var footEl = document.querySelector('.footer-signup') || document.querySelector('footer');
+  if (footEl && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      nearFooter = entries[0].isIntersecting;
+      if (nearFooter) bar.classList.remove('visible');
+    }, { rootMargin: '0px 0px -8% 0px' }).observe(footEl);
+  }
+
   window.addEventListener('scroll', function () {
-    if (bar.classList.contains('done')) return;
+    if (bar.classList.contains('done') || nearFooter) return;
     bar.classList.add('visible');
     scheduleHide();
   }, { passive: true });

@@ -56,9 +56,10 @@
 /* Links live in a dropdown panel at every width */
 .site-menu__links {
   display: none;
-  position: absolute;
-  top: 100%;
+  position: fixed;      /* fixed (not absolute) so the panel renders above page heroes regardless of stacking context */
+  top: 56px;            /* menu.js sets this precisely to the bar's height on open */
   right: 0;
+  z-index: 300;         /* above the sticky nav (200) and sticky email bar (150) */
   min-width: 280px;
   flex-direction: column;
   align-items: stretch;
@@ -121,11 +122,13 @@
 .footer-signup button:hover { background: #a5311f; }
 .footer-signup .fs-hp { position: absolute; left: -5000px; }
 .footer-signup .fs-li {
-  display: inline-block; margin-top: 14px; font-family: 'Courier Prime', monospace;
-  font-size: 0.66rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-  color: #1A1A1A; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 16px;
+  font-family: 'Courier Prime', monospace; font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: #1A1A1A; background: transparent; border: 1px solid #1A1A1A; border-radius: 3px;
+  padding: 10px 20px; text-decoration: none; transition: all 0.2s;
 }
-.footer-signup .fs-li:hover { color: #C0392B; }
+.footer-signup .fs-li:hover { background: #1A1A1A; color: #fff; }
 .footer-signup .fs-success { display: none; color: #1A1A1A; font-size: 0.98rem; }
 .footer-signup.done form { display: none; }
 .footer-signup.done .fs-success { display: block; }

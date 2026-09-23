@@ -290,8 +290,6 @@
   .intro-section {
     padding: 8rem 6vw 6rem;
     max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .section-label {
@@ -326,8 +324,8 @@
 
   .route-header {
     max-width: 760px;
-    margin: 0 auto;
-    padding: 0 24px 1.5rem;
+    margin: 0;
+    padding: 0 6vw 1.5rem;
     display: flex;
     align-items: baseline;
     justify-content: space-between;
@@ -355,8 +353,8 @@
 
   .route-planning-copy {
     max-width: 760px;
-    margin: 2rem auto 2.5rem;
-    padding: 0 24px;
+    margin: 2rem 0 2.5rem;
+    padding: 0 6vw;
   }
 
   .route-planning-copy p {
@@ -921,6 +919,20 @@
   .subscribe-success { display: none; font-size: 1.05rem; color: var(--ink); line-height: 1.6; }
   .subscribe-band.done .subscribe-form, .subscribe-band.done .subscribe-sub, .subscribe-band.done .subscribe-or { display: none; }
   .subscribe-band.done .subscribe-success { display: block; }
+
+  /* Mini-hero (echoes the home hero) */
+  .expedition-hero { position: relative; display: flex; align-items: flex-end; min-height: 42vh; min-height: 42svh; padding: 56px 40px 44px; background: var(--ink); color: #fff; text-decoration: none; overflow: hidden; }
+  .expedition-hero__img { position: absolute; inset: 0; background-position: center 55%; background-size: cover; background-repeat: no-repeat; transition: transform 1.2s ease; }
+  .expedition-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,26,26,0.92) 0%, rgba(26,26,26,0.55) 45%, rgba(26,26,26,0.25) 100%); }
+  .expedition-hero:hover .expedition-hero__img { transform: scale(1.03); }
+  .expedition-hero__inner { position: relative; z-index: 1; max-width: 720px; }
+  .expedition-hero .eh-eyebrow { font-family: 'Courier Prime', monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sepia-light); margin-bottom: 14px; display: block; }
+  .expedition-hero h2 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(1.9rem, 4vw, 3.2rem); line-height: 1.02; margin-bottom: 14px; text-shadow: 0 2px 18px rgba(0,0,0,0.55); }
+  .expedition-hero h2 em { display: block; font-style: italic; color: #FF7A5C; font-size: 0.6em; margin-bottom: 8px; }
+  .expedition-hero__sub { font-size: clamp(1rem, 1.8vw, 1.2rem); color: rgba(255,255,255,0.82); margin-bottom: 22px; max-width: 48ch; }
+  .expedition-hero__btn { display: inline-block; font-family: 'Courier Prime', monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 13px 24px; border-radius: 2px; background: var(--red); color: #fff; border: 1px solid var(--red); }
+  .expedition-hero:hover .expedition-hero__btn { background: #a93226; border-color: #a93226; }
+  .expedition-hero:focus-visible { outline: 3px solid var(--red); outline-offset: -3px; }
 </style>
 <link rel="stylesheet" href="menu.css">
 <!-- DD-STRUCTURED-DATA -->
@@ -966,6 +978,9 @@
   ]
 }
 </script>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -1051,7 +1066,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- INTRO -->
 <section class="intro-section" id="intro">
 <span class="section-label">The Plan</span>
-<h2>It started with two points on a map.</h2>
+<h2>Expedition Planning: It started with two points on a map.</h2>
 <p>From the first conception of this trip, we knew that Atlanta to Kansas City would be the main destination. The challenge was to discover what was in between. I had always wanted to travel to Kansas City to try their BBQ, but after working on my AP African American Studies project, I wanted to tour the Negro Leagues Baseball Museum and meet its president Bob Kendrick.</p><p>While doing research, I stumbled upon the Rickwood Game at Rickwood Field in Birmingham, Alabama. I had heard about the significance of Rickwood Field and the players who competed there, including Jackie Robinson during his time in the Negro Leagues. As I looked at the map, I realized Birmingham was directly on the route to Kansas City. What started as a trip to visit the Negro Leagues Baseball Museum quickly grew into something larger as we began identifying other important baseball and civil rights sites along the way.</p><p>The rule was simple: back home by Sunday night. Everything else was open.</p></section>
 <!-- ROUTE MAP -->
 <section class="route-section" id="route">
@@ -1677,6 +1692,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p class="stop-cta-wrap"><a class="stop-cta" href="award.html">Learn More About The Congressional Award &rarr;</a></p>
 </div>
 </section>
+<!-- About mini-hero -->
+<a class="expedition-hero" href="about.html" aria-label="About Carter Smith">
+<div class="expedition-hero__img" style="background-image:url('about-share.jpg');background-position:center 25%" aria-hidden="true"></div>
+<div class="expedition-hero__inner">
+<span class="eh-eyebrow">The person behind the trip</span>
+<h2><em>Who planned all this?</em> Meet Carter Smith</h2>
+<p class="expedition-hero__sub">Pace Academy senior, baseball pitcher, and Congressional Award candidate &mdash; and the story behind the expedition.</p>
+<span class="expedition-hero__btn">About Carter &rarr;</span>
+</div>
+</a>
 <footer>
 <p>Diamonds Discovered · May 27–31, 2026</p>
 <p>
