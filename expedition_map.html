@@ -214,6 +214,27 @@
     animation: markerPulse 0.6s ease-in-out 2;
     transform-origin: center center;
   }
+
+  /* ── Standalone map page: keep the full nav open/visible (no hamburger),
+        and above the Leaflet map layers ── */
+  body { display: flex; flex-direction: column; height: 100vh; height: 100svh; margin: 0; }
+  .site-menu { z-index: 1200; justify-content: flex-start; overflow-x: auto; flex: 0 0 auto; }
+  .site-menu__toggle { display: none !important; }
+  .site-menu__links {
+    display: flex !important;
+    position: static;
+    top: auto; right: auto;
+    flex-direction: row;
+    align-items: center;
+    min-width: 0;
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+    z-index: auto;
+  }
+  .site-menu__links a { border-bottom: none; padding: 14px 13px; }
+  #map { flex: 1 1 auto; height: auto; min-height: 0; width: 100%; }
 </style>
 <link rel="stylesheet" href="menu.css">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -229,7 +250,7 @@
   <div class="site-menu__links">
     <a href="index.html">Home</a>
     <a href="expedition.html">The Expedition</a>
-    <a href="expedition_map.html" class="active" aria-current="page">Map</a>
+    <a href="expedition_map.html" class="active" aria-current="page">Interactive Map</a>
     <a href="about.html">About Carter</a>
     <a href="award.html">Congressional Award</a>
     <a href="faq.html">FAQ</a>
@@ -618,6 +639,10 @@ fetch('https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geo
   if (window.self === window.top) {
     var m = document.getElementById('siteMenu');
     if (m) m.style.display = '';
+    // Nav now takes vertical space; let Leaflet recompute the map size.
+    if (typeof map !== 'undefined' && map.invalidateSize) {
+      setTimeout(function () { map.invalidateSize(); }, 60);
+    }
   }
 </script>
 </body>
