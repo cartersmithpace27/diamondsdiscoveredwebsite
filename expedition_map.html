@@ -216,24 +216,25 @@
   }
 
   /* ── Standalone map page: keep the full nav open/visible (no hamburger),
-        and above the Leaflet map layers ── */
+        and above the Leaflet map layers. !important beats menu.css, which
+        loads after this block. ── */
   body { display: flex; flex-direction: column; height: 100vh; height: 100svh; margin: 0; }
   .site-menu { z-index: 1200; justify-content: flex-start; overflow-x: auto; flex: 0 0 auto; }
   .site-menu__toggle { display: none !important; }
   .site-menu__links {
     display: flex !important;
-    position: static;
-    top: auto; right: auto;
-    flex-direction: row;
+    position: static !important;
+    top: auto !important; right: auto !important;
+    flex-direction: row !important;
     align-items: center;
-    min-width: 0;
+    min-width: 0 !important;
     flex-shrink: 0;
-    background: none;
-    border: none;
-    box-shadow: none;
-    z-index: auto;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    z-index: auto !important;
   }
-  .site-menu__links a { border-bottom: none; padding: 14px 13px; }
+  .site-menu__links a { border-bottom: none !important; padding: 14px 13px !important; }
   #map { flex: 1 1 auto; height: auto; min-height: 0; width: 100%; }
 </style>
 <link rel="stylesheet" href="menu.css">
