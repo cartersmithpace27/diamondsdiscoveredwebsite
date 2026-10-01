@@ -179,6 +179,21 @@
     padding: 3px 9px;
     margin-bottom: 12px;
   }
+  /* Teaser card: no page yet, not clickable, with a diagonal corner ribbon */
+  .work-card--teaser { position: relative; cursor: default; }
+  .work-card--teaser:hover { transform: none; border-color: var(--sepia-light); box-shadow: none; }
+  .work-card--teaser .work-card__link { color: var(--sepia); }
+  .ribbon { position: absolute; top: 0; right: 0; width: 150px; height: 150px; overflow: hidden; pointer-events: none; z-index: 3; }
+  .ribbon span {
+    position: absolute; top: 30px; right: -46px;
+    transform: rotate(45deg);
+    width: 190px; padding: 8px 0;
+    background: var(--red); color: #fff;
+    text-align: center;
+    font-family: 'Courier Prime', monospace; font-weight: 700;
+    font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.28);
+  }
   @media (max-width: 600px) {
     .home-hero { padding: 40px 20px 32px; }
     .home-hero .eyebrow { display: none; }
@@ -273,6 +288,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="work-card__link">See the presentation &rarr;</span>
     </div>
   </a>
+  <div class="work-card work-card--upcoming work-card--teaser">
+    <div class="ribbon"><span>Coming Soon</span></div>
+    <div class="work-card__img" style="background-image:url('paseo_carter_diamond.jpg');background-position:center 45%" role="img" aria-label=""></div>
+    <div class="work-card__body">
+      <span class="work-card__label">Pace Academy</span>
+      <h3>More Student-Driven Projects</h3>
+      <p>This project has generated interest among Pace alumni who want to encourage more student-driven projects like it. More to come.</p>
+      <span class="work-card__link">Stay tuned</span>
+    </div>
+  </div>
   <a class="work-card work-card--upcoming" href="documentary-screening.html">
     <div class="work-card__img" style="background-image:url('grays-1947-mcneill.jpg');background-position:center 12%" role="img" aria-label=""></div>
     <div class="work-card__body">
