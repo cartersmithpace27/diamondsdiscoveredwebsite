@@ -1,6 +1,9 @@
 # /expedition serves the expedition page (pretty URL)
 /expedition  /expedition.html  200
 
+# Guest speaker in a literature class (Fences / Negro Leagues)
+/guest-speaker-literature-class  /guest-speaker-literature-class.html  200
+
 # Bob Kendrick story — pretty URL serves the page, old path redirects
 /negro-leagues-baseball-museum-bob-kendrick  /bob-kendrick.html  200
 /bob-kendrick.html  /negro-leagues-baseball-museum-bob-kendrick  301
