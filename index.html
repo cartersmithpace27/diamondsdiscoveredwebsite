@@ -194,6 +194,10 @@
     font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase;
     box-shadow: 0 3px 8px rgba(0,0,0,0.28);
   }
+  /* Featured card: red ribbon + red border + glow + lift */
+  .work-card--featured { position: relative; border: 2px solid var(--red); box-shadow: 0 0 0 4px rgba(192,57,43,0.12), 0 14px 34px rgba(192,57,43,0.22); transform: translateY(-2px); }
+  .work-card--featured:hover { border-color: var(--red); transform: translateY(-5px); box-shadow: 0 0 0 4px rgba(192,57,43,0.16), 0 20px 46px rgba(192,57,43,0.30); }
+  .ribbon--featured span { background: var(--red); }
   @media (max-width: 600px) {
     .home-hero { padding: 40px 20px 32px; }
     .home-hero .eyebrow { display: none; }
@@ -261,7 +265,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="work-card__link">See the interview &rarr;</span>
     </div>
   </a>
-  <a class="work-card" href="expedition.html">
+  <a class="work-card work-card--featured" href="expedition.html">
+    <div class="ribbon ribbon--featured"><span>Featured</span></div>
     <div class="work-card__img" style="background-image:url('rickwood_entrance_wide.jpg')" role="img" aria-label=""></div>
     <div class="work-card__body">
       <span class="work-card__label">Congressional Award Expedition</span>
