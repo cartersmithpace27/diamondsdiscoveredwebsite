@@ -556,6 +556,39 @@
 
     .rec-card a:hover .rec-arrow { color: var(--red); }
 
+    /* Featured honor (Congressional Award): red border + glow + lift, echoes the home Featured tile */
+    .rec-card a.rec-featured {
+      position: relative;
+      margin: 8px -6px 12px;
+      padding: 16px 14px 14px;
+      border: 3px solid var(--red);
+      border-radius: 4px;
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(192,57,43,0.12), 0 12px 28px rgba(192,57,43,0.22);
+      transform: translateY(-2px);
+      transition: transform 0.2s, box-shadow 0.2s, background 0.15s;
+    }
+    .rec-card a.rec-featured:hover {
+      background: #fffaf3;
+      transform: translateY(-4px);
+      box-shadow: 0 0 0 4px rgba(192,57,43,0.16), 0 18px 40px rgba(192,57,43,0.30);
+    }
+    .rec-card a.rec-featured .rec-label { font-size: 1.08rem; }
+    .rec-card a.rec-featured .rec-arrow { color: var(--red); }
+    .rec-badge {
+      align-self: flex-start;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--red);
+      padding: 3px 8px;
+      border-radius: 2px;
+      margin-bottom: 8px;
+    }
+
     /* non-linked recognition rows (awards without a URL) */
     .rec-card .rec-row {
       display: flex;
@@ -747,28 +780,11 @@
   </div>
 
   <div class="recognition-grid">
-
-    <div class="rec-card">
-      <h3>Baseball</h3>
-      <a href="https://www.maxpreps.com/ga/atlanta/pace-academy-knights/athletes/carter-smith/?careerid=a5btsh4nhm466" target="_blank" rel="noopener me">
-        <span class="rec-label">MaxPreps profile</span>
-        <span class="rec-arrow">&#8599;</span>
-      </a>
-      <a href="https://www.perfectgame.org/Players/Playerprofile.aspx?ID=1327888" target="_blank" rel="noopener me">
-        <span class="rec-label">Perfect Game profile</span>
-        <span class="rec-arrow">&#8599;</span>
-      </a>
-      <a href="https://www.prepbaseballreport.com/profiles/GA/Carter-Smith-2694507183" target="_blank" rel="noopener me">
-        <span class="rec-label">Prep Baseball Report (PBR) Profile</span>
-        <span class="rec-arrow">&#8599;</span>
-      </a>
-    </div>
-
     <div class="rec-card">
       <h3>Honors &amp; Recognition</h3>
-      <a href="congressional-award-gold-medal-letter.pdf" target="_blank" rel="noopener">
-        <span class="rec-label">Congressional Award Gold Medal<span class="rec-note">Earned October 2026, medal presented summer 2027 &middot; Validated hours: Service 468.75, Personal Dev. 200+, Fitness 1000+ &middot; view award letter</span></span>
-        <span class="rec-arrow">&#8599;</span>
+      <a class="rec-featured" href="award.html">
+        <span class="rec-label"><span class="rec-badge">Featured</span>Congressional Award Gold Medal<span class="rec-note">Earned October 2026, medal presented summer 2027 &middot; Validated hours: Service 468.75, Personal Dev. 200+, Fitness 1000+ &middot; see the award letter</span></span>
+        <span class="rec-arrow">&#8594;</span>
       </a>
       <a href="https://nhsca.com/academic-all-americans/#honorable-mention" target="_blank" rel="noopener">
         <span class="rec-label">NHSCA Academic All-American, Honorable Mention<span class="rec-note">Coach nominated, based on academics and athletic performance</span></span>
@@ -808,6 +824,22 @@
       <a href="new-program.html">
         <span class="rec-label">Proposed Program for Student-Driven Projects<span class="rec-note">Working with Head of School on a program to support self-directed student projects</span></span>
         <span class="rec-arrow">&#8594;</span>
+      </a>
+    </div>
+
+    <div class="rec-card">
+      <h3>Baseball</h3>
+      <a href="https://www.maxpreps.com/ga/atlanta/pace-academy-knights/athletes/carter-smith/?careerid=a5btsh4nhm466" target="_blank" rel="noopener me">
+        <span class="rec-label">MaxPreps profile</span>
+        <span class="rec-arrow">&#8599;</span>
+      </a>
+      <a href="https://www.perfectgame.org/Players/Playerprofile.aspx?ID=1327888" target="_blank" rel="noopener me">
+        <span class="rec-label">Perfect Game profile</span>
+        <span class="rec-arrow">&#8599;</span>
+      </a>
+      <a href="https://www.prepbaseballreport.com/profiles/GA/Carter-Smith-2694507183" target="_blank" rel="noopener me">
+        <span class="rec-label">Prep Baseball Report (PBR) Profile</span>
+        <span class="rec-arrow">&#8599;</span>
       </a>
     </div>
 

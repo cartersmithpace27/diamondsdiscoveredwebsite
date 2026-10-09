@@ -525,6 +525,26 @@
   .expedition-hero__btn { display: inline-block; font-family: 'Courier Prime', monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 13px 24px; border-radius: 2px; background: var(--red); color: #fff; border: 1px solid var(--red); }
   .expedition-hero:hover .expedition-hero__btn { background: #a93226; border-color: #a93226; }
   .expedition-hero:focus-visible { outline: 3px solid var(--red); outline-offset: -3px; }
+  /* Award showcase hero (letter visible above the fold) */
+  .award-hero { max-width: 1100px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); grid-template-rows: auto 1fr; grid-template-areas: "head letter" "body letter"; column-gap: 56px; align-items: start; }
+  .award-hero__head { grid-area: head; }
+  .award-hero__body { grid-area: body; }
+  .award-hero h1 { font-size: clamp(2.8rem, 5vw, 5.4rem); margin-bottom: 24px; }
+  .award-hero__mine { color: #fff; font-size: 1.1rem; line-height: 1.6; margin-top: 20px; max-width: 520px; }
+  .award-hero__actions { margin-top: 26px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; }
+  .award-hero__actions .learn-more-btn { margin-top: 0; padding: 15px 28px; }
+  .award-hero__link { font-family: 'Courier Prime', monospace; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sepia-light); text-decoration: none; }
+  .award-hero__link:hover { color: #fff; }
+  .award-letter-wrap { grid-area: letter; margin: 0; }
+  .award-letter { display: block; background: #fff; padding: 6px; box-shadow: 0 20px 50px rgba(0,0,0,0.55); transform: rotate(1.2deg); transition: transform 0.3s ease; }
+  .award-letter:hover { transform: rotate(0deg) scale(1.01); }
+  .award-letter img { display: block; width: 100%; height: auto; }
+  .award-letter-wrap figcaption { font-family: 'Courier Prime', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sepia-light); text-align: center; margin-top: 16px; }
+  @media (max-width: 820px) {
+    .award-hero { grid-template-columns: 1fr; grid-template-rows: auto; grid-template-areas: "head" "letter" "body"; row-gap: 8px; }
+    .award-hero h1 { margin-bottom: 20px; }
+    .award-letter-wrap { width: 88%; max-width: 420px; margin: 0 auto 12px; }
+  }
 </style>
 <link rel="stylesheet" href="menu.css">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -553,17 +573,34 @@
 
 <!-- ── HERO ── -->
 <header class="hero">
-  <div class="hero-inner">
-    <p class="hero-eyebrow">The highest honor Congress gives to youth</p>
-    <h1>The<br><em>Congressional<br>Award</em></h1>
-    <p class="hero-sub">The Gold Medal is the highest level of the Congressional Award program and requires a multi-year commitment to volunteer service, personal development, physical fitness, and a self-designed expedition.</p>
+  <div class="hero-inner award-hero">
+    <div class="award-hero__head">
+      <p class="hero-eyebrow">Gold Medal &middot; Earned October 9, 2026</p>
+      <h1>The<br><em>Congressional<br>Award</em></h1>
+    </div>
+    <figure class="award-letter-wrap">
+      <a class="award-letter" href="congressional-award-gold-medal-letter.pdf" target="_blank" rel="noopener">
+        <img src="congressional-award-gold-medal-letter.jpg" width="1190" height="1540" fetchpriority="high" alt="Letter from The Congressional Award dated October 9, 2026, telling Carter Smith he earned the Gold Medal">
+      </a>
+      <figcaption>My award letter &middot; tap to open the PDF</figcaption>
+    </figure>
+    <div class="award-hero__body">
+      <p class="hero-sub">The Gold Medal is the highest level of the Congressional Award program and requires a multi-year commitment to volunteer service, personal development, physical fitness, and a self-designed expedition.</p>
+      <p class="award-hero__mine">I earned the Gold Medal in October 2026. This is the letter I got from the Congressional Award.</p>
+      <div class="award-hero__actions">
+        <a class="learn-more-btn" href="congressional-award-gold-medal-letter.pdf" target="_blank" rel="noopener">Open the Letter (PDF)</a>
+        <a class="award-hero__link" href="#what-it-is">What the award is &darr;</a>
+      </div>
+    </div>
   </div>
 </header>
+
+<!-- EXPEDITION PHOTO GOES HERE (Ben is choosing the image) -->
 
 <!-- ── MAIN CONTENT ── -->
 <main class="content-wrap">
 
-  <p class="section-label">What it is</p>
+  <p class="section-label" id="what-it-is">What it is</p>
 
   <p>Congress created the award in 1979. It's the highest honor Congress gives to young Americans. No GPA requirement, no competition to enter. You set goals, log your hours, and prove you did the work.</p>
 
@@ -652,7 +689,7 @@
 
   <p>The closer I got to finishing, the more I understood how hard the Congressional Award Gold Medal actually is. Finishing the expedition pushed me to get through the remaining hours to be able to submit my Gold Medal application.</p>
 
-  <p>I submitted in July 2026, and on October 9, 2026, I found out I earned the Gold Medal. <a href="congressional-award-gold-medal-letter.pdf" target="_blank" rel="noopener">Here's the letter.</a> The medals get presented next summer.</p>
+  <p>I submitted in July 2026, and on October 9, 2026, I found out I earned the Gold Medal. The medals get presented next summer.</p>
 
   <p>I'll keep doing the same things that got me here. I'm still a member of YMSL and doing service, I'll keep playing baseball and training as a pitcher, and I'll keep working and finding ways to improve.</p>
 
