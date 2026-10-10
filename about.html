@@ -556,25 +556,27 @@
 
     .rec-card a:hover .rec-arrow { color: var(--red); }
 
-    /* Featured honor (Congressional Award): red border + glow + lift, echoes the home Featured tile */
+    /* Featured honor (Congressional Award): gold border + glow + lift, echoes the home Featured tile */
     .rec-card a.rec-featured {
       position: relative;
       margin: 8px -6px 12px;
       padding: 16px 14px 14px;
-      border: 3px solid var(--red);
+      border: 3px solid #C9A23A;
       border-radius: 4px;
-      background: #fff;
-      box-shadow: 0 0 0 4px rgba(192,57,43,0.12), 0 12px 28px rgba(192,57,43,0.22);
+      background: linear-gradient(180deg, #FFFCF2 0%, #fff 70%);
+      box-shadow: 0 0 0 4px rgba(201,162,58,0.16), 0 12px 28px rgba(201,162,58,0.30);
       transform: translateY(-2px);
       transition: transform 0.2s, box-shadow 0.2s, background 0.15s;
     }
     .rec-card a.rec-featured:hover {
-      background: #fffaf3;
+      background: #FFF8E4;
+      color: #7A5C10;
       transform: translateY(-4px);
-      box-shadow: 0 0 0 4px rgba(192,57,43,0.16), 0 18px 40px rgba(192,57,43,0.30);
+      box-shadow: 0 0 0 4px rgba(201,162,58,0.22), 0 18px 40px rgba(201,162,58,0.40);
     }
     .rec-card a.rec-featured .rec-label { font-size: 1.08rem; }
-    .rec-card a.rec-featured .rec-arrow { color: var(--red); }
+    .rec-card a.rec-featured .rec-arrow,
+    .rec-card a.rec-featured:hover .rec-arrow { color: #A8821F; }
     .rec-badge {
       align-self: flex-start;
       font-family: 'Courier Prime', monospace;
@@ -582,8 +584,8 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #fff;
-      background: var(--red);
+      color: #1A1A1A;
+      background: linear-gradient(135deg, #E9C766 0%, #C9A23A 55%, #B08A2A 100%);
       padding: 3px 8px;
       border-radius: 2px;
       margin-bottom: 8px;
