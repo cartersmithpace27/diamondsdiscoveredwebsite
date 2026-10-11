@@ -199,7 +199,17 @@
   .work-card--featured:hover { border-color: var(--red); transform: translateY(-5px); box-shadow: 0 0 0 4px rgba(192,57,43,0.16), 0 20px 46px rgba(192,57,43,0.30); }
   .ribbon--featured span { background: var(--red); }
 
+  /* ── SPECIAL THANKS ── */
+  .thanks { max-width: 1240px; margin: 0 auto; padding: 0 6vw 96px; }
+  .thanks-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px; max-width: 1000px; }
+  .thanks-item { padding: 20px 0 22px; border-bottom: 1px solid var(--rule); }
+  .thanks-item h3 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.25rem; line-height: 1.25; }
+  .thanks-item h3 a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--red); text-underline-offset: 4px; }
+  .thanks-item .thanks-org { display: block; font-family: 'Courier Prime', monospace; font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--sepia); margin: 4px 0 8px; }
+  .thanks-item p { font-size: 1rem; line-height: 1.65; color: #3a3a3a; }
   /* ── WHAT I LEARNED ── */
+  .work__intro { font-size: 1.06rem; line-height: 1.7; color: #3a3a3a; max-width: 760px; margin-top: 12px; }
+  .work__intro a { color: var(--red); text-decoration: underline; text-underline-offset: 3px; }
   .work__lede {
     font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700;
     font-size: clamp(1.1rem, 2vw, 1.35rem); line-height: 1.45;
@@ -232,6 +242,8 @@
     .home-hero .eyebrow { display: none; }
     .work { padding: 32px 20px 48px; }
     .learned { padding: 0 20px 72px; }
+    .thanks { padding: 0 20px 72px; }
+    .thanks-grid { grid-template-columns: 1fr; }
     .learned__body { padding: 26px 20px 12px; }
     .dd-video { max-width: none; }
     .work-grid { grid-template-columns: 1fr; gap: 18px; }
@@ -277,7 +289,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="work__head">
     <span class="section-label">Diamonds Discovered</span>
     <h2>My work on baseball and integration</h2>
-    <p class="work__lede">MLB integration didn&#8217;t end racism, but it forced white America to recognize Black excellence on a national stage.</p>
+    <p class="work__intro">My work started with a research project for AP African American Studies and grew from there. It helped that I was already a baseball fan and had heard Bob Kendrick on his MLB Network Radio show on the way to baseball tournaments.</p>
   </div>
   <div class="work-grid">
   <a class="work-card" href="thesis.html">
@@ -354,6 +366,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="work__head">
     <span class="section-label">Diamonds Discovered</span>
     <h2>What I learned from my work on baseball and integration</h2>
+    <p class="work__intro">I kept learning by talking with people like Terence Moore and Bob Kendrick, and on the <a href="expedition.html">Baseball and Integration Expedition</a> I created. Now I&#8217;m sharing what I learned with baseball fans, students, and anyone interested in the history of baseball and integration and how they&#8217;re connected.</p>
   </div>
   <div class="learned__body">
     <p class="learned__open"><a href="thesis.html">MLB integration didn&#8217;t end racism</a>, but it forced white America to recognize Black excellence on a national stage.</p>
@@ -377,6 +390,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>The part I never fully understood until <a href="expedition.html#museum-day-four">visiting the museum</a> was what integration cost. The Negro Leagues started because Black players weren&#8217;t allowed in MLB, and that&#8217;s where great players like Jackie Robinson developed. When the time was right, with the right person, Robinson integrated MLB. It was also the beginning of the end for the Negro Leagues. As the best Black players went to the majors, the Negro Leagues slowly disappeared.</p>
 
     <p>What if the Negro Leagues had never existed? There might not have been a Jackie Robinson or a Hank Aaron, and it may have taken longer for integration to happen throughout our country. We need to keep telling that history and appreciate the players while they&#8217;re still around.</p>
+  </div>
+</section>
+
+<!-- SPECIAL THANKS -->
+<section class="thanks" id="special-thanks">
+  <div class="work__head">
+    <span class="section-label">Diamonds Discovered</span>
+    <h2>Special thanks</h2>
+  </div>
+  <div class="thanks-grid">
+    <div class="thanks-item">
+      <h3>Mrs. Brandi Wheeler</h3>
+      <span class="thanks-org">Pace Academy</span>
+      <p>An amazing teacher who has been my unofficial advisor throughout all of my work.</p>
+    </div>
+    <div class="thanks-item">
+      <h3>Dr. Christine Carter</h3>
+      <span class="thanks-org">Pace Academy</span>
+      <p>Her APUSH class got me thinking and gave me the encouragement that led to my interview with Mr. Moore.</p>
+    </div>
+    <div class="thanks-item">
+      <h3><a href="terence-moore-interview.html">Mr. Terence Moore</a></h3>
+      <span class="thanks-org">Sports journalist</span>
+      <p>For taking time out of his schedule between TV appearances and teaching college classes to let me interview him for two hours.</p>
+    </div>
+    <div class="thanks-item">
+      <h3><a href="/negro-leagues-baseball-museum-bob-kendrick">Mr. Bob Kendrick</a></h3>
+      <span class="thanks-org">Negro Leagues Baseball Museum</span>
+      <p>For talking with me for 30 minutes in the middle of his day and then bringing my visit to the museum to life. He&#8217;s the best speaker I&#8217;ve ever heard.</p>
+    </div>
+    <div class="thanks-item">
+      <h3><a href="documentary-screening.html">Mr. Mike Gannon</a></h3>
+      <span class="thanks-org">Pace Academy &middot; Principal</span>
+      <p>For listening to my proposal to bring a documentary to school.</p>
+    </div>
+    <div class="thanks-item">
+      <h3><a href="new-program.html">Mr. Fred Assaf</a></h3>
+      <span class="thanks-org">Pace Academy &middot; Head of School</span>
+      <p>For showing interest in my project and letting me propose a permanent program to encourage projects like this in the future, and for inviting me to speak to his class about <em>Fences</em>.</p>
+    </div>
   </div>
 </section>
 
