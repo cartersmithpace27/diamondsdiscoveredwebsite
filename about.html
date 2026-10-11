@@ -209,6 +209,7 @@
 
     .split-image img {
       width: 100%;
+      height: auto;
       display: block;
       border-radius: 3px;
     }
@@ -671,6 +672,21 @@
       footer { padding: 28px 24px; }
       nav .brand { display: none; }
     }
+    /* About hero: text left, headshot right (mirrors the award page letter layout) */
+    .hero-inner.about-hero { max-width: 1100px; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); grid-template-rows: auto 1fr; grid-template-areas: "head photo" "body photo"; column-gap: 64px; align-items: start; }
+    .about-hero__head { grid-area: head; }
+    .about-hero__body { grid-area: body; }
+    .about-hero__photo { grid-area: photo; margin: 0; }
+    .about-hero__frame { background: #fff; padding: 6px; box-shadow: 0 20px 50px rgba(0,0,0,0.55); transform: rotate(1.5deg); }
+    .about-hero__frame img { display: block; width: 100%; height: auto; }
+    .about-hero__photo figcaption { font-family: 'Courier Prime', monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sepia-light); text-align: center; margin-top: 16px; }
+    .split-image--portrait img { max-width: 440px; margin: 0 auto; }
+    .split-image--portrait .img-caption { text-align: center; }
+    @media (max-width: 760px) {
+      .hero-inner.about-hero { grid-template-columns: 1fr; grid-template-rows: auto; grid-template-areas: "head" "photo" "body"; row-gap: 8px; }
+      .about-hero__photo { width: 72%; max-width: 300px; margin: 0 auto 20px; }
+      .split-image--portrait img { max-width: 300px; }
+    }
   </style>
 <link rel="stylesheet" href="menu.css">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -698,10 +714,20 @@
 
 <!-- HERO -->
 <header class="hero">
-  <div class="hero-inner">
-    <p class="hero-eyebrow">Pace Academy, Atlanta · Class of 2027</p>
-    <h1>Carter Smith.<br><em>Learn about me and what I'm interested in.</em></h1>
+  <div class="hero-inner about-hero">
+    <div class="about-hero__head">
+      <p class="hero-eyebrow">Pace Academy, Atlanta · Class of 2027</p>
+      <h1>Carter Smith.<br><em>Learn about me and what I'm interested in.</em></h1>
+    </div>
+    <figure class="about-hero__photo">
+      <div class="about-hero__frame">
+        <img src="about-headshot.jpg" width="900" height="1200" fetchpriority="high" alt="Carter Smith, senior at Pace Academy in Atlanta">
+      </div>
+      <figcaption>Atlanta, 2025</figcaption>
+    </figure>
+    <div class="about-hero__body">
     <p class="hero-sub">Senior at Pace Academy in Atlanta, GA. 14 years of baseball. The spark was an AP thesis on MLB integration. Then an AP oral history with a noted sports journalist who has written about Hank Aaron and MLB integration issues. And then a 2,020-mile road trip that I planned that connected baseball and integration. Now I'm finding ways to share what I learned about baseball and integration with others at school and online.</p>
+    </div>
   </div>
 </header>
 
@@ -745,17 +771,27 @@
   <h2>Focused On Community Service + Job</h2>
 </div>
 
-<!-- SECTION 3: text left, headshot right -->
+<!-- SECTION 3: service text left, food bank photo right -->
 <section class="split-section">
   <div class="split-text">
     <p>I was fortunate to join the Young Men's Service League (YMSL) in 9th grade and that got me interested in doing service. I also found that playing travel baseball in the summers made it hard to have a regular job. I was able to volunteer at camps and with other organizations that worked with my baseball schedule.</p>
     <p>I'm now up to 508 hours of community service in the last 3 years, serving with 16 different organizations in the Atlanta area. The two I spent the most time with are La Amistad / Keeping Pace (130 hours) and St. Vincent de Paul (108 hours).</p>
+  </div>
+  <div class="split-image">
+    <img src="service-atlanta-community-food-bank.jpg" width="1400" height="1050" loading="lazy" alt="Carter Smith in a Young Men's Service League shirt volunteering at the Atlanta Community Food Bank">
+    <p class="img-caption">Volunteering at the Atlanta Community Food Bank with YMSL &middot; June 2026.</p>
+  </div>
+</section>
+
+<!-- SECTION 4: Publix photo left, job + senior year text right -->
+<section class="split-section reverse">
+  <div class="split-text">
     <p>It was a big decision to stop playing travel baseball this past summer. This allowed me to finally get a real job at Publix where I worked 12-20 hours per week in the summer. I am still working at Publix during the school year but can only work 4-8 hours per week, on the weekends.</p>
     <p>I just started my senior year at Pace Academy, where I'm taking 6 AP's and 1 honors class this year. I will graduate with 12 AP classes this spring. I am looking forward to playing my final season of high school baseball with my friends, injury-free, and with college applications done.</p>
   </div>
-  <div class="split-image">
-    <img src="IMG_9275.jpg" alt="Carter Smith, rising senior at Pace Academy">
-    <p class="img-caption">Atlanta, 2025.</p>
+  <div class="split-image split-image--portrait">
+    <img src="job-publix.jpg" width="1000" height="1300" loading="lazy" alt="Carter Smith working a register at his job at Publix">
+    <p class="img-caption">Working my shift at Publix &middot; June 2026.</p>
   </div>
 </section>
 
