@@ -28,11 +28,13 @@ const EXCLUDE = new Set([]);
 
 // Per-page hints. Anything not listed uses the defaults below.
 const PAGE_SETTINGS = {
-  "index.html":          { loc: "/",                    priority: "1.0", changefreq: "monthly" },
-  "about.html":          { loc: "/about.html",          priority: "0.8", changefreq: "monthly" },
-  "award.html":          { loc: "/award.html",          priority: "0.8", changefreq: "monthly" },
-  "expedition_map.html": { loc: "/expedition_map.html", priority: "0.6", changefreq: "monthly" },
-  "contact.html":        { loc: "/contact.html",        priority: "0.5", changefreq: "yearly"  },
+  "index.html":                     { loc: "/",                                           priority: "1.0", changefreq: "monthly" },
+  "baseball-and-integration-expedition.html": { priority: "0.9" },
+  "about-carter-smith.html":        { priority: "0.8" },
+  "congressional-award-gold-medal.html": { priority: "0.8" },
+  "bob-kendrick.html":              { loc: "/negro-leagues-baseball-museum-bob-kendrick" },
+  "baseball-and-integration-expedition-route-map.html": { priority: "0.6" },
+  "contact.html":                   { loc: "/contact.html",                               priority: "0.5", changefreq: "yearly"  },
 };
 const DEFAULTS = { priority: "0.7", changefreq: "monthly" };
 
@@ -65,7 +67,7 @@ const files = fs
 
 const urls = files.map((f) => {
   const s = PAGE_SETTINGS[f] || {};
-  const loc = s.loc || "/" + f;
+  const loc = s.loc || "/" + f.replace(/\.html$/i, "");  // clean URLs, no .html
   const priority = s.priority || DEFAULTS.priority;
   const changefreq = s.changefreq || DEFAULTS.changefreq;
   return (
